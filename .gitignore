@@ -15,6 +15,12 @@
 !/[Aa]ssets/**/*.meta
 /Assets/TextMesh Pro/
 /Assets/TextMesh Pro.meta
+/Assets/Plugins/Demigiant/
+/Assets/Plugins/Demigiant.meta
+/Assets/Plugins.meta
+/Assets/Resources/DOTweenSettings.asset
+/Assets/Resources/DOTweenSettings.asset.meta
+/Assets/Resources.meta
 
 # Uncomment this line if you wish to ignore the asset store tools plugin
 # /[Aa]ssets/AssetStoreTools*
