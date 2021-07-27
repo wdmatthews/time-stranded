@@ -11,7 +11,6 @@ namespace Toolkits.References
         /// <summary>
         /// The reference to set at runtime.
         /// </summary>
-        [Tooltip("The reference to set at runtime.")]
         [System.NonSerialized] public Transform Reference = null;
     }
 }
