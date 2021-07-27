@@ -1,0 +1,19 @@
+{
+    "name": "Toolkits.ObjectPooling.Test.Editor",
+    "rootNamespace": "Toolkits.ObjectPooling.Test.Editor",
+    "references": [
+        "GUID:a9136d13df3284f6db50f5a3312e16f4",
+        "GUID:22839264394cd4e5ba4e2f1903676e33"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

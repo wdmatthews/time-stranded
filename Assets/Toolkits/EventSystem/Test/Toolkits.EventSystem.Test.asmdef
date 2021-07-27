@@ -1,0 +1,16 @@
+{
+    "name": "Toolkits.EventSystem.Test",
+    "rootNamespace": "Toolkits.EventSystem.Test",
+    "references": [
+        "GUID:4b57311933ff242de8ad24577af179ea"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
