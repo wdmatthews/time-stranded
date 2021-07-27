@@ -1,0 +1,16 @@
+{
+    "name": "Toolkits.References.Test",
+    "rootNamespace": "Toolkits.References.Test",
+    "references": [
+        "GUID:f35b5bcc8aea84fd0abd77f64fd8413a"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
