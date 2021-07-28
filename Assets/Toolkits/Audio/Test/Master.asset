@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d77111afd53c44daa6b816ad000fe36, type: 3}
-  m_Name: SFX
+  m_Name: Master
   m_EditorClassIdentifier: 
-  MixerGroup: {fileID: 5390331957401108909, guid: 03e2ea0467f104893b6cbc6acdf341db, type: 2}
+  MixerGroup: {fileID: 24300002, guid: 03e2ea0467f104893b6cbc6acdf341db, type: 2}
   Volume: 1
-  VolumeParameterName: SFXVolume
+  VolumeParameterName: MasterVolume

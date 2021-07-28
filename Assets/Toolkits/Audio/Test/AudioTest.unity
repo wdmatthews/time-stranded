@@ -269,6 +269,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _audioManager: {fileID: 11400000, guid: 5515f269d73c2414f9a823ad8324fdc0, type: 2}
+  _musicClips:
+  - {fileID: 11400000, guid: 7be1badd39f294d968162221385e19f7, type: 2}
+  - {fileID: 11400000, guid: fa223c94075a841f7836fa079fa12a97, type: 2}
+  _sfxClips:
+  - {fileID: 11400000, guid: b8662928976fd442bb4c27dc4de61468, type: 2}
+  - {fileID: 11400000, guid: ec31870f95f3c4374a84f084291cc8ec, type: 2}
 --- !u!4 &1341128132
 Transform:
   m_ObjectHideFlags: 0

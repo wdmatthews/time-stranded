@@ -1,12 +1,12 @@
 {
-    "name": "Toolkits.Audio",
-    "rootNamespace": "Toolkits.Audio",
+    "name": "Toolkits.Audio.Test.Editor",
+    "rootNamespace": "Toolkits.Audio.Test.Editor",
     "references": [
-        "GUID:2cefc2cd207f04169b79cb1c6e7e06d0",
-        "GUID:4b57311933ff242de8ad24577af179ea",
-        "GUID:a9136d13df3284f6db50f5a3312e16f4"
+        "GUID:148861292b8be450680bbef081a06976"
     ],
-    "includePlatforms": [],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,

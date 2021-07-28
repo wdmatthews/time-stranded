@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d77111afd53c44daa6b816ad000fe36, type: 3}
-  m_Name: SFX
+  m_Script: {fileID: 11500000, guid: 4c3321f27ddd945ce89428c837c40fa3, type: 3}
+  m_Name: AudioPlayerPool
   m_EditorClassIdentifier: 
-  MixerGroup: {fileID: 5390331957401108909, guid: 03e2ea0467f104893b6cbc6acdf341db, type: 2}
-  Volume: 1
-  VolumeParameterName: SFXVolume
+  _factory: {fileID: 11400000, guid: d945e5d5ca3ac4febb0174fa88306a9e, type: 2}

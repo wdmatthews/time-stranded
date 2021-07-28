@@ -21,6 +21,12 @@ namespace Toolkits.Audio
         public AudioGroupSO Group = null;
 
         /// <summary>
+        /// Whether or not the audio clip should loop.
+        /// </summary>
+        [Tooltip("Whether or not the audio clip should loop.")]
+        public bool ShouldLoop = false;
+
+        /// <summary>
         /// The minimum volume when randomly picking a volume to play this clip.
         /// </summary>
         [Tooltip("The minimum volume when randomly picking a volume to play this clip.")]

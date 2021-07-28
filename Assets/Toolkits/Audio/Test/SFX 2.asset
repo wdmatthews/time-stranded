@@ -14,3 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Clip: {fileID: 8300000, guid: 1682be7bc3123409d91a7dcea2cd1f29, type: 3}
   Group: {fileID: 11400000, guid: ea655465bb4514b6c8e307b914b30934, type: 2}
+  ShouldLoop: 0
+  MinVolume: 0.75
+  MaxVolume: 1
+  MinPitch: 0.75
+  MaxPitch: 1

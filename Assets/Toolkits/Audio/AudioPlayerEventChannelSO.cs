@@ -1,21 +1,21 @@
 using UnityEngine;
 
-namespace Toolkits.EventSystem
+namespace Toolkits.Audio
 {
     /// <summary>
     /// A <see cref="ScriptableObject"/> that multiple objects can reference to raise or listen to events.
     /// </summary>
-    [CreateAssetMenu(fileName = "NewEventChannel", menuName = "Toolkits/Event System/Event Channel")]
-    public class EventChannelSO : ScriptableObject
+    [CreateAssetMenu(fileName = "NewAudioPlayerEventChannel", menuName = "Toolkits/Audio/Audio Player Event Channel")]
+    public class AudioPlayerEventChannelSO : ScriptableObject
     {
         /// <summary>
         /// The action to invoke upon raise.
         /// </summary>
-        public System.Action OnRaised = null;
+        public System.Action<AudioPlayer> OnRaised = null;
 
         /// <summary>
         /// Raises the event, notifying all listeners.
         /// </summary>
-        public void Raise() => OnRaised?.Invoke();
+        public void Raise(AudioPlayer audioPlayer) => OnRaised?.Invoke(audioPlayer);
     }
 }

@@ -13,3 +13,11 @@ MonoBehaviour:
   m_Name: TestAudioManager
   m_EditorClassIdentifier: 
   Mixer: {fileID: 24100000, guid: 03e2ea0467f104893b6cbc6acdf341db, type: 2}
+  AudioGroups:
+  - {fileID: 11400000, guid: e4a801a63d042456db78423d0ad3874b, type: 2}
+  - {fileID: 11400000, guid: a155ae4b78afc43e1937214e425f8e94, type: 2}
+  - {fileID: 11400000, guid: ea655465bb4514b6c8e307b914b30934, type: 2}
+  _audioPlayerPool: {fileID: 11400000, guid: cb7cc8a600573468b96d2e466fcf7d67, type: 2}
+  _onFinishedPlayingChannel: {fileID: 11400000, guid: ec7d0baeaf6f54a4b8a29fd12c34c14d, type: 2}
+  _onPauseChannel: {fileID: 11400000, guid: 081e02e5891b24713843e4aeeeed6bbc, type: 2}
+  _onResumeChannel: {fileID: 11400000, guid: 040424972cec04248b759638c9ae6170, type: 2}
