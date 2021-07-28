@@ -46,8 +46,8 @@ namespace Toolkits.NodeEditor.Test.Editor
             AddPort("Special", Direction.Output, Port.Capacity.Single, typeof(int));
             AddPort("Single", Direction.Input, Port.Capacity.Single, typeof(float));
             AddPort("Single", Direction.Output, Port.Capacity.Single, typeof(float));
-            AddPort("Multiple", Direction.Input, Port.Capacity.Multi, typeof(string));
-            AddPort("Multiple", Direction.Output, Port.Capacity.Multi, typeof(string));
+            AddPort("Multiple", Direction.Input, Port.Capacity.Multi, typeof(Vector2));
+            AddPort("Multiple", Direction.Output, Port.Capacity.Multi, typeof(Vector2));
         }
 
         /// <summary>
