@@ -1,0 +1,16 @@
+{
+    "name": "Toolkits.Audio.Test",
+    "rootNamespace": "Toolkits.Audio.Test",
+    "references": [
+        "GUID:b9ebac546782047f483edea4508235a1"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
