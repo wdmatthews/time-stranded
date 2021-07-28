@@ -23,6 +23,11 @@ namespace Toolkits.NodeEditor.Test.Editor
         protected TestEditorDataSO Data { get; set; } = null;
 
         /// <summary>
+        /// The <see cref="SerializedProperty"/> used to save test nodes.
+        /// </summary>
+        protected SerializedProperty _serializedTestNodes = null;
+
+        /// <summary>
         /// The graph view to use in this node editor window.
         /// </summary>
         protected TestGraphView _testGraphView = null;
@@ -82,6 +87,15 @@ namespace Toolkits.NodeEditor.Test.Editor
         }
 
         /// <summary>
+        /// Loads the node editor from the data.
+        /// </summary>
+        protected override void Load()
+        {
+            base.Load();
+            _serializedTestNodes = _serializedEditorData.FindProperty(nameof(TestEditorDataSO.TestNodes));
+        }
+
+        /// <summary>
         /// Creates nodes from the save data.
         /// </summary>
         protected override void LoadNodes()
@@ -98,7 +112,7 @@ namespace Toolkits.NodeEditor.Test.Editor
         protected override void ClearData()
         {
             base.ClearData();
-            Data.TestNodes.Clear();
+            _serializedTestNodes.ClearArray();
         }
 
         /// <summary>
@@ -119,8 +133,13 @@ namespace Toolkits.NodeEditor.Test.Editor
                 };
 
                 // Add the test node data to the save data.
-                _data.Nodes.Add(testNodeData);
-                Data.TestNodes.Add(testNodeData);
+                SerializedProperty serializedNode = InsertElementIntoSerializedArray(_serializedNodes);
+                serializedNode.FindPropertyRelative(nameof(BaseNodeData.Guid)).stringValue = testNodeData.Guid;
+                serializedNode.FindPropertyRelative(nameof(BaseNodeData.Position)).vector2Value = testNodeData.Position;
+                SerializedProperty serializedTestNode = InsertElementIntoSerializedArray(_serializedTestNodes);
+                serializedTestNode.FindPropertyRelative(nameof(TestNodeData.Guid)).stringValue = testNodeData.Guid;
+                serializedTestNode.FindPropertyRelative(nameof(TestNodeData.Position)).vector2Value = testNodeData.Position;
+                serializedTestNode.FindPropertyRelative(nameof(TestNodeData.TestString)).stringValue = testNodeData.TestString;
             }
         }
     }

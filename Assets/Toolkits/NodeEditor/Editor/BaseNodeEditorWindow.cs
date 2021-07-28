@@ -34,6 +34,21 @@ namespace Toolkits.NodeEditor.Editor
         protected BaseEditorDataSO _data = null;
 
         /// <summary>
+        /// The <see cref="SerializedObject"/> used to save data.
+        /// </summary>
+        protected SerializedObject _serializedEditorData = null;
+
+        /// <summary>
+        /// The <see cref="SerializedProperty"/> used to save nodes.
+        /// </summary>
+        protected SerializedProperty _serializedNodes = null;
+
+        /// <summary>
+        /// The <see cref="SerializedProperty"/> used to save connections.
+        /// </summary>
+        protected SerializedProperty _serializedConnections = null;
+
+        /// <summary>
         /// The graph view to use in this node editor window.
         /// </summary>
         protected BaseGraphView _graphView = null;
@@ -142,6 +157,11 @@ namespace Toolkits.NodeEditor.Editor
         /// </summary>
         protected virtual void Load()
         {
+            // Get the serialized object and its properties.
+            _serializedEditorData = new SerializedObject(_data);
+            _serializedNodes = _serializedEditorData.FindProperty(nameof(BaseEditorDataSO.Nodes));
+            _serializedConnections = _serializedEditorData.FindProperty(nameof(BaseEditorDataSO.Connections));
+
             // Clear out all current nodes.
             foreach (Node node in _graphView.nodes)
             {
@@ -220,6 +240,9 @@ namespace Toolkits.NodeEditor.Editor
             {
                 SaveConnection(connection);
             }
+
+            // Save the data to the asset.
+            _serializedEditorData.ApplyModifiedProperties();
         }
 
         /// <summary>
@@ -228,8 +251,8 @@ namespace Toolkits.NodeEditor.Editor
         /// </summary>
         protected virtual void ClearData()
         {
-            _data.Nodes.Clear();
-            _data.Connections.Clear();
+            _serializedNodes.ClearArray();
+            _serializedConnections.ClearArray();
         }
 
         /// <summary>
@@ -250,7 +273,9 @@ namespace Toolkits.NodeEditor.Editor
                 };
 
                 // Add the base node data to the save data.
-                _data.Nodes.Add(baseNodeData);
+                SerializedProperty serializedNode = InsertElementIntoSerializedArray(_serializedNodes);
+                serializedNode.FindPropertyRelative(nameof(BaseNodeData.Guid)).stringValue = baseNodeData.Guid;
+                serializedNode.FindPropertyRelative(nameof(BaseNodeData.Position)).vector2Value = baseNodeData.Position;
             }
         }
 
@@ -263,14 +288,38 @@ namespace Toolkits.NodeEditor.Editor
         {
             BaseNode inputNode = (BaseNode)connection.input.node;
             BaseNode outputNode = (BaseNode)connection.output.node;
-
-            _data.Connections.Add(new NodeConnectionData
+            NodeConnectionData connectionData = new NodeConnectionData
             {
                 InputNodeGuid = inputNode.Guid,
                 InputPortIndex = inputNode.inputContainer.IndexOf(connection.input),
                 OutputNodeGuid = outputNode.Guid,
                 OutputPortIndex = outputNode.outputContainer.IndexOf(connection.output),
-            });
+            };
+
+            SerializedProperty serializedConnection = InsertElementIntoSerializedArray(_serializedConnections);
+            serializedConnection.FindPropertyRelative(
+                nameof(NodeConnectionData.InputNodeGuid)
+            ).stringValue = connectionData.InputNodeGuid;
+            serializedConnection.FindPropertyRelative(
+                nameof(NodeConnectionData.InputPortIndex)
+            ).intValue = connectionData.InputPortIndex;
+            serializedConnection.FindPropertyRelative(
+                nameof(NodeConnectionData.OutputNodeGuid)
+            ).stringValue = connectionData.OutputNodeGuid;
+            serializedConnection.FindPropertyRelative(
+                nameof(NodeConnectionData.OutputPortIndex)
+            ).intValue = connectionData.OutputPortIndex;
+        }
+
+        /// <summary>
+        /// Inserts an element into an array and returns the element.
+        /// </summary>
+        /// <param name="array">The serialized property array.</param>
+        /// <returns>The serialized property array element.</returns>
+        protected SerializedProperty InsertElementIntoSerializedArray(SerializedProperty array)
+        {
+            array.InsertArrayElementAtIndex(array.arraySize);
+            return array.GetArrayElementAtIndex(array.arraySize - 1);
         }
     }
 }

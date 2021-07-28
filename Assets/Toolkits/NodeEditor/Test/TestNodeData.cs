@@ -9,7 +9,7 @@ namespace Toolkits.NodeEditor.Test
         /// <summary>
         /// A test string to edit and save.
         /// </summary>
-        public string TestString = "";
+        public string TestString = "Test Node";
 
         /// <summary>
         /// Creates empty node data.
