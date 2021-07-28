@@ -1,0 +1,16 @@
+{
+    "name": "Toolkits.SaveSystem.Test",
+    "rootNamespace": "Toolkits.SaveSystem.Test",
+    "references": [
+        "GUID:4a5cb2734a2cf46d6b9455a42a6d74c4"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
