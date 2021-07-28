@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace Toolkits.EventSystem
@@ -12,7 +11,7 @@ namespace Toolkits.EventSystem
         /// <summary>
         /// The action to invoke upon raise.
         /// </summary>
-        public Action OnRaised = null;
+        public System.Action OnRaised = null;
 
         /// <summary>
         /// Raises the event, notifying all listeners.

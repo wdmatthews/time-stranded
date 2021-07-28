@@ -1,0 +1,20 @@
+{
+    "name": "Toolkits.NodeEditor.Test.Editor",
+    "rootNamespace": "Toolkits.NodeEditor.Test.Editor",
+    "references": [
+        "GUID:154ad84ec2da144468a5a6b2c7c9f036",
+        "GUID:9aac4d2caea674ca184c2918bd8172a5",
+        "GUID:f116ca1d900a74833a069430d3f965d4"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
