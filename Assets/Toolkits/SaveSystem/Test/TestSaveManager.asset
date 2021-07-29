@@ -10,5 +10,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 11b60d45647854d90aa2bfae77588591, type: 3}
-  m_Name: TestSaveManagerSO
+  m_Name: TestSaveManager
   m_EditorClassIdentifier: 

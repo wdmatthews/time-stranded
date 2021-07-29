@@ -1,0 +1,18 @@
+{
+    "name": "Toolkits.Input.Test",
+    "rootNamespace": "Toolkits.Input.Test",
+    "references": [
+        "GUID:75469ad4d38634e559750d17036d5f7c",
+        "GUID:228f9f97818a04fc5a3be16a763a258b",
+        "GUID:4a5cb2734a2cf46d6b9455a42a6d74c4"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
