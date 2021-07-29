@@ -8,10 +8,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/TimeStranded/Scenes/Game.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
-    path: Assets/Toolkits/Enums/Test/EnumsTest.unity
-    guid: 0b2f6de1d98a1443782ed27dc2fe95a0
-  - enabled: 1
-    path: Assets/Toolkits/Loading/Test/CounterLoadingTest.unity
-    guid: fe5feefb27f5148d3a8abc955f2888d5
   m_configObjects: {}
