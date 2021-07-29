@@ -16,6 +16,7 @@ namespace Toolkits.Input
         /// <summary>
         /// Raises the event, notifying all listeners.
         /// </summary>
+        /// <param name="inputRebinding">The input rebinding to pass when raising the event.</param>
         public void Raise(SavedInputRebinding inputRebinding) => OnRaised?.Invoke(inputRebinding);
     }
 }

@@ -16,6 +16,7 @@ namespace Toolkits.Audio
         /// <summary>
         /// Raises the event, notifying all listeners.
         /// </summary>
+        /// <param name="audioPlayer">The audio player to pass when raising the event.</param>
         public void Raise(AudioPlayer audioPlayer) => OnRaised?.Invoke(audioPlayer);
     }
 }

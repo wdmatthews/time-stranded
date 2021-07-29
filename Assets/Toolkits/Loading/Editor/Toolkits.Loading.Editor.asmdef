@@ -1,0 +1,18 @@
+{
+    "name": "Toolkits.Loading.Editor",
+    "rootNamespace": "Toolkits.Loading.Editor",
+    "references": [
+        "GUID:e2d75a4a4f3fb4591bdd709e74edca3d"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
