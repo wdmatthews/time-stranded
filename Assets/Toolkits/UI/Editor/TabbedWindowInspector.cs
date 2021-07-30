@@ -4,20 +4,25 @@ using UnityEditor;
 namespace Toolkits.UI.Editor
 {
     /// <summary>
-    /// A custom inspector to allow for testing the <see cref="Window"/> in the inspector.
+    /// A custom inspector to allow for testing the <see cref="TabbedWindow"/> in the inspector.
     /// </summary>
-    [CustomEditor(typeof(Window))]
+    [CustomEditor(typeof(TabbedWindow))]
     [CanEditMultipleObjects]
-    public class WindowInspector : UnityEditor.Editor
+    public class TabbedWindowInspector : UnityEditor.Editor
     {
+        /// <summary>
+        /// The index of the tab to select.
+        /// </summary>
+        private int _tabIndex = 0;
+
         public override void OnInspectorGUI()
         {
             int targetCount = targets.Length;
-            Window[] windows = new Window[targetCount];
+            TabbedWindow[] windows = new TabbedWindow[targetCount];
 
             for (int i = 0; i < targetCount; i++)
             {
-                windows[i] = (Window)targets[i];
+                windows[i] = (TabbedWindow)targets[i];
             }
 
             base.OnInspectorGUI();
@@ -55,6 +60,35 @@ namespace Toolkits.UI.Editor
                 for (int i = 0; i < targetCount; i++)
                 {
                     windows[i].Close(false);
+                }
+            }
+
+            GUILayout.EndHorizontal();
+            EditorGUI.BeginChangeCheck();
+            _tabIndex = EditorGUILayout.IntField("Tab Index", _tabIndex);
+
+            if (EditorGUI.EndChangeCheck())
+            {
+                for (int i = 0; i < targetCount; i++)
+                {
+                    windows[i].SelectTab(_tabIndex);
+                }
+            }
+
+            GUILayout.BeginHorizontal();
+
+            if (GUILayout.Button("Select Previous"))
+            {
+                for (int i = 0; i < targetCount; i++)
+                {
+                    windows[i].SelectPreviousTab();
+                }
+            }
+            else if (GUILayout.Button("Select Next"))
+            {
+                for (int i = 0; i < targetCount; i++)
+                {
+                    windows[i].SelectNextTab();
                 }
             }
 

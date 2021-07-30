@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: OpenWindowAnchoredPosition
   m_EditorClassIdentifier: 
   _targetPosition: {x: 0, y: 0}
-  _targetPivot: {x: 0.5, y: 0.5}
   _targetAnchorMin: {x: 0.5, y: 0.5}
   _targetAnchorMax: {x: 0.5, y: 0.5}
+  _targetPivot: {x: 0.5, y: 0.5}
   _fromPosition: {x: 0, y: 0}
-  _fromPivot: {x: 0.5, y: 1}
-  _fromAnchorMin: {x: 0.5, y: 0}
-  _fromAnchorMax: {x: 0.5, y: 0}
+  _fromAnchorMin: {x: 0.5, y: 1}
+  _fromAnchorMax: {x: 0.5, y: 1}
+  _fromPivot: {x: 0.5, y: 0}
   _duration: 0.2
   _gameObjectStartActive: 1
   _gameObjectEndInactive: 0

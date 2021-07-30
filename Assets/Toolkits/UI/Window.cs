@@ -13,19 +13,19 @@ namespace Toolkits.UI
         /// This window's <see cref="RectTransform"/>.
         /// </summary>
         [Tooltip("This window's RectTransform.")]
-        [SerializeField] private RectTransform _rectTransform = null;
+        [SerializeField] protected RectTransform _rectTransform = null;
 
         /// <summary>
         /// The animation to play when opening. No animation will turn the <see cref="GameObject"/> on.
         /// </summary>
         [Tooltip("The animation to play when opening. No animation will turn the GameObject on.")]
-        [SerializeField] private AnimationSO _openAnimation = null;
+        [SerializeField] protected AnimationSO _openAnimation = null;
 
         /// <summary>
         /// The animation to play when closing. No animation will turn the <see cref="GameObject"/> off.
         /// </summary>
         [Tooltip("The animation to play when closing. No animation will turn the GameObject off.")]
-        [SerializeField] private AnimationSO _closeAnimation = null;
+        [SerializeField] protected AnimationSO _closeAnimation = null;
 
         /// <summary>
         /// Opens the window.
@@ -33,8 +33,8 @@ namespace Toolkits.UI
         /// <param name="animate">Whether or not to play an opening animation.</param>
         public void Open(bool animate = true)
         {
-            if (animate && _closeAnimation) _openAnimation.Animate(_rectTransform);
-            else if (!animate && _closeAnimation) _openAnimation.Skip(_rectTransform);
+            if (animate && _openAnimation) _openAnimation.Animate(_rectTransform);
+            else if (!animate && _openAnimation) _openAnimation.Skip(_rectTransform);
             else gameObject.SetActive(true);
         }
 

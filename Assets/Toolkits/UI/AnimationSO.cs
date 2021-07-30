@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Toolkits.UI
 {
@@ -20,6 +21,12 @@ namespace Toolkits.UI
         public virtual void Animate(RectTransform transform) { }
 
         /// <summary>
+        /// Runs the animation on an image.
+        /// </summary>
+        /// <param name="image">The image to animate.</param>
+        public virtual void Animate(Image image) { }
+
+        /// <summary>
         /// Puts the transform in its final state, skipping the animation.
         /// </summary>
         /// <param name="transform">The transform to animate.</param>
@@ -30,5 +37,11 @@ namespace Toolkits.UI
         /// </summary>
         /// <param name="rectTransform">The transform to animate.</param>
         public virtual void Skip(RectTransform rectTransform) { }
+
+        /// <summary>
+        /// Puts the image in its final state, skipping the animation.
+        /// </summary>
+        /// <param name="image">The image to animate.</param>
+        public virtual void Skip(Image image) { }
     }
 }

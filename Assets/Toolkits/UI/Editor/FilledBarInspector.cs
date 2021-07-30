@@ -33,7 +33,7 @@ namespace Toolkits.UI.Editor
 
             if (EditorGUI.EndChangeCheck())
             {
-                for (int i = filledBars.Length - 1; i >= 0; i--)
+                for (int i = 0; i < targetCount; i++)
                 {
                     filledBars[i].SetFill(_fillAmount);
                 }
