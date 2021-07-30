@@ -1,7 +1,9 @@
 {
     "name": "Toolkits.UI",
     "rootNamespace": "Toolkits.UI",
-    "references": [],
+    "references": [
+        "GUID:2cefc2cd207f04169b79cb1c6e7e06d0"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

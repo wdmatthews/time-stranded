@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 namespace Toolkits.UI
 {
@@ -35,28 +36,62 @@ namespace Toolkits.UI
         [SerializeField] private Image _fillImage = null;
 
         /// <summary>
+        /// The time it takes to animate filling.
+        /// </summary>
+        [Tooltip("The time it takes to animate filling.")]
+        [SerializeField] private float _fillTime = 1;
+
+        /// <summary>
         /// Sets the bar's fill amount.
         /// </summary>
         /// <param name="amount">A percentage represented by a number between 0-1 (0-100%).</param>
-        public void SetFill(float amount)
+        /// <param name="animate">Whether or not to animate filling.</param>
+        public void SetFill(float amount, bool animate = true)
         {
             if (_fillType == FillType.FillAmount)
             {
-                _fillImage.fillAmount = amount;
+                if (animate) _fillImage.DOFillAmount(amount, _fillTime);
+                else _fillImage.fillAmount = amount;
             }
             else if (_fillType == FillType.Width)
             {
-                _fillTransform.SetSizeWithCurrentAnchors(
-                    RectTransform.Axis.Horizontal,
-                    _barTransform.rect.width * amount
-                );
+                if (animate)
+                {
+                    DOTween.To(() => _fillTransform.rect.width,
+                        width => _fillTransform.SetSizeWithCurrentAnchors(
+                            RectTransform.Axis.Horizontal, width
+                        ),
+                        _barTransform.rect.width * amount,
+                        _fillTime
+                    );
+                }
+                else
+                {
+                    _fillTransform.SetSizeWithCurrentAnchors(
+                        RectTransform.Axis.Horizontal,
+                        _barTransform.rect.width * amount
+                    );
+                }
             }
             else if (_fillType == FillType.Height)
             {
-                _fillTransform.SetSizeWithCurrentAnchors(
-                    RectTransform.Axis.Vertical,
-                    _barTransform.rect.height * amount
-                );
+                if (animate)
+                {
+                    DOTween.To(() => _fillTransform.rect.height,
+                        height => _fillTransform.SetSizeWithCurrentAnchors(
+                            RectTransform.Axis.Vertical, height
+                        ),
+                        _barTransform.rect.height * amount,
+                        _fillTime
+                    );
+                }
+                else
+                {
+                    _fillTransform.SetSizeWithCurrentAnchors(
+                        RectTransform.Axis.Vertical,
+                        _barTransform.rect.height * amount
+                    );
+                }
             }
         }
     }
