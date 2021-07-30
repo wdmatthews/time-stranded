@@ -17,6 +17,6 @@ namespace Toolkits.ObjectPooling.Test
         /// <summary>
         /// The factory to use when creating instances.
         /// </summary>
-        protected override IFactory<TestComponent> Factory => _factory;
+        protected override FactorySO<TestComponent> Factory => _factory;
     }
 }

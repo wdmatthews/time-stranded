@@ -18,6 +18,6 @@ namespace Toolkits.Audio
         /// <summary>
         /// The factory to use when creating instances.
         /// </summary>
-        protected override IFactory<AudioPlayer> Factory => _factory;
+        protected override FactorySO<AudioPlayer> Factory => _factory;
     }
 }

@@ -3,12 +3,12 @@ using UnityEngine;
 
 namespace Toolkits.ObjectPooling
 {
-    public abstract class PoolSO<T> : ScriptableObject, IPool<T>
+    public abstract class PoolSO<T> : ScriptableObject
     {
         /// <summary>
         /// The factory to use when creating instances.
         /// </summary>
-        protected abstract IFactory<T> Factory { get; }
+        protected abstract FactorySO<T> Factory { get; }
 
         /// <summary>
         /// The list of items in the pool.
