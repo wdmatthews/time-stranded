@@ -1,12 +1,12 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace TimeStranded
+namespace TimeStranded.Characters
 {
     /// <summary>
     /// Provides controls for a player.
     /// </summary>
-    [AddComponentMenu("Time Stranded/Player")]
+    [AddComponentMenu("Time Stranded/Characters/Player")]
     [DisallowMultipleComponent]
     public class Player : Character
     {

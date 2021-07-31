@@ -1,11 +1,11 @@
 using UnityEngine;
 
-namespace TimeStranded
+namespace TimeStranded.Characters
 {
     /// <summary>
     /// Provides controls for a character.
     /// </summary>
-    [AddComponentMenu("Time Stranded/Character")]
+    [AddComponentMenu("Time Stranded/Characters/Character")]
     [DisallowMultipleComponent]
     public class Character : MonoBehaviour
     {

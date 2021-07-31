@@ -1,11 +1,11 @@
 using UnityEngine;
 
-namespace TimeStranded
+namespace TimeStranded.Characters
 {
     /// <summary>
     /// Stores data about a character.
     /// </summary>
-    [CreateAssetMenu(fileName = "NewCharacter", menuName = "Time Stranded/Character")]
+    [CreateAssetMenu(fileName = "NewCharacter", menuName = "Time Stranded/Characters/Character")]
     public class CharacterSO : ScriptableObject
     {
         /// <summary>

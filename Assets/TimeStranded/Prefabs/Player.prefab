@@ -302,6 +302,7 @@ MonoBehaviour:
   _data: {fileID: 0}
   _rigidbody: {fileID: 7105794850188820071}
   _face: {fileID: 110283059352819415}
+  _cameraReference: {fileID: 0}
 --- !u!114 &3553136117995643388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -391,7 +392,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 3257ca26770c84eed9db76fe50d85d6d, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1

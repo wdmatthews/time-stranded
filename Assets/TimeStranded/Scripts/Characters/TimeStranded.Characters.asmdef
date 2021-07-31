@@ -1,0 +1,17 @@
+{
+    "name": "TimeStranded.Characters",
+    "rootNamespace": "TimeStranded.Characters",
+    "references": [
+        "GUID:75469ad4d38634e559750d17036d5f7c",
+        "GUID:eb3cd54e3acdb4430b8442d365cc7838"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
