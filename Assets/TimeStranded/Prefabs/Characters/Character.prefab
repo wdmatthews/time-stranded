@@ -50,8 +50,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data: {fileID: 0}
+  _faces: {fileID: 11400000, guid: 7d70f01c826b84ec2a79cd69c4b22839, type: 2}
+  _colors: {fileID: 11400000, guid: 8f6e7528fe8c04c799ac433e146c490c, type: 2}
   _rigidbody: {fileID: 1717265433002888975}
   _face: {fileID: 7766638505720196196}
+  _fill: {fileID: 7766638505100754503}
 --- !u!210 &7766638504734428695
 SortingGroup:
   m_ObjectHideFlags: 0

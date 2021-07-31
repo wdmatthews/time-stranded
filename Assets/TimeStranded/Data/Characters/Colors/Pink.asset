@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd43b75e55dc44e65a5aba7007536b76, type: 3}
-  m_Name: TestPlayer
+  m_Script: {fileID: 11500000, guid: 78fd51d8e272e4760874cc1eac420b88, type: 3}
+  m_Name: Pink
   m_EditorClassIdentifier: 
-  MoveSpeed: 2.5
-  Face: {fileID: 11400000, guid: 54adae1c5d1134d748838a9c95ff1f52, type: 2}
-  Color: {fileID: 11400000, guid: 76cb0831cfed2431ebf296218172b6cf, type: 2}
+  Color: {r: 0.9137255, g: 0.11764706, b: 0.3882353, a: 1}
