@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 739002fc265e14de9ab461fbab74483d, type: 3}
-  m_Name: SceneLoadManager
+  m_Name: LocationSceneLoadManager
   m_EditorClassIdentifier: 
-  OnLoadStartChannel: {fileID: 11400000, guid: 8255e7c267211425797e74762544ef51, type: 2}
-  OnLoadTickChannel: {fileID: 11400000, guid: 017d086cc641f42ff8da7659764079ba, type: 2}
-  OnLoadFinishChannel: {fileID: 11400000, guid: 07fc7bc27748d415ebb54e04927a1651, type: 2}
+  OnLoadStartChannel: {fileID: 11400000, guid: 9019a220ad859469a9f451bd9c341cb6, type: 2}
+  OnLoadTickChannel: {fileID: 11400000, guid: d0d953401692a4e758a10082399e28e7, type: 2}
+  OnLoadFinishChannel: {fileID: 11400000, guid: f237b209f83c048d4aaccc88327b7297, type: 2}

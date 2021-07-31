@@ -21,7 +21,7 @@ namespace Toolkits.Loading
         /// <summary>
         /// Whether or not the scenes need to be unloaded.
         /// </summary>
-        private bool _unload = false;
+        public bool Unload { get; private set; } = false;
 
         /// <summary>
         /// The number of scenes to load or unload.
@@ -47,7 +47,7 @@ namespace Toolkits.Loading
         public SceneLoadTask(string[] sceneNames, bool unload)
         {
             _sceneNames = sceneNames;
-            _unload = unload;
+            Unload = unload;
             _sceneCount = _sceneNames.Length;
         }
 
@@ -65,7 +65,7 @@ namespace Toolkits.Loading
         private void StartLoadingCurrentScene()
         {
             string currentSceneName = _sceneNames[_currentSceneIndex];
-            if (_unload) _currentSceneOperation = SceneManager.UnloadSceneAsync(currentSceneName);
+            if (Unload) _currentSceneOperation = SceneManager.UnloadSceneAsync(currentSceneName);
             else _currentSceneOperation = SceneManager.LoadSceneAsync(currentSceneName, LoadSceneMode.Additive);
         }
 

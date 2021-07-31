@@ -1,0 +1,16 @@
+{
+    "name": "TimeStranded.Locations.Test",
+    "rootNamespace": "TimeStranded.Locations.Test",
+    "references": [
+        "GUID:ce53db49fdf604a21813b2be4731c844"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

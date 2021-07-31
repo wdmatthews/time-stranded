@@ -40,6 +40,7 @@ namespace Toolkits.Audio
         /// <summary>
         /// Raises the Unity event from the inspector.
         /// </summary>
+        /// <param name="audioPlayer">The audio player to pass when raising the event.</param>
         private void Raise(AudioPlayer audioPlayer) => _onRaised?.Invoke(audioPlayer);
     }
 }

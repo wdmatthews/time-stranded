@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc77879fe5cd94d6480a2372f905b37c, type: 3}
   m_Name: CounterLoadManager
   m_EditorClassIdentifier: 
-  _onLoadStartChannel: {fileID: 11400000, guid: c20886b5b7c764ecaa32a086dc7a700d, type: 2}
-  _onLoadTickChannel: {fileID: 11400000, guid: 1af447fcbaf7f41d48800cf5e74ffe76, type: 2}
-  _onLoadFinishChannel: {fileID: 11400000, guid: f89894684c8014f328e206554463f628, type: 2}
+  OnLoadStartChannel: {fileID: 11400000, guid: c20886b5b7c764ecaa32a086dc7a700d, type: 2}
+  OnLoadTickChannel: {fileID: 11400000, guid: 1af447fcbaf7f41d48800cf5e74ffe76, type: 2}
+  OnLoadFinishChannel: {fileID: 11400000, guid: f89894684c8014f328e206554463f628, type: 2}

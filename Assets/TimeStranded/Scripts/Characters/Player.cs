@@ -32,14 +32,17 @@ namespace TimeStranded.Characters
         public void OnAim(InputAction.CallbackContext context)
         {
             Vector2 direction = context.ReadValue<Vector2>();
+            // Don't aim if not receiving aim input.
             if (Mathf.Approximately(direction.x, 0) && Mathf.Approximately(direction.y, 0)) return;
 
+            // If the aim input comes from moving the mouse, aim the player towards the mouse.
             if (context.control.path == "/Mouse/delta")
             {
                 Vector2 mouseScreenPosition = Mouse.current.position.ReadValue();
                 Vector3 mouseWorldPosition = _cameraReference.Camera.ScreenToWorldPoint(mouseScreenPosition);
                 Aim(mouseWorldPosition - transform.position);
             }
+            // Otherwise, aim the player in the input direction, such as a Gamepad's analog stick direction.
             else Aim(direction);
         }
     }

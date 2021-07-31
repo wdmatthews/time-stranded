@@ -40,6 +40,7 @@ namespace Toolkits.Input
         /// <summary>
         /// Raises the Unity event from the inspector.
         /// </summary>
+        /// <param name="inputRebinding">The input rebinding to pass when raising the event.</param>
         private void Raise(SavedInputRebinding inputRebinding) => _onRaised?.Invoke(inputRebinding);
     }
 }

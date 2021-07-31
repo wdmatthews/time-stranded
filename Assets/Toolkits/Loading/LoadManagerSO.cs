@@ -13,19 +13,19 @@ namespace Toolkits.Loading
         /// The event channel to raise when a load task is started.
         /// </summary>
         [Tooltip("The event channel to raise when a load task is started.")]
-        [SerializeField] private LoadTaskEventChannelSO _onLoadStartChannel = null;
+        public LoadTaskEventChannelSO OnLoadStartChannel = null;
 
         /// <summary>
         /// The event channel to raise when a load task is ticked.
         /// </summary>
         [Tooltip("The event channel to raise when a load task is ticked.")]
-        [SerializeField] private LoadTaskEventChannelSO _onLoadTickChannel = null;
+        public LoadTaskEventChannelSO OnLoadTickChannel = null;
 
         /// <summary>
         /// The event channel to raise when a load task is finished.
         /// </summary>
         [Tooltip("The event channel to raise when a load task is finished.")]
-        [SerializeField] private LoadTaskEventChannelSO _onLoadFinishChannel = null;
+        public LoadTaskEventChannelSO OnLoadFinishChannel = null;
 
         /// <summary>
         /// The StartCoroutine method from the load manager.
@@ -50,20 +50,20 @@ namespace Toolkits.Loading
         {
             // Start the task and raise the event with no progress.
             task.Start();
-            _onLoadStartChannel.Raise(task, 0);
+            OnLoadStartChannel.Raise(task, 0);
 
             // Tick the task and get its current progress,
             // passing that through to the event channel.
             while (!task.IsDone)
             {
                 float progress = task.OnTick();
-                _onLoadTickChannel.Raise(task, progress);
+                OnLoadTickChannel.Raise(task, progress);
                 yield return null;
             }
 
             // Finish the task and raise the event with 100% progress.
             task.OnFinish();
-            _onLoadFinishChannel.Raise(task, 1);
+            OnLoadFinishChannel.Raise(task, 1);
         }
     }
 }
