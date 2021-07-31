@@ -10,22 +10,15 @@ namespace Toolkits.References.Test
     public class ReferencesTest : MonoBehaviour
     {
         /// <summary>
-        /// The reference SO to store the camera transform in.
+        /// The reference SO to load the camera transform from.
         /// </summary>
-        [Tooltip("The reference to store the camera transform in.")]
+        [Tooltip("The reference to load the camera transform from.")]
         [SerializeField] private TransformReferenceSO _reference = null;
-
-        /// <summary>
-        /// The camera to store in a <see cref="TransformReferenceSO"/>.
-        /// </summary>
-        [Tooltip("The camera to store in a TransformReferenceSO.")]
-        [SerializeField] private Camera _camera = null;
 
         private void Start()
         {
-            // Store the camera reference.
-            _reference.Reference = _camera.transform;
-            Debug.Log("Reference to camera stored.", _reference.Reference);
+            // Log the camera reference.
+            Debug.Log("Reference to camera stored.", _reference.Transform);
         }
     }
 }

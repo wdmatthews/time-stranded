@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8ca97a39f1de4dda8d2348a982706c3, type: 3}
+  m_Name: InputManager
+  m_EditorClassIdentifier: 
+  _inputActions: {fileID: -944628639613478452, guid: f91f077031f8f403ab5aed3f032f24fb, type: 3}
+  _onInputRebindChannel: {fileID: 11400000, guid: 0e08805a8da07499ebc40918ade4fbda, type: 2}
+  _saveManager: {fileID: 11400000, guid: d874171e43f334f8c9cc40531db73bed, type: 2}
+  _inputRebindingsSaveName: InputRebindings
