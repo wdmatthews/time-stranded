@@ -1,0 +1,18 @@
+{
+    "name": "TimeStranded.Quests.Editor",
+    "rootNamespace": "TimeStranded.Quests.Editor",
+    "references": [
+        "GUID:a72d04e096c2e4870842caed466084ba"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

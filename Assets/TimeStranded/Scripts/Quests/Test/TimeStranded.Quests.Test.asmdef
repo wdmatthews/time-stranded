@@ -1,0 +1,16 @@
+{
+    "name": "TimeStranded.Quests.Test",
+    "rootNamespace": "TimeStranded.Quests.Test",
+    "references": [
+        "GUID:a72d04e096c2e4870842caed466084ba"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
