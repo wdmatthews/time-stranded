@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace TimeStranded.Characters
+namespace TimeStranded
 {
     /// <summary>
     /// A readable <see cref="ScriptableObject"/> dictionary.

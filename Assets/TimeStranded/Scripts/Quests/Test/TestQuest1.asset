@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7aa1b64d772b9467a81c7365c90a5baf, type: 3}
-  m_Name: TestQuest
+  m_Name: TestQuest1
   m_EditorClassIdentifier: 
   MaxProgress: 3
   AutoComplete: 1

@@ -5,6 +5,9 @@ using Toolkits.NodeEditor.Editor;
 
 namespace Toolkits.NodeEditor.Test.Editor
 {
+    /// <summary>
+    /// A test node.
+    /// </summary>
     public class TestNode : BaseNode
     {
         /// <summary>
