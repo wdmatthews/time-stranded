@@ -57,10 +57,10 @@ namespace TimeStranded.Quests.Editor
             if (!(asset is QuestEditorDataSO)) return false;
 
             QuestEditorWindow window = GetWindow<QuestEditorWindow>();
-            window.titleContent.text = window.Name;
             window.minSize = window.MinSize;
             window._data = (BaseEditorDataSO)asset;
             window.Data = (QuestEditorDataSO)asset;
+            window.titleContent.text = window.Name;
             window.Load();
 
             return false;

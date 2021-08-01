@@ -12,6 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90a3b92b27be74e7a9f8dd5b4d1efc3e, type: 3}
   m_Name: TestQuestEditorData
   m_EditorClassIdentifier: 
-  Nodes: []
-  Connections: []
-  QuestNodes: []
+  Nodes:
+  - Guid: 80d5b163-b2d4-4d71-b8bc-6a694ee20770
+    Position: {x: 433, y: 201.5}
+  - Guid: db47e3bf-b1ad-4299-b4bd-02ccdb964870
+    Position: {x: 153, y: 70}
+  Connections:
+  - InputNodeGuid: 80d5b163-b2d4-4d71-b8bc-6a694ee20770
+    InputPortIndex: 0
+    OutputNodeGuid: db47e3bf-b1ad-4299-b4bd-02ccdb964870
+    OutputPortIndex: 0
+  QuestNodes:
+  - Guid: 80d5b163-b2d4-4d71-b8bc-6a694ee20770
+    Position: {x: 433, y: 201.5}
+    Quest: {fileID: 11400000, guid: 9433e3cf1ce3b4a9b84fee06fc8e703d, type: 2}
+    PrerequisiteIds: []
+    NextIds:
+    - db47e3bf-b1ad-4299-b4bd-02ccdb964870
+  - Guid: db47e3bf-b1ad-4299-b4bd-02ccdb964870
+    Position: {x: 153, y: 70}
+    Quest: {fileID: 11400000, guid: 0e0e1ec3f56424beaaa0330587732cf1, type: 2}
+    PrerequisiteIds:
+    - 80d5b163-b2d4-4d71-b8bc-6a694ee20770
+    NextIds: []

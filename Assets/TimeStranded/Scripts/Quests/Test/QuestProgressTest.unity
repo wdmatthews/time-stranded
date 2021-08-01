@@ -282,5 +282,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea679c12a06104dfe9cb3361216f4315, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _quest: {fileID: 11400000, guid: 0e0e1ec3f56424beaaa0330587732cf1, type: 2}
   _onCompleteChannel: {fileID: 11400000, guid: 88ff04ccbc7364cbe9644434002047d0, type: 2}

@@ -25,23 +25,20 @@ namespace TimeStranded.Quests
         /// </summary>
         /// <param name="guid">The quest's guid.</param>
         /// <returns>The quest.</returns>
-        public QuestSO this[string guid]
+        public QuestSO GetQuest(string guid)
         {
-            get
+            if (_questsByGuid == null)
             {
-                if (_questsByGuid == null)
+                _questsByGuid = new Dictionary<string, QuestSO>();
+
+                for (int i = QuestNodes.Count - 1; i >= 0; i--)
                 {
-                    _questsByGuid = new Dictionary<string, QuestSO>();
-
-                    for (int i = QuestNodes.Count - 1; i >= 0; i--)
-                    {
-                        QuestNodeData questData = QuestNodes[i];
-                        _questsByGuid.Add(questData.Guid, questData.Quest);
-                    }
+                    QuestNodeData questData = QuestNodes[i];
+                    _questsByGuid.Add(questData.Guid, questData.Quest);
                 }
-
-                return _questsByGuid[name];
             }
+
+            return _questsByGuid[guid];
         }
     }
 }

@@ -52,11 +52,11 @@ namespace Toolkits.NodeEditor.Test.Editor
 
             // Open the node editor window and initialize its values.
             TestNodeEditorWindow window = GetWindow<TestNodeEditorWindow>();
-            window.titleContent.text = window.Name;
             window.minSize = window.MinSize;
             window._data = (BaseEditorDataSO)asset;
             window.Data = (TestEditorDataSO)asset;
             // Load the data.
+            window.titleContent.text = window.Name;
             window.Load();
 
             return false;

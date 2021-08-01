@@ -21,7 +21,7 @@ namespace TimeStranded.Quests.Editor
         /// </summary>
         /// <param name="position">The position to place the node.</param>
         /// <param name="data">The node's data.</param>
-        /// <returns>Returns the added node.</returns>
+        /// <returns>The added node.</returns>
         public QuestNode AddQuestNode(Vector2 position, QuestNodeData data = null)
         {
             QuestNode node = new QuestNode(RemoveElement, _styleSheet, position, data);
@@ -33,7 +33,7 @@ namespace TimeStranded.Quests.Editor
         /// Adds a quest node from node data.
         /// </summary>
         /// <param name="data">The node's data.</param>
-        /// <returns></returns>
+        /// <returns>The added node.</returns>
         public QuestNode AddQuestNode(QuestNodeData data)
         {
             QuestNode node = AddQuestNode(data.Position, data);

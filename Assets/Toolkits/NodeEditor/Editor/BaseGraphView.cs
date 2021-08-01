@@ -80,7 +80,7 @@ namespace Toolkits.NodeEditor.Editor
         /// Adds a node at the given position.
         /// </summary>
         /// <param name="position">The position to place the node.</param>
-        /// <returns>Returns the added node.</returns>
+        /// <returns>The added node.</returns>
         public BaseNode AddNode(Vector2 position)
         {
             // Create the node.
@@ -94,7 +94,7 @@ namespace Toolkits.NodeEditor.Editor
         /// Adds a node from node data.
         /// </summary>
         /// <param name="data">The node's data.</param>
-        /// <returns></returns>
+        /// <returns>The added node.</returns>
         public BaseNode AddNode(BaseNodeData data)
         {
             BaseNode node = AddNode(data.Position);

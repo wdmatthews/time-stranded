@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -74,8 +75,7 @@ namespace Toolkits.NodeEditor.Editor
         /// <param name="port">The port to remove.</param>
         protected void RemovePort(Port port)
         {
-            // Get all of the port's connections.
-            Edge[] connections = (Edge[])port.connections;
+            List<Edge> connections = new List<Edge>(port.connections);
 
             // Disconnect each side of every connection and remove the connection.
             foreach (Edge connection in connections)

@@ -90,10 +90,10 @@ namespace Toolkits.NodeEditor.Editor
 
         //     // Open the node editor window and initialize its values.
         //     BaseNodeEditorWindow window = GetWindow<BaseNodeEditorWindow>();
-        //     window.titleContent.text = window.Name;
         //     window.minSize = window.MinSize;
         //     window._data = (BaseEditorDataSO)asset;
         //     // Load the data.
+        //     window.titleContent.text = window.Name;
         //     window.Load();
 
         //     return false;

@@ -1,8 +1,9 @@
 {
-    "name": "TimeStranded.Quests",
-    "rootNamespace": "TimeStranded.Quests",
+    "name": "TimeStranded.Dialogues",
+    "rootNamespace": "TimeStranded.Dialogues",
     "references": [
-        "GUID:154ad84ec2da144468a5a6b2c7c9f036"
+        "GUID:154ad84ec2da144468a5a6b2c7c9f036",
+        "GUID:a7a1ce88826974e4dba02e2e6518450f"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

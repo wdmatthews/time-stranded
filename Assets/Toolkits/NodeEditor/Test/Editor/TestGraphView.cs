@@ -21,7 +21,7 @@ namespace Toolkits.NodeEditor.Test.Editor
         /// </summary>
         /// <param name="position">The position to place the node.</param>
         /// <param name="data">The node's data.</param>
-        /// <returns>Returns the added node.</returns>
+        /// <returns>The added node.</returns>
         public TestNode AddTestNode(Vector2 position, TestNodeData data = null)
         {
             // Create the node.
@@ -35,7 +35,7 @@ namespace Toolkits.NodeEditor.Test.Editor
         /// Adds a test node from node data.
         /// </summary>
         /// <param name="data">The node's data.</param>
-        /// <returns></returns>
+        /// <returns>The added node.</returns>
         public TestNode AddTestNode(TestNodeData data)
         {
             TestNode node = AddTestNode(data.Position, data);
