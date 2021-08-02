@@ -1,0 +1,18 @@
+{
+    "name": "TimeStranded.Games.Editor",
+    "rootNamespace": "TimeStranded.Games.Editor",
+    "references": [
+        "GUID:6d396a4a2d48344509b9472309405cae"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
