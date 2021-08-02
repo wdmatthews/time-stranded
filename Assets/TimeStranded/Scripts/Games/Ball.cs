@@ -1,4 +1,6 @@
 using UnityEngine;
+using TimeStranded.Characters;
+using TimeStranded.Inventory;
 
 namespace TimeStranded.Games
 {
@@ -7,7 +9,7 @@ namespace TimeStranded.Games
 	/// </summary>
     [AddComponentMenu("Time Stranded/Games/Ball")]
     [DisallowMultipleComponent]
-    public class Ball : MonoBehaviour
+    public class Ball : Item
     {
         /// <summary>
         /// The ball's data.
@@ -22,6 +24,12 @@ namespace TimeStranded.Games
         [SerializeField] protected Rigidbody2D _rigidbody = null;
 
         /// <summary>
+        /// The ball's collider.
+        /// </summary>
+        [Tooltip("The ball's collider.")]
+        [SerializeField] protected Collider2D _collider = null;
+
+        /// <summary>
         /// The ball's renderer.
         /// </summary>
         [Tooltip("The ball's renderer.")]
@@ -30,7 +38,7 @@ namespace TimeStranded.Games
         /// <summary>
         /// Whether or not the ball is moving.
         /// </summary>
-        private bool _isMoving = false;
+        protected bool _isMoving = false;
 
         private void Awake()
         {
@@ -39,7 +47,7 @@ namespace TimeStranded.Games
             _renderer.sprite = _data.Sprite;
         }
 
-        protected void LateUpdate()
+        private void LateUpdate()
         {
             // If the ball is moving, apply friction.
             if (_isMoving)
@@ -51,18 +59,57 @@ namespace TimeStranded.Games
                 {
                     _isMoving = false;
                     _rigidbody.velocity = new Vector2();
+                    // All the ball to be picked up when it stops moving.
+                    CanBePickedUp = true;
                 }
             }
         }
 
         /// <summary>
-        /// Sets the ball's movement direction.
+        /// Sets the ball's velocity in the given direction.
         /// </summary>
         /// <param name="direction">The direction for the ball to move in.</param>
-        public void SetDirection(Vector2 direction)
+        public void SetVelocity(Vector2 direction)
         {
             _isMoving = !Mathf.Approximately(direction.sqrMagnitude, 0);
             _rigidbody.velocity = _data.MoveSpeed * direction;
+            CanBePickedUp = !_isMoving;
+        }
+
+        /// <summary>
+        /// Sets the ball's velocity in the character's direction.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="character">The character using the ball.</param>
+        public override void Use<T>(T character)
+        {
+            SetVelocity(character.transform.right);
+            Character characterScript = (Character)(MonoBehaviour)character;
+            characterScript.ReleaseItem();
+        }
+
+        /// <summary>
+        /// Turns off the rigidbody.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="character">The character that picked up the item.</param>
+        public override void OnPickup<T>(T character)
+        {
+            base.OnPickup(character);
+            _rigidbody.velocity = new Vector2();
+            _rigidbody.simulated = false;
+            _isMoving = false;
+        }
+
+        /// <summary>
+        /// Turns on the rigidbody.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="character">The character that released the item.</param>
+        public override void OnRelease<T>(T character)
+        {
+            base.OnRelease(character);
+            _rigidbody.simulated = true;
         }
     }
 }

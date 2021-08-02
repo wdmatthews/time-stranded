@@ -14,7 +14,7 @@ TagManager:
   - 
   - 
   - Character
-  - 
+  - Ball
   - 
   - 
   - 
@@ -43,6 +43,9 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Item
+    uniqueID: 2035118333
     locked: 0
   - name: Character
     uniqueID: 686515455

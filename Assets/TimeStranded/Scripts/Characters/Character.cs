@@ -1,4 +1,5 @@
 using UnityEngine;
+using TimeStranded.Inventory;
 
 namespace TimeStranded.Characters
 {
@@ -31,7 +32,7 @@ namespace TimeStranded.Characters
         /// The character's rigibody.
         /// </summary>
         [Tooltip("The character's rigibody.")]
-        [SerializeField] protected Rigidbody2D _rigidbody = null;
+        public Rigidbody2D Rigidbody = null;
 
         /// <summary>
         /// The character's face.
@@ -46,24 +47,25 @@ namespace TimeStranded.Characters
         [SerializeField] protected SpriteRenderer _fill = null;
 
         /// <summary>
-        /// The current movement direction.
+        /// A transform used to contain any items the character is holding.
         /// </summary>
-        protected Vector2 _moveDirection = new Vector2();
+        [Tooltip("A transform used to contain any items the character is holding.")]
+        [SerializeField] protected Transform _itemHolder = null;
 
         /// <summary>
         /// The current aim direction.
         /// </summary>
         protected Vector2 _aimDirection = new Vector2();
 
+        /// <summary>
+        /// The item currently being held.
+        /// </summary>
+        protected Item _activeItem = null;
+
         private void Awake()
         {
             SetFace(_data.Face);
             SetColor(_data.Color);
-        }
-
-        private void FixedUpdate()
-        {
-            _rigidbody.velocity = _data.MoveSpeed * _moveDirection;
         }
 
         /// <summary>
@@ -72,7 +74,7 @@ namespace TimeStranded.Characters
         /// <param name="direction">The direction to move in.</param>
         public void Move(Vector2 direction)
         {
-            _moveDirection = direction;
+            Rigidbody.velocity = _data.MoveSpeed * direction;
         }
 
         /// <summary>
@@ -83,7 +85,7 @@ namespace TimeStranded.Characters
         {
             _aimDirection = direction;
             float angle = Mathf.Rad2Deg * Mathf.Atan2(_aimDirection.y, _aimDirection.x);
-            transform.localEulerAngles = new Vector3(0, 0, angle);
+            transform.eulerAngles = new Vector3(0, 0, angle);
             _face.transform.localEulerAngles = new Vector3(0, 0, -angle);
         }
 
@@ -121,6 +123,35 @@ namespace TimeStranded.Characters
         public void SetColor(CharacterColorSO color)
         {
             _fill.color = color.Color;
+        }
+
+        /// <summary>
+        /// Uses the item the character is holding.
+        /// </summary>
+        public void UseItem() => _activeItem?.Use(this);
+
+        /// <summary>
+        /// Makes the character hold an item.
+        /// </summary>
+        /// <param name="item">The item to hold.</param>
+        public void HoldItem(Item item)
+        {
+            _activeItem = item;
+            _activeItem.transform.parent = _itemHolder;
+            _activeItem.transform.localPosition = new Vector3();
+            _activeItem.transform.localEulerAngles = new Vector3();
+            _activeItem.transform.localScale = new Vector3(1, 1, 1);
+            _activeItem.OnPickup(this);
+        }
+
+        /// <summary>
+        /// Makes the character release their hold on the item they were holding.
+        /// </summary>
+        public void ReleaseItem()
+        {
+            _activeItem.OnRelease(this);
+            _activeItem.transform.parent = null;
+            _activeItem = null;
         }
     }
 }

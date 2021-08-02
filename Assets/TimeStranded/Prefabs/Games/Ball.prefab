@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 457767124135552484}
   - component: {fileID: 457767124135552483}
   - component: {fileID: 457767124135552482}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,8 +46,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 565a860d403b94e5faebdfef8744f03f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _itemData: {fileID: 0}
   _data: {fileID: 0}
   _rigidbody: {fileID: 457767124135552483}
+  _collider: {fileID: 457767124135552482}
   _renderer: {fileID: 457767124135552484}
 --- !u!212 &457767124135552484
 SpriteRenderer:
@@ -87,8 +89,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 2035118333
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 7e64f66e8b64545f1b5c19bfd1438189, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -121,7 +123,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &457767124135552482
 CircleCollider2D:
   m_ObjectHideFlags: 0

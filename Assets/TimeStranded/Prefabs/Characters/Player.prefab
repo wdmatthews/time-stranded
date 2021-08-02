@@ -70,7 +70,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 686515455
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: -5627178005889837609, guid: 780a5f1768cbb4cf68f21ce974748636, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -153,7 +153,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 686515455
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 2
   m_Sprite: {fileID: -7392806589889711656, guid: 0594e9610154a46f79bdb09190e7767a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -236,7 +236,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 686515455
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 9169686549444058695, guid: 780a5f1768cbb4cf68f21ce974748636, type: 3}
   m_Color: {r: 0.12941177, g: 0.5882353, b: 0.9529412, a: 1}
@@ -284,6 +284,7 @@ Transform:
   - {fileID: 110283058725804647}
   - {fileID: 110283059768837365}
   - {fileID: 110283059352819416}
+  - {fileID: 6440654543015682073}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -302,9 +303,10 @@ MonoBehaviour:
   _data: {fileID: 0}
   _faces: {fileID: 11400000, guid: 7d70f01c826b84ec2a79cd69c4b22839, type: 2}
   _colors: {fileID: 11400000, guid: 8f6e7528fe8c04c799ac433e146c490c, type: 2}
-  _rigidbody: {fileID: 7105794850188820071}
+  Rigidbody: {fileID: 7105794850188820071}
   _face: {fileID: 110283059352819415}
   _fill: {fileID: 110283059768837364}
+  _itemHolder: {fileID: 6440654543015682073}
   _cameraReference: {fileID: 0}
 --- !u!114 &3553136117995643388
 MonoBehaviour:
@@ -363,6 +365,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 72b8b443-37dc-4dd8-b3e0-4b1e067478bc
     m_ActionName: Gameplay/Aim[/Mouse/delta]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 110283060480865442}
+        m_TargetAssemblyTypeName: TimeStranded.Characters.Player, TimeStranded.Characters
+        m_MethodName: OnUse
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c81a1437-a041-4e64-b792-53a13bccc3c3
+    m_ActionName: Gameplay/Use[/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Gameplay
@@ -377,7 +395,7 @@ SortingGroup:
   m_GameObject: {fileID: 110283060480865445}
   m_Enabled: 1
   m_SortingLayerID: 686515455
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
 --- !u!50 &7105794850188820071
 Rigidbody2D:
@@ -416,3 +434,50 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.4375
+--- !u!1 &6752133718423848691
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6440654543015682073}
+  - component: {fileID: 6520872427285935698}
+  m_Layer: 0
+  m_Name: ItemHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6440654543015682073
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6752133718423848691}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 110283060480865443}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &6520872427285935698
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6752133718423848691}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.25

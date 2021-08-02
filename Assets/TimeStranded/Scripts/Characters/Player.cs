@@ -45,5 +45,14 @@ namespace TimeStranded.Characters
             // Otherwise, aim the player in the input direction, such as a Gamepad's analog stick direction.
             else Aim(direction);
         }
+
+        /// <summary>
+        /// The function called when receiving the "Use" input.
+        /// </summary>
+        /// <param name="context">The input context.</param>
+        public void OnUse(InputAction.CallbackContext context)
+        {
+            if (context.performed) UseItem();
+        }
     }
 }

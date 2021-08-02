@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0064d494d049e495daaac81fec5cfd77, type: 3}
   m_Name: TestBall
   m_EditorClassIdentifier: 
-  MoveSpeed: 15
+  MoveSpeed: 30
+  SpinSpeed: 120
   Friction: 0.95
-  EffectivelyZeroSpeed: 0.01
+  EffectivelyZeroSpeed: 0.25
   PhysicsMaterial: {fileID: 6200000, guid: 04bf00c303c464467a3e9f8d850df8a9, type: 2}
-  Sprite: {fileID: 21300000, guid: 7e64f66e8b64545f1b5c19bfd1438189, type: 3}
+  Sprite: {fileID: 21300000, guid: 66c3f429a7ecd48ceb40621376e01529, type: 3}

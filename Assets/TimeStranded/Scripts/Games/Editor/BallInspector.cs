@@ -30,11 +30,11 @@ namespace TimeStranded.Games.Editor
             GUILayout.Label("Play Mode Testing");
             _direction = EditorGUILayout.Vector2Field("Direction", _direction);
 
-            if (GUILayout.Button("Set Direction"))
+            if (GUILayout.Button("Set Velocity"))
             {
                 for (int i = 0; i < targetCount; i++)
                 {
-                    balls[i].SetDirection(_direction);
+                    balls[i].SetVelocity(_direction);
                 }
             }
         }
