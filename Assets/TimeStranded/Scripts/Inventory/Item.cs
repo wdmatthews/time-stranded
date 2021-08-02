@@ -26,16 +26,14 @@ namespace TimeStranded.Inventory
         /// <summary>
         /// Uses the item on the given character.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
         /// <param name="character">The character to use the item on.</param>
-        public abstract void Use<T>(T character) where T : MonoBehaviour;
+        public abstract void Use(MonoBehaviour character);
 
         /// <summary>
         /// Called when the item is picked up.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
         /// <param name="character">The character that picked up the item.</param>
-        public virtual void OnPickup<T>(T character) where T : MonoBehaviour
+        public virtual void OnPickup(MonoBehaviour character)
         {
             IsBeingHeld = true;
         }
@@ -43,9 +41,8 @@ namespace TimeStranded.Inventory
         /// <summary>
         /// Called when the item is released.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
         /// <param name="character">The character that released the item.</param>
-        public virtual void OnRelease<T>(T character) where T : MonoBehaviour
+        public virtual void OnRelease(MonoBehaviour character)
         {
             IsBeingHeld = false;
         }

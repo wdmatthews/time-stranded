@@ -79,21 +79,19 @@ namespace TimeStranded.Games
         /// <summary>
         /// Sets the ball's velocity in the character's direction.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
         /// <param name="character">The character using the ball.</param>
-        public override void Use<T>(T character)
+        public override void Use(MonoBehaviour character)
         {
             SetVelocity(character.transform.right);
-            Character characterScript = (Character)(MonoBehaviour)character;
+            Character characterScript = (Character)character;
             characterScript.ReleaseItem();
         }
 
         /// <summary>
         /// Turns off the rigidbody.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
         /// <param name="character">The character that picked up the item.</param>
-        public override void OnPickup<T>(T character)
+        public override void OnPickup(MonoBehaviour character)
         {
             base.OnPickup(character);
             _rigidbody.velocity = new Vector2();
@@ -104,9 +102,8 @@ namespace TimeStranded.Games
         /// <summary>
         /// Turns on the rigidbody.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
         /// <param name="character">The character that released the item.</param>
-        public override void OnRelease<T>(T character)
+        public override void OnRelease(MonoBehaviour character)
         {
             base.OnRelease(character);
             _rigidbody.simulated = true;
