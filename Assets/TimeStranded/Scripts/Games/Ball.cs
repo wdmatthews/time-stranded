@@ -42,7 +42,6 @@ namespace TimeStranded.Games
 
         private void Awake()
         {
-            // Set the physics material and sprite.
             _rigidbody.sharedMaterial = _data.PhysicsMaterial;
             _renderer.sprite = _data.Sprite;
         }

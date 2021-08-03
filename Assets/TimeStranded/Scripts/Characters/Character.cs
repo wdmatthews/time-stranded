@@ -73,6 +73,11 @@ namespace TimeStranded.Characters
         /// <summary>
         /// The runtime instances of the character's attributes.
         /// </summary>
+        protected AttributeSO[] _attributes = { };
+
+        /// <summary>
+        /// The runtime instances of the character's attributes organized by name.
+        /// </summary>
         [System.NonSerialized] public Dictionary<string, AttributeSO> AttributesByName = new Dictionary<string, AttributeSO>();
 
         /// <summary>
@@ -82,12 +87,37 @@ namespace TimeStranded.Characters
 
         private void Awake()
         {
+            Initialize(_data);
+        }
+
+        private void Update()
+        {
+            // Update the attribute's modifier timers.
+            for (int i = _attributes.Length - 1; i >= 0; i--)
+            {
+                _attributes[i].OnUpdate();
+            }
+        }
+
+        /// <summary>
+        /// Initializes the character with the given data.
+        /// </summary>
+        /// <param name="data">The character's data.</param>
+        public void Initialize(CharacterSO data)
+        {
+            _data = data;
+            // Initialize the character's face and color.
             SetFace(_data.Face);
             SetColor(_data.Color);
+            // Initialize the character's attributes.
+            int attributeCount = _data.Attributes.Length;
+            _attributes = new AttributeSO[attributeCount];
+            AttributesByName = new Dictionary<string, AttributeSO>();
 
-            for (int i = _data.Attributes.Length - 1; i >= 0; i--)
+            for (int i = attributeCount - 1; i >= 0; i--)
             {
                 AttributeSO attribute = _data.Attributes[i].Copy();
+                _attributes[i] = attribute;
                 AttributesByName.Add(attribute.Name, attribute);
             }
 

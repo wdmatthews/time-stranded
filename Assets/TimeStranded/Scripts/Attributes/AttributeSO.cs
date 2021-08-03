@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace TimeStranded.Attributes
@@ -33,6 +34,11 @@ namespace TimeStranded.Attributes
         [System.NonSerialized] public float Value = 0;
 
         /// <summary>
+        /// The list of modifiers changing the attribute's value.
+        /// </summary>
+        [System.NonSerialized] private List<AttributeModifier> _modifiers = new List<AttributeModifier>();
+
+        /// <summary>
         /// Returns a copy of this attribute for runtime use.
         /// </summary>
         /// <returns>An attribute instance.</returns>
@@ -52,6 +58,38 @@ namespace TimeStranded.Attributes
         public void ChangeValue(float amount)
         {
             Value = Mathf.Clamp(Value + amount, MinValue, MaxValue);
+        }
+
+        /// <summary>
+        /// Applies a modifier to the attribute.
+        /// </summary>
+        /// <param name="modifier">The modifier to apply.</param>
+        public void ApplyModifier(AttributeModifier modifier)
+        {
+            ChangeValue(modifier.Value);
+
+            if (!Mathf.Approximately(modifier.Lifetime, 0))
+            {
+                _modifiers.Add(modifier);
+            }
+        }
+
+        /// <summary>
+        /// Updates the modifiers' timers.
+        /// </summary>
+        public void OnUpdate()
+        {
+            for (int i = _modifiers.Count - 1; i >= 0; i--)
+            {
+                AttributeModifier modifier = _modifiers[i];
+                modifier.TimeRemaining = Mathf.Clamp(modifier.TimeRemaining - Time.deltaTime, 0, modifier.Lifetime);
+
+                if (Mathf.Approximately(modifier.TimeRemaining, 0))
+                {
+                    ChangeValue(-modifier.Value);
+                    _modifiers.RemoveAt(i);
+                }
+            }
         }
     }
 }
