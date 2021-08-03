@@ -21,6 +21,18 @@ namespace TimeStranded.Inventory
         public ItemPoolSO Pool = null;
 
         /// <summary>
+        /// Whether or not the item can be selected.
+        /// For example, a ball cannot be selected,
+        /// but it can replace whatever ability the character selected.
+        /// </summary>
+        public virtual bool CanBeSelected => false;
+
+        /// <summary>
+        /// Whether or not the item can be used up after one use.
+        /// </summary>
+        public virtual bool IsOneTimeUse => false;
+
+        /// <summary>
         /// Requests an item of this type from the pool.
         /// </summary>
         /// <returns>An instance of the item.</returns>

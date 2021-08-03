@@ -1,5 +1,6 @@
 using UnityEngine;
 using TimeStranded.Attributes;
+using TimeStranded.Inventory;
 
 namespace TimeStranded.Characters
 {
@@ -26,5 +27,11 @@ namespace TimeStranded.Characters
         /// </summary>
         [Tooltip("A collection of the character's attributes.")]
         public AttributeSO[] Attributes = { };
+
+        /// <summary>
+        /// The character's inventory.
+        /// </summary>
+        [Tooltip("The character's inventory.")]
+        public InventorySO Inventory = null;
     }
 }

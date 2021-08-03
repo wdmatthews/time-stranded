@@ -26,5 +26,10 @@ namespace TimeStranded.Games
         /// </summary>
         [Tooltip("How long in seconds the powerup will last. If 0, the powerup's effect is never removed.")]
         public float Lifetime = 0;
+
+        /// <summary>
+        /// Whether or not the item can be used up after one use.
+        /// </summary>
+        public override bool IsOneTimeUse => true;
     }
 }

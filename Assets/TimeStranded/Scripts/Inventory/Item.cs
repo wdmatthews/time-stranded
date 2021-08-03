@@ -10,7 +10,7 @@ namespace TimeStranded.Inventory
         /// <summary>
         /// Stores the item's data.
         /// </summary>
-        protected ItemSO _itemData = null;
+        [System.NonSerialized] public ItemSO ItemData = null;
 
         /// <summary>
         /// Whether or not the item is currently being held.
@@ -33,14 +33,15 @@ namespace TimeStranded.Inventory
         /// <param name="data">The item's data.</param>
         public virtual void SetData(ItemSO data)
         {
-            _itemData = data;
+            ItemData = data;
         }
 
         /// <summary>
         /// Uses the item on the given character.
         /// </summary>
         /// <param name="character">The character to use the item on.</param>
-        public abstract void Use(MonoBehaviour character);
+        /// <returns>If the item was used successfully or not.</returns>
+        public abstract bool Use(MonoBehaviour character);
 
         /// <summary>
         /// Called when the item is picked up.

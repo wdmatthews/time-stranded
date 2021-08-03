@@ -90,11 +90,13 @@ namespace TimeStranded.Games
         /// Sets the ball's velocity in the character's direction.
         /// </summary>
         /// <param name="character">The character using the ball.</param>
-        public override void Use(MonoBehaviour character)
+        /// <returns>If the item was used successfully or not.</returns>
+        public override bool Use(MonoBehaviour character)
         {
             SetVelocity(character.transform.right);
             Character characterScript = (Character)character;
             characterScript.ReleaseItem();
+            return true;
         }
 
         /// <summary>

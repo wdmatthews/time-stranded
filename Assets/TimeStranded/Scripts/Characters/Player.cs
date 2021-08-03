@@ -54,5 +54,14 @@ namespace TimeStranded.Characters
         {
             if (context.performed) UseItem();
         }
+
+        /// <summary>
+        /// The function called when receiving the "Select" input.
+        /// </summary>
+        /// <param name="context">The input context.</param>
+        public void OnSelect(InputAction.CallbackContext context)
+        {
+            SelectAbility(context.ReadValue<Vector2>());
+        }
     }
 }

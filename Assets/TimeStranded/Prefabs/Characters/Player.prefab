@@ -307,6 +307,7 @@ MonoBehaviour:
   _face: {fileID: 110283059352819415}
   _fill: {fileID: 110283059768837364}
   _itemHolder: {fileID: 6440654543015682073}
+  _speedAttributeName: Speed
   _cameraReference: {fileID: 0}
 --- !u!114 &3553136117995643388
 MonoBehaviour:
@@ -381,6 +382,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: c81a1437-a041-4e64-b792-53a13bccc3c3
     m_ActionName: Gameplay/Use[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 110283060480865442}
+        m_TargetAssemblyTypeName: TimeStranded.Characters.Player, TimeStranded.Characters
+        m_MethodName: OnSelect
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 3cb9b888-bd6d-4eaf-8666-fbc4b26529d0
+    m_ActionName: Gameplay/Select[/Keyboard/1,/Keyboard/3,/Keyboard/4,/Keyboard/2]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Gameplay

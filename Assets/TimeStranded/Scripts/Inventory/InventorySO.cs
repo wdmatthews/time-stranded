@@ -34,13 +34,26 @@ namespace TimeStranded.Inventory
         /// </summary>
         /// <param name="item">The item to add.</param>
         /// <param name="amount">How many of the item to add.</param>
-        public void AddItem(ItemSO item, int amount)
+        /// <returns>The added item's stack.</returns>
+        public ItemStack AddItem(ItemSO item, int amount)
         {
-            // Check if an ItemStack already exists for the item.
             int stackIndex = GetStackIndex(item);
-            if (stackIndex >= 0) Stacks[stackIndex].Amount += amount;
+            ItemStack stack = null;
+
+            // Check if an ItemStack already exists for the item.
+            if (stackIndex >= 0)
+            {
+                stack = Stacks[stackIndex];
+                stack.Amount += amount;
+            }
             // If not, add it.
-            else Stacks.Add(new ItemStack(item, amount));
+            else
+            {
+                stack = new ItemStack(item, amount);
+                Stacks.Add(stack);
+            }
+
+            return stack;
         }
 
         /// <summary>
@@ -48,15 +61,17 @@ namespace TimeStranded.Inventory
         /// </summary>
         /// <param name="item">The item to remove.</param>
         /// <param name="amount">How many of the item to remove.</param>
-        public void RemoveItem(ItemSO item, int amount)
+        /// <returns>How many of the item the inventory has.</returns>
+        public int RemoveItem(ItemSO item, int amount)
         {
             int stackIndex = GetStackIndex(item);
-            if (stackIndex < 0) return;
+            if (stackIndex < 0) return 0;
             ItemStack stack = Stacks[stackIndex];
             // Remove from the stack.
             stack.Amount -= amount;
             // Remove empty stacks.
             if (stack.Amount <= 0) Stacks.RemoveAt(stackIndex);
+            return stack.Amount;
         }
 
         /// <summary>

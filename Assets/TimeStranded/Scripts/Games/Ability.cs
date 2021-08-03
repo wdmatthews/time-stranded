@@ -43,13 +43,15 @@ namespace TimeStranded.Games
         /// Tries using the ability.
         /// </summary>
         /// <param name="character">The character using the ability.</param>
-        public override void Use(MonoBehaviour character)
+        /// <returns>If the item was used successfully or not.</returns>
+        public override bool Use(MonoBehaviour character)
         {
-            if (_isCooling) return;
+            if (_isCooling) return false;
             // If able to, use the item and start cooling.
             _isCooling = true;
             _cooldownTimer = _abilityData.Cooldown;
             OnUse((Character)character);
+            return true;
         }
 
         /// <summary>

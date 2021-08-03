@@ -16,3 +16,4 @@ MonoBehaviour:
   Color: {fileID: 11400000, guid: 76cb0831cfed2431ebf296218172b6cf, type: 2}
   Attributes:
   - {fileID: 11400000, guid: 7a56d9cce338b4a23921c100b594c8ea, type: 2}
+  Inventory: {fileID: 11400000, guid: ab0573030daa54dd1b088539b620a93a, type: 2}
