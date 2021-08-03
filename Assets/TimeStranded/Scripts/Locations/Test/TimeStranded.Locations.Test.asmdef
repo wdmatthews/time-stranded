@@ -2,6 +2,7 @@
     "name": "TimeStranded.Locations.Test",
     "rootNamespace": "TimeStranded.Locations.Test",
     "references": [
+        "GUID:4b57311933ff242de8ad24577af179ea",
         "GUID:ce53db49fdf604a21813b2be4731c844"
     ],
     "includePlatforms": [],

@@ -3,6 +3,7 @@
     "rootNamespace": "Toolkits.Input",
     "references": [
         "GUID:75469ad4d38634e559750d17036d5f7c",
+        "GUID:4b57311933ff242de8ad24577af179ea",
         "GUID:4a5cb2734a2cf46d6b9455a42a6d74c4"
     ],
     "includePlatforms": [],

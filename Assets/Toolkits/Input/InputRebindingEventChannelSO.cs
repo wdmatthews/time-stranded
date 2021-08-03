@@ -1,4 +1,5 @@
 using UnityEngine;
+using Toolkits.EventSystem;
 
 namespace Toolkits.Input
 {
@@ -6,17 +7,5 @@ namespace Toolkits.Input
     /// A <see cref="ScriptableObject"/> for <see cref="SavedInputRebinding"/>s that multiple objects can reference to raise or listen to events.
     /// </summary>
     [CreateAssetMenu(fileName = "NewInputRebindingEventChannel", menuName = "Toolkits/Input/Input Rebinding Event Channel")]
-    public class InputRebindingEventChannelSO : ScriptableObject
-    {
-        /// <summary>
-        /// The action to invoke upon raise.
-        /// </summary>
-        public System.Action<SavedInputRebinding> OnRaised = null;
-
-        /// <summary>
-        /// Raises the event, notifying all listeners.
-        /// </summary>
-        /// <param name="inputRebinding">The input rebinding to pass when raising the event.</param>
-        public void Raise(SavedInputRebinding inputRebinding) => OnRaised?.Invoke(inputRebinding);
-    }
+    public class InputRebindingEventChannelSO : EventChannelSO<SavedInputRebinding> { }
 }

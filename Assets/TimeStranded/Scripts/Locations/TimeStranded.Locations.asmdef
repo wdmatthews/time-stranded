@@ -2,6 +2,7 @@
     "name": "TimeStranded.Locations",
     "rootNamespace": "TimeStranded.Locations",
     "references": [
+        "GUID:4b57311933ff242de8ad24577af179ea",
         "GUID:e2d75a4a4f3fb4591bdd709e74edca3d",
         "GUID:eb3cd54e3acdb4430b8442d365cc7838"
     ],
