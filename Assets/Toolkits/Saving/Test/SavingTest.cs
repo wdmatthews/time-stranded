@@ -1,13 +1,13 @@
 using UnityEngine;
 
-namespace Toolkits.SaveSystem.Test
+namespace Toolkits.Saving.Test
 {
     /// <summary>
     /// Used to test the save system.
     /// </summary>
-    [AddComponentMenu("Toolkits/Save System/Test/Test")]
+    [AddComponentMenu("Toolkits/Saving/Test/Test")]
     [DisallowMultipleComponent]
-    public class SaveSystemTest : MonoBehaviour
+    public class SavingTest : MonoBehaviour
     {
         /// <summary>
         /// The test save manager.

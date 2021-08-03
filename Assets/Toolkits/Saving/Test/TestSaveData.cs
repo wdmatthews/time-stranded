@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Toolkits.SaveSystem.Test
+namespace Toolkits.Saving.Test
 {
     /// <summary>
     /// A test use of save data.

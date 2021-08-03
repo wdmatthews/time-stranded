@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Toolkits.SaveSystem
+namespace Toolkits.Saving
 {
     /// <summary>
     /// A base save manager to handle loading and saving files.

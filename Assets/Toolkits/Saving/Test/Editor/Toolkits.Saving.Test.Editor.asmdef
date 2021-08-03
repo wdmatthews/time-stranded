@@ -1,6 +1,6 @@
 {
-    "name": "Toolkits.SaveSystem.Test.Editor",
-    "rootNamespace": "Toolkits.SaveSystem.Test.Editor",
+    "name": "Toolkits.Saving.Test.Editor",
+    "rootNamespace": "Toolkits.Saving.Test.Editor",
     "references": [
         "GUID:4a5cb2734a2cf46d6b9455a42a6d74c4",
         "GUID:2f3612f8d050447c9ace9acec95df7c7"

@@ -6,7 +6,7 @@ namespace Toolkits.Events
     /// <summary>
     /// A component that allows for events to be assigned in the inspector.
     /// </summary>
-    [AddComponentMenu("Toolkits/Event System/Event Listener")]
+    [AddComponentMenu("Toolkits/Events/Event Listener")]
     public class EventListener : MonoBehaviour
     {
         /// <summary>

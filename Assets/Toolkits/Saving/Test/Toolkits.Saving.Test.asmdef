@@ -1,6 +1,6 @@
 {
-    "name": "Toolkits.SaveSystem.Test",
-    "rootNamespace": "Toolkits.SaveSystem.Test",
+    "name": "Toolkits.Saving.Test",
+    "rootNamespace": "Toolkits.Saving.Test",
     "references": [
         "GUID:4a5cb2734a2cf46d6b9455a42a6d74c4"
     ],

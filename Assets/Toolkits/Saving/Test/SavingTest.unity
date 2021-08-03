@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 607332767}
   - component: {fileID: 607332768}
   m_Layer: 0
-  m_Name: SaveSystemTest
+  m_Name: SavingTest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

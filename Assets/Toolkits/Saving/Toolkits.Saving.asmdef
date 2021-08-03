@@ -1,6 +1,6 @@
 {
-    "name": "Toolkits.SaveSystem",
-    "rootNamespace": "Toolkits.SaveSystem",
+    "name": "Toolkits.Saving",
+    "rootNamespace": "Toolkits.Saving",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],

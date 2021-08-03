@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEditor;
 
-namespace Toolkits.SaveSystem.Test.Editor
+namespace Toolkits.Saving.Test.Editor
 {
     /// <summary>
     /// A custom inspector to allow for testing the <see cref="TestSaveManagerSO"/> in the inspector.
