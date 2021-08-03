@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using UnityEngine;
+using TimeStranded.Attributes;
 using TimeStranded.Inventory;
 
 namespace TimeStranded.Characters
@@ -53,6 +55,12 @@ namespace TimeStranded.Characters
         [SerializeField] protected Transform _itemHolder = null;
 
         /// <summary>
+        /// The name of the movement speed attribute.
+        /// </summary>
+        [Tooltip("The name of the movement speed attribute.")]
+        [SerializeField] protected string _speedAttributeName = "Speed";
+
+        /// <summary>
         /// The current aim direction.
         /// </summary>
         protected Vector2 _aimDirection = new Vector2();
@@ -62,10 +70,29 @@ namespace TimeStranded.Characters
         /// </summary>
         protected Item _activeItem = null;
 
+        /// <summary>
+        /// The runtime instances of the character's attributes.
+        /// </summary>
+        [System.NonSerialized] public Dictionary<string, AttributeSO> AttributesByName = new Dictionary<string, AttributeSO>();
+
+        /// <summary>
+        /// The movement speed attribute.
+        /// </summary>
+        protected AttributeSO _speedAttribute = null;
+
         private void Awake()
         {
             SetFace(_data.Face);
             SetColor(_data.Color);
+
+            for (int i = _data.Attributes.Length - 1; i >= 0; i--)
+            {
+                AttributeSO attribute = _data.Attributes[i].Copy();
+                AttributesByName.Add(attribute.Name, attribute);
+            }
+
+            _speedAttribute = AttributesByName[_speedAttributeName];
+            _speedAttribute.Value = _speedAttribute.MinValue;
         }
 
         /// <summary>
@@ -74,7 +101,7 @@ namespace TimeStranded.Characters
         /// <param name="direction">The direction to move in.</param>
         public void Move(Vector2 direction)
         {
-            Rigidbody.velocity = _data.MoveSpeed * direction;
+            Rigidbody.velocity = _speedAttribute.Value * direction;
         }
 
         /// <summary>

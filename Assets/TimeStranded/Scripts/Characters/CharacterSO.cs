@@ -1,4 +1,5 @@
 using UnityEngine;
+using TimeStranded.Attributes;
 
 namespace TimeStranded.Characters
 {
@@ -8,12 +9,6 @@ namespace TimeStranded.Characters
     [CreateAssetMenu(fileName = "NewCharacter", menuName = "Time Stranded/Characters/Character")]
     public class CharacterSO : ScriptableObject
     {
-        /// <summary>
-        /// The speed for moving the character.
-        /// </summary>
-        [Tooltip("The speed for moving the character.")]
-        public float MoveSpeed = 1;
-
         /// <summary>
         /// The character's default face.
         /// </summary>
@@ -25,5 +20,11 @@ namespace TimeStranded.Characters
         /// </summary>
         [Tooltip("The character's default color.")]
         public CharacterColorSO Color = null;
+
+        /// <summary>
+        /// A collection of the character's attributes.
+        /// </summary>
+        [Tooltip("A collection of the character's attributes.")]
+        public AttributeSO[] Attributes = { };
     }
 }
