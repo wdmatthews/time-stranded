@@ -61,6 +61,30 @@ namespace TimeStranded.Characters
         [SerializeField] protected string _speedAttributeName = "Speed";
 
         /// <summary>
+        /// The name of the health attribute.
+        /// </summary>
+        [Tooltip("The name of the health attribute.")]
+        [SerializeField] protected string _healthAttributeName = "Health";
+
+        /// <summary>
+        /// The event channel to raise when a character is healed.
+        /// </summary>
+        [Tooltip("The event channel to raise when a character is healed.")]
+        [SerializeField] protected CharacterEventChannelSO _onCharacterHeal = null;
+
+        /// <summary>
+        /// The event channel to raise when a character is damaged.
+        /// </summary>
+        [Tooltip("The event channel to raise when a character is damaged.")]
+        [SerializeField] protected CharacterEventChannelSO _onCharacterDamage = null;
+
+        /// <summary>
+        /// The event channel to raise when a character dies.
+        /// </summary>
+        [Tooltip("The event channel to raise when a character dies.")]
+        [SerializeField] protected CharacterEventChannelSO _onCharacterDeath = null;
+
+        /// <summary>
         /// The current aim direction.
         /// </summary>
         protected Vector2 _aimDirection = new Vector2();
@@ -84,6 +108,11 @@ namespace TimeStranded.Characters
         /// The movement speed attribute.
         /// </summary>
         protected AttributeSO _speedAttribute = null;
+
+        /// <summary>
+        /// The health attribute.
+        /// </summary>
+        protected AttributeSO _healthAttribute = null;
 
         /// <summary>
         /// Stores all of the abilities for the character to use.
@@ -133,6 +162,8 @@ namespace TimeStranded.Characters
 
             _speedAttribute = AttributesByName[_speedAttributeName];
             _speedAttribute.Value = _speedAttribute.MinValue;
+            _healthAttribute = AttributesByName[_healthAttributeName];
+            _healthAttribute.Value = _healthAttribute.MaxValue;
         }
 
         /// <summary>
@@ -281,6 +312,27 @@ namespace TimeStranded.Characters
             if (_activeItem) ReleaseItem();
             // Hold the selected ability after requesting an instance.
             HoldItem(abilityData.Request());
+        }
+
+        /// <summary>
+        /// Heals the character.
+        /// </summary>
+        /// <param name="amount">How much health to regain.</param>
+        public void Heal(float amount)
+        {
+            _healthAttribute.ChangeValue(amount);
+            _onCharacterHeal.Raise(this);
+        }
+
+        /// <summary>
+        /// Damages the character.
+        /// </summary>
+        /// <param name="amount">How much damage to take.</param>
+        public void TakeDamage(float amount)
+        {
+            _healthAttribute.ChangeValue(-amount);
+            if (Mathf.Approximately(_healthAttribute.Value, 0)) _onCharacterDeath.Raise(this);
+            else _onCharacterDamage.Raise(this);
         }
     }
 }

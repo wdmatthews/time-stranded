@@ -47,6 +47,69 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.25
+--- !u!1 &7569098015957161686
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3859921985060368870}
+  - component: {fileID: 6273743861874274677}
+  - component: {fileID: 270020732727583722}
+  m_Layer: 0
+  m_Name: DamageDetector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3859921985060368870
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7569098015957161686}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7766638504734428688}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6273743861874274677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7569098015957161686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c994baae22f148718923611b27b1fbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _character: {fileID: 7766638504734428689}
+  _layerNames:
+  - Ball
+--- !u!58 &270020732727583722
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7569098015957161686}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.4375
 --- !u!1 &7766638504734428694
 GameObject:
   m_ObjectHideFlags: 0
@@ -82,6 +145,7 @@ Transform:
   - {fileID: 7766638505100754502}
   - {fileID: 7766638505720196203}
   - {fileID: 6354443411987588093}
+  - {fileID: 3859921985060368870}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -97,13 +161,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30be0cd34c42b498ab8418dc046f6645, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _data: {fileID: 0}
+  Data: {fileID: 0}
   _faces: {fileID: 11400000, guid: 7d70f01c826b84ec2a79cd69c4b22839, type: 2}
   _colors: {fileID: 11400000, guid: 8f6e7528fe8c04c799ac433e146c490c, type: 2}
   Rigidbody: {fileID: 1717265433002888975}
   _face: {fileID: 7766638505720196196}
   _fill: {fileID: 7766638505100754503}
   _itemHolder: {fileID: 6354443411987588093}
+  _speedAttributeName: Speed
+  _healthAttributeName: Health
+  _onCharacterHeal: {fileID: 11400000, guid: c895fdf4f6b6d4f5b8c1ec4a0f894c9c, type: 2}
+  _onCharacterDamage: {fileID: 11400000, guid: b90fd0285ae1e40ffbf89b314a72fda6, type: 2}
+  _onCharacterDeath: {fileID: 11400000, guid: 75fe8119afae64da2925452547da9e01, type: 2}
 --- !u!210 &7766638504734428695
 SortingGroup:
   m_ObjectHideFlags: 0

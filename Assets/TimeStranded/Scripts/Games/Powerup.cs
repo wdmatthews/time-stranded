@@ -46,8 +46,12 @@ namespace TimeStranded.Games
         /// <param name="character">The character using the powerup.</param>
         protected override void OnUse(Character character)
         {
-            character.AttributesByName[_powerupData.Attribute.Name]
-                .ApplyModifier(new AttributeModifier(_powerupData.Value, _powerupData.Lifetime));
+            if (_powerupData.Heals) character.Heal(_powerupData.Value);
+            else
+            {
+                character.AttributesByName[_powerupData.Attribute.Name]
+                    .ApplyModifier(new AttributeModifier(_powerupData.Value, _powerupData.Lifetime));
+            }
         }
     }
 }

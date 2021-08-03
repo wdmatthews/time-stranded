@@ -9,16 +9,22 @@ namespace TimeStranded.Inventory
     public class ItemSO : ScriptableObject
     {
         /// <summary>
+        /// The pool used to spawn items.
+        /// </summary>
+        [Tooltip("The pool used to spawn items.")]
+        public ItemPoolSO Pool = null;
+
+        /// <summary>
         /// The sprite to use for the item.
         /// </summary>
         [Tooltip("The sprite to use for the item.")]
         public Sprite Sprite = null;
 
         /// <summary>
-        /// The pool used to spawn items.
+        /// The damage taken when this item collides with a character.
         /// </summary>
-        [Tooltip("The pool used to spawn items.")]
-        public ItemPoolSO Pool = null;
+        [Tooltip("The damage taken when this item collides with a character.")]
+        public float DamageOnHit = 0;
 
         /// <summary>
         /// Whether or not the item can be selected.

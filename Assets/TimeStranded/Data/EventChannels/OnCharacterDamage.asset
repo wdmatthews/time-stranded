@@ -9,9 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47328f9d1230841ae946ac859c9522a4, type: 3}
-  m_Name: TestPlayerSpeed
+  m_Script: {fileID: 11500000, guid: 92e3992e77ee641f8b4f2c707b932439, type: 3}
+  m_Name: OnCharacterDamage
   m_EditorClassIdentifier: 
-  Name: Speed
-  MaxValue: 3.5
-  MinValue: 1.5

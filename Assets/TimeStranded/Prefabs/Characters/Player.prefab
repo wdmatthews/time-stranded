@@ -285,6 +285,7 @@ Transform:
   - {fileID: 110283059768837365}
   - {fileID: 110283059352819416}
   - {fileID: 6440654543015682073}
+  - {fileID: 1565150642749630282}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -300,7 +301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40c4e15bedd8442a991e1c2ef964b863, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _data: {fileID: 0}
+  Data: {fileID: 0}
   _faces: {fileID: 11400000, guid: 7d70f01c826b84ec2a79cd69c4b22839, type: 2}
   _colors: {fileID: 11400000, guid: 8f6e7528fe8c04c799ac433e146c490c, type: 2}
   Rigidbody: {fileID: 7105794850188820071}
@@ -308,6 +309,10 @@ MonoBehaviour:
   _fill: {fileID: 110283059768837364}
   _itemHolder: {fileID: 6440654543015682073}
   _speedAttributeName: Speed
+  _healthAttributeName: Health
+  _onCharacterHeal: {fileID: 11400000, guid: c895fdf4f6b6d4f5b8c1ec4a0f894c9c, type: 2}
+  _onCharacterDamage: {fileID: 11400000, guid: b90fd0285ae1e40ffbf89b314a72fda6, type: 2}
+  _onCharacterDeath: {fileID: 11400000, guid: 75fe8119afae64da2925452547da9e01, type: 2}
   _cameraReference: {fileID: 0}
 --- !u!114 &3553136117995643388
 MonoBehaviour:
@@ -398,6 +403,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 3cb9b888-bd6d-4eaf-8666-fbc4b26529d0
     m_ActionName: Gameplay/Select[/Keyboard/1,/Keyboard/3,/Keyboard/4,/Keyboard/2]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 993f9f86-7de9-40eb-975c-2d18ca011739
+    m_ActionName: Gameplay/Interact[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Gameplay
@@ -446,6 +455,69 @@ CircleCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.4375
+--- !u!1 &6519376212408185954
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1565150642749630282}
+  - component: {fileID: 6043734798282466895}
+  - component: {fileID: 7196657350573132305}
+  m_Layer: 0
+  m_Name: DamageDetector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1565150642749630282
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6519376212408185954}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 110283060480865443}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6043734798282466895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6519376212408185954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c994baae22f148718923611b27b1fbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _character: {fileID: 110283060480865442}
+  _layerNames:
+  - Ball
+--- !u!58 &7196657350573132305
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6519376212408185954}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

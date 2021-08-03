@@ -23,6 +23,11 @@ namespace TimeStranded.Inventory
         [System.NonSerialized] public bool CanBePickedUp = true;
 
         /// <summary>
+        /// Whether or not the item can deal damage when coming into contact with a character.
+        /// </summary>
+        [System.NonSerialized] public bool CanDealDamage = false;
+
+        /// <summary>
         /// The function called that will return this item to its pool.
         /// </summary>
         public System.Action<Item> Return = null;

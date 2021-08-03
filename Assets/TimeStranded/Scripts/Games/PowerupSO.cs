@@ -28,6 +28,12 @@ namespace TimeStranded.Games
         public float Lifetime = 0;
 
         /// <summary>
+        /// Whether or not the powerup heals the player.
+        /// </summary>
+        [Tooltip("Whether or not the powerup heals the player.")]
+        public bool Heals = false;
+
+        /// <summary>
         /// Whether or not the item can be used up after one use.
         /// </summary>
         public override bool IsOneTimeUse => true;

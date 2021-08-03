@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0064d494d049e495daaac81fec5cfd77, type: 3}
-  m_Name: TestBall
+  m_Name: DamagingTestBall
   m_EditorClassIdentifier: 
   Pool: {fileID: 0}
   Sprite: {fileID: 21300000, guid: 66c3f429a7ecd48ceb40621376e01529, type: 3}
-  DamageOnHit: 0
+  DamageOnHit: 1
   MoveSpeed: 30
   Friction: 0.95
   EffectivelyZeroSpeed: 0.25
-  PhysicsMaterial: {fileID: 6200000, guid: 04bf00c303c464467a3e9f8d850df8a9, type: 2}
+  PhysicsMaterial: {fileID: 0}
