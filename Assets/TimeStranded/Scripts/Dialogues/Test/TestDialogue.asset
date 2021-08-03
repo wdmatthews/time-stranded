@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: TestDialogue
   m_EditorClassIdentifier: 
   Nodes:
-  - Guid: 1c1aee2d-8b0f-428e-ad59-54ea8a66e19a
-    Position: {x: 342.5, y: 167}
   - Guid: 402da553-8d86-4a2f-a3f3-b8175e7f0dc2
     Position: {x: 92, y: 167}
   - Guid: 250f68af-e2df-4e4f-b94f-3f02ec42c680
     Position: {x: 599.5, y: 124.5}
   - Guid: bf4ea365-29b6-40be-9485-fe701e8bea20
     Position: {x: 599.5, y: 267.5}
+  - Guid: 1c1aee2d-8b0f-428e-ad59-54ea8a66e19a
+    Position: {x: 342.5, y: 167}
   Connections:
   - InputNodeGuid: 1c1aee2d-8b0f-428e-ad59-54ea8a66e19a
     InputPortIndex: 0
@@ -39,18 +39,21 @@ MonoBehaviour:
     Position: {x: 92, y: 167}
     Speaker: {fileID: 11400000, guid: 0967037ed869a42b9958d6ef344d7cea, type: 2}
     Content: I am the player. What should I say?
+    IsStartMessage: 1
     NextId: 1c1aee2d-8b0f-428e-ad59-54ea8a66e19a
     NextIsMessage: 0
   - Guid: 250f68af-e2df-4e4f-b94f-3f02ec42c680
     Position: {x: 599.5, y: 124.5}
     Speaker: {fileID: 11400000, guid: 0967037ed869a42b9958d6ef344d7cea, type: 2}
     Content: Something
+    IsStartMessage: 0
     NextId: 
     NextIsMessage: 1
   - Guid: bf4ea365-29b6-40be-9485-fe701e8bea20
     Position: {x: 599.5, y: 267.5}
     Speaker: {fileID: 11400000, guid: 0967037ed869a42b9958d6ef344d7cea, type: 2}
     Content: Something else
+    IsStartMessage: 0
     NextId: 
     NextIsMessage: 1
   ChoiceNodes:
@@ -59,3 +62,4 @@ MonoBehaviour:
     Choices:
     - 250f68af-e2df-4e4f-b94f-3f02ec42c680
     - bf4ea365-29b6-40be-9485-fe701e8bea20
+  StartMessageNodeGuid: 402da553-8d86-4a2f-a3f3-b8175e7f0dc2

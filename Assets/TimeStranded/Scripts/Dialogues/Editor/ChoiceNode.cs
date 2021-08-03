@@ -44,6 +44,11 @@ namespace TimeStranded.Dialogues.Editor
             mainContainer.Add(_addChoiceButton);
 
             AddPort("Previous", Direction.Input, Port.Capacity.Multi, typeof(int));
+
+            for (int i = Data.Choices.Count - 1; i >= 0; i--)
+            {
+                AddChoice();
+            }
         }
 
         /// <summary>

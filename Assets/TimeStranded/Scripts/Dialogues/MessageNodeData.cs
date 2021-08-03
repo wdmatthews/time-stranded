@@ -20,6 +20,11 @@ namespace TimeStranded.Dialogues
         public string Content = "";
 
         /// <summary>
+        /// Whether or not this message node is the starting message.
+        /// </summary>
+        public bool IsStartMessage = false;
+
+        /// <summary>
         /// The node id for the next message or choice.
         /// </summary>
         public string NextId = "";
@@ -43,6 +48,7 @@ namespace TimeStranded.Dialogues
         {
             Speaker = data.Speaker;
             Content = data.Content;
+            IsStartMessage = data.IsStartMessage;
             NextId = data.NextId;
             NextIsMessage = data.NextIsMessage;
         }

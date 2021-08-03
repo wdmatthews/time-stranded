@@ -21,6 +21,11 @@ namespace TimeStranded.Dialogues
         public List<ChoiceNodeData> ChoiceNodes = new List<ChoiceNodeData>();
 
         /// <summary>
+        /// The guid of the start node.
+        /// </summary>
+        public string StartMessageNodeGuid = "";
+
+        /// <summary>
         /// The message nodes organized by their guid.
         /// </summary>
         private Dictionary<string, MessageNodeData> _messagesByGuid = null;
@@ -48,7 +53,7 @@ namespace TimeStranded.Dialogues
                 }
             }
 
-            return _messagesByGuid[guid];
+            return _messagesByGuid.ContainsKey(guid) ? _messagesByGuid[guid] : null;
         }
 
         /// <summary>
@@ -69,7 +74,7 @@ namespace TimeStranded.Dialogues
                 }
             }
 
-            return _choicesByGuid[guid];
+            return _choicesByGuid.ContainsKey(guid) ? _choicesByGuid[guid] : null;
         }
     }
 }

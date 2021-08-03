@@ -35,6 +35,11 @@ namespace TimeStranded.Dialogues.Editor
         protected SerializedProperty _serializedChoiceNodes = null;
 
         /// <summary>
+        /// The <see cref="SerializedProperty"/> used to save the start message node guid.
+        /// </summary>
+        protected SerializedProperty _serializedStartMessageNodeGuid = null;
+
+        /// <summary>
         /// The graph view to use in this node editor window.
         /// </summary>
         protected DialogueGraphView _dialogueGraphView = null;
@@ -114,6 +119,7 @@ namespace TimeStranded.Dialogues.Editor
             base.Load();
             _serializedMessageNodes = _serializedEditorData.FindProperty(nameof(DialogueSO.MessageNodes));
             _serializedChoiceNodes = _serializedEditorData.FindProperty(nameof(DialogueSO.ChoiceNodes));
+            _serializedStartMessageNodeGuid = _serializedEditorData.FindProperty(nameof(DialogueSO.StartMessageNodeGuid));
         }
 
         /// <summary>
@@ -140,6 +146,7 @@ namespace TimeStranded.Dialogues.Editor
             base.ClearData();
             _serializedMessageNodes.ClearArray();
             _serializedChoiceNodes.ClearArray();
+            _serializedStartMessageNodeGuid.stringValue = "";
             _messageDataByGuid = new Dictionary<string, SerializedProperty>();
             _choiceDataByGuid = new Dictionary<string, SerializedProperty>();
         }
@@ -158,8 +165,14 @@ namespace TimeStranded.Dialogues.Editor
                     Guid = messageNode.Guid,
                     Position = messageNode.GetPosition().position,
                     Speaker = messageNode.Data.Speaker,
-                    Content = messageNode.Data.Content
+                    Content = messageNode.Data.Content,
+                    IsStartMessage = messageNode.Data.IsStartMessage
                 };
+
+                if (messageNodeData.IsStartMessage && _serializedStartMessageNodeGuid.stringValue == "")
+                {
+                    _serializedStartMessageNodeGuid.stringValue = messageNodeData.Guid;
+                }
 
                 SerializedProperty serializedNode = InsertElementIntoSerializedArray(_serializedNodes);
                 serializedNode.FindPropertyRelative(nameof(BaseNodeData.Guid)).stringValue = messageNodeData.Guid;
@@ -169,6 +182,7 @@ namespace TimeStranded.Dialogues.Editor
                 serializedMessageNode.FindPropertyRelative(nameof(MessageNodeData.Position)).vector2Value = messageNodeData.Position;
                 serializedMessageNode.FindPropertyRelative(nameof(MessageNodeData.Speaker)).objectReferenceValue = messageNodeData.Speaker;
                 serializedMessageNode.FindPropertyRelative(nameof(MessageNodeData.Content)).stringValue = messageNodeData.Content;
+                serializedMessageNode.FindPropertyRelative(nameof(MessageNodeData.IsStartMessage)).boolValue = messageNodeData.IsStartMessage;
                 serializedMessageNode.FindPropertyRelative(nameof(MessageNodeData.NextId)).stringValue = "";
                 serializedMessageNode.FindPropertyRelative(nameof(MessageNodeData.NextIsMessage)).boolValue = true;
                 _messageDataByGuid.Add(messageNodeData.Guid, serializedMessageNode);

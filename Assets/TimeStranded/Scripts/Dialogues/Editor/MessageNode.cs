@@ -28,6 +28,11 @@ namespace TimeStranded.Dialogues.Editor
         private TextField _contentField = null;
 
         /// <summary>
+        /// The toggle used to denote the message as the first message or not.
+        /// </summary>
+        private Toggle _startToggle = null;
+
+        /// <summary>
         /// Creates a message node with the given data.
         /// </summary>
         /// <param name="removeGraphViewElement">The method used to remove a <see cref="GraphElement"/> from the <see cref="GraphView"/>.</param>
@@ -47,7 +52,14 @@ namespace TimeStranded.Dialogues.Editor
             });
             mainContainer.Add(_speakerField);
 
-            _contentField = new TextField { value = Data.Content };
+            _startToggle = new Toggle { value = Data.IsStartMessage, label = "Start Message" };
+            _startToggle.RegisterValueChangedCallback((value) =>
+            {
+                Data.IsStartMessage = value.newValue;
+            });
+            mainContainer.Add(_startToggle);
+            
+            _contentField = new TextField { value = Data.Content, multiline = true };
             _contentField.RegisterValueChangedCallback((value) =>
             {
                 Data.Content = value.newValue;

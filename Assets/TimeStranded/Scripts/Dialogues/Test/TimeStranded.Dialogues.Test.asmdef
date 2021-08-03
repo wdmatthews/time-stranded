@@ -1,0 +1,17 @@
+{
+    "name": "TimeStranded.Dialogues.Test",
+    "rootNamespace": "TimeStranded.Dialogues.Test",
+    "references": [
+        "GUID:154ad84ec2da144468a5a6b2c7c9f036",
+        "GUID:64ba8afe3fa0543aea02127adcee7554"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
