@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Sprite: {fileID: 21300000, guid: 1ff3d85b3c15149ae87391fa47fc493a, type: 3}
   Pool: {fileID: 11400000, guid: 787cb13f734bb4a08b0dbd2ff4e20032, type: 2}
+  Cooldown: 5
   Attribute: {fileID: 11400000, guid: 7a56d9cce338b4a23921c100b594c8ea, type: 2}
   Value: 1
   Lifetime: 3

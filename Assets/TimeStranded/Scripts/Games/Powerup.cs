@@ -10,13 +10,13 @@ namespace TimeStranded.Games
     /// </summary>
     [AddComponentMenu("Time Stranded/Games/Powerup")]
     [DisallowMultipleComponent]
-    public class Powerup : Item
+    public class Powerup : Ability
     {
         /// <summary>
         /// The powerup's data.
         /// </summary>
         [Tooltip("The powerup's data.")]
-        [SerializeField] protected PowerupSO _data = null;
+        [SerializeField] protected PowerupSO _powerupData = null;
 
         /// <summary>
         /// The powerup's renderer.
@@ -26,38 +26,28 @@ namespace TimeStranded.Games
 
         private void Awake()
         {
-            if (_data) Initialize(_data);
+            if (_powerupData) SetData(_powerupData);
         }
 
         /// <summary>
-        /// Sets the item's data.
+        /// Sets the powerup's data.
         /// </summary>
-        /// <param name="data">The item's data.</param>
+        /// <param name="data">The powerup's data.</param>
         public override void SetData(ItemSO data)
         {
             base.SetData(data);
-            Initialize((PowerupSO)data);
+            _powerupData = (PowerupSO)data;
+            _renderer.sprite = _powerupData.Sprite;
         }
 
         /// <summary>
-        /// Initializes the powerup with the given data.
+        /// Uses the powerup on the character.
         /// </summary>
-        /// <param name="data">The powerup's data.</param>
-        public void Initialize(PowerupSO data)
+        /// <param name="character">The character using the powerup.</param>
+        protected override void OnUse(Character character)
         {
-            _data = data;
-            _renderer.sprite = _data.Sprite;
-        }
-
-        /// <summary>
-        /// Sets the ball's velocity in the character's direction.
-        /// </summary>
-        /// <param name="character">The character using the ball.</param>
-        public override void Use(MonoBehaviour character)
-        {
-            Character characterScript = (Character)character;
-            characterScript.AttributesByName[_data.Attribute.Name]
-                .ApplyModifier(new AttributeModifier(_data.Value, _data.Lifetime));
+            character.AttributesByName[_powerupData.Attribute.Name]
+                .ApplyModifier(new AttributeModifier(_powerupData.Value, _powerupData.Lifetime));
         }
     }
 }

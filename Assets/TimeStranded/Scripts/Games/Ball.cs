@@ -15,7 +15,7 @@ namespace TimeStranded.Games
         /// The ball's data.
         /// </summary>
         [Tooltip("The ball's data.")]
-        [SerializeField] protected BallSO _data = null;
+        [SerializeField] protected BallSO _ballData = null;
 
         /// <summary>
         /// The ball's rigidbody.
@@ -42,7 +42,7 @@ namespace TimeStranded.Games
 
         private void Awake()
         {
-            if (_data) Initialize(_data);
+            if (_ballData) SetData(_ballData);
         }
 
         private void LateUpdate()
@@ -50,10 +50,10 @@ namespace TimeStranded.Games
             // If the ball is moving, apply friction.
             if (_isMoving)
             {
-                _rigidbody.velocity *= _data.Friction;
+                _rigidbody.velocity *= _ballData.Friction;
 
                 // Detect if the ball is not moving enough, and stop it if so.
-                if (_rigidbody.velocity.sqrMagnitude < _data.EffectivelyZeroSpeed)
+                if (_rigidbody.velocity.sqrMagnitude < _ballData.EffectivelyZeroSpeed)
                 {
                     _isMoving = false;
                     _rigidbody.velocity = new Vector2();
@@ -70,18 +70,9 @@ namespace TimeStranded.Games
         public override void SetData(ItemSO data)
         {
             base.SetData(data);
-            Initialize((BallSO)data);
-        }
-
-        /// <summary>
-        /// Initializes the ball with the given data.
-        /// </summary>
-        /// <param name="data">The ball's data.</param>
-        public void Initialize(BallSO data)
-        {
-            _data = data;
-            _rigidbody.sharedMaterial = _data.PhysicsMaterial;
-            _renderer.sprite = _data.Sprite;
+            _ballData = (BallSO)data;
+            _rigidbody.sharedMaterial = _ballData.PhysicsMaterial;
+            _renderer.sprite = _ballData.Sprite;
         }
 
         /// <summary>
@@ -91,7 +82,7 @@ namespace TimeStranded.Games
         public void SetVelocity(Vector2 direction)
         {
             _isMoving = !Mathf.Approximately(direction.sqrMagnitude, 0);
-            _rigidbody.velocity = _data.MoveSpeed * direction;
+            _rigidbody.velocity = _ballData.MoveSpeed * direction;
             CanBePickedUp = !_isMoving;
         }
 

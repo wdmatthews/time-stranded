@@ -1,6 +1,5 @@
 using UnityEngine;
 using TimeStranded.Attributes;
-using TimeStranded.Inventory;
 
 namespace TimeStranded.Games
 {
@@ -8,7 +7,7 @@ namespace TimeStranded.Games
     /// Stores data about a powerup.
     /// </summary>
     [CreateAssetMenu(fileName = "NewPowerup", menuName = "Time Stranded/Games/Powerup")]
-    public class PowerupSO : ItemSO
+    public class PowerupSO : AbilitySO
     {
         /// <summary>
         /// The attribute to affect.

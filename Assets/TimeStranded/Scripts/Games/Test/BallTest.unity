@@ -360,6 +360,10 @@ PrefabInstance:
       propertyPath: _data
       value: 
       objectReference: {fileID: 11400000, guid: 7b1dc3e640d984fdb98caeb9673ade7a, type: 2}
+    - target: {fileID: 457767124135552480, guid: eed78c03016364d7788220f28bebc675, type: 3}
+      propertyPath: _ballData
+      value: 
+      objectReference: {fileID: 11400000, guid: 7b1dc3e640d984fdb98caeb9673ade7a, type: 2}
     - target: {fileID: 457767124135552485, guid: eed78c03016364d7788220f28bebc675, type: 3}
       propertyPath: m_RootOrder
       value: 1
