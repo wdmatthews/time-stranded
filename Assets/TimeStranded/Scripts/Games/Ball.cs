@@ -42,8 +42,7 @@ namespace TimeStranded.Games
 
         private void Awake()
         {
-            _rigidbody.sharedMaterial = _data.PhysicsMaterial;
-            _renderer.sprite = _data.Sprite;
+            if (_data) Initialize(_data);
         }
 
         private void LateUpdate()
@@ -62,6 +61,27 @@ namespace TimeStranded.Games
                     CanBePickedUp = true;
                 }
             }
+        }
+
+        /// <summary>
+        /// Sets the ball's data.
+        /// </summary>
+        /// <param name="data">The ball's data.</param>
+        public override void SetData(ItemSO data)
+        {
+            base.SetData(data);
+            Initialize((BallSO)data);
+        }
+
+        /// <summary>
+        /// Initializes the ball with the given data.
+        /// </summary>
+        /// <param name="data">The ball's data.</param>
+        public void Initialize(BallSO data)
+        {
+            _data = data;
+            _rigidbody.sharedMaterial = _data.PhysicsMaterial;
+            _renderer.sprite = _data.Sprite;
         }
 
         /// <summary>

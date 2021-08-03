@@ -87,7 +87,7 @@ namespace TimeStranded.Characters
 
         private void Awake()
         {
-            Initialize(_data);
+            if (_data) Initialize(_data);
         }
 
         private void Update()

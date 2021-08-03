@@ -1,5 +1,6 @@
 using UnityEngine;
 using TimeStranded.Attributes;
+using TimeStranded.Inventory;
 
 namespace TimeStranded.Games
 {
@@ -7,7 +8,7 @@ namespace TimeStranded.Games
     /// Stores data about a powerup.
     /// </summary>
     [CreateAssetMenu(fileName = "NewPowerup", menuName = "Time Stranded/Games/Powerup")]
-    public class PowerupSO : ScriptableObject
+    public class PowerupSO : ItemSO
     {
         /// <summary>
         /// The attribute to affect.
@@ -26,11 +27,5 @@ namespace TimeStranded.Games
         /// </summary>
         [Tooltip("How long in seconds the powerup will last. If 0, the powerup's effect is never removed.")]
         public float Lifetime = 0;
-
-        /// <summary>
-        /// The sprite to use for the powerup.
-        /// </summary>
-        [Tooltip("The sprite to use for the powerup.")]
-        public Sprite Sprite = null;
     }
 }

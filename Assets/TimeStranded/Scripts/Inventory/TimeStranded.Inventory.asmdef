@@ -1,7 +1,9 @@
 {
     "name": "TimeStranded.Inventory",
     "rootNamespace": "TimeStranded.Inventory",
-    "references": [],
+    "references": [
+        "GUID:a9136d13df3284f6db50f5a3312e16f4"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

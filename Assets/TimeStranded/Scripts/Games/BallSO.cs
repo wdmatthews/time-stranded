@@ -1,4 +1,5 @@
 using UnityEngine;
+using TimeStranded.Inventory;
 
 namespace TimeStranded.Games
 {
@@ -6,7 +7,7 @@ namespace TimeStranded.Games
 	/// Stores information about a ball.
 	/// </summary>
     [CreateAssetMenu(fileName = "NewBall", menuName = "Time Stranded/Games/Ball")]
-    public class BallSO : ScriptableObject
+    public class BallSO : ItemSO
     {
         /// <summary>
         /// The move speed for the ball.
@@ -31,11 +32,5 @@ namespace TimeStranded.Games
         /// </summary>
         [Tooltip("The physics material to use for the ball.")]
         public PhysicsMaterial2D PhysicsMaterial = null;
-
-        /// <summary>
-        /// The sprite to use for the ball.
-        /// </summary>
-        [Tooltip("The sprite to use for the ball.")]
-        public Sprite Sprite = null;
     }
 }

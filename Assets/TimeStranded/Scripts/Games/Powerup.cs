@@ -26,6 +26,26 @@ namespace TimeStranded.Games
 
         private void Awake()
         {
+            if (_data) Initialize(_data);
+        }
+
+        /// <summary>
+        /// Sets the item's data.
+        /// </summary>
+        /// <param name="data">The item's data.</param>
+        public override void SetData(ItemSO data)
+        {
+            base.SetData(data);
+            Initialize((PowerupSO)data);
+        }
+
+        /// <summary>
+        /// Initializes the powerup with the given data.
+        /// </summary>
+        /// <param name="data">The powerup's data.</param>
+        public void Initialize(PowerupSO data)
+        {
+            _data = data;
             _renderer.sprite = _data.Sprite;
         }
 

@@ -8,10 +8,9 @@ namespace TimeStranded.Inventory
     public abstract class Item : MonoBehaviour
     {
         /// <summary>
-        /// The item's data.
+        /// Stores the item's data.
         /// </summary>
-        [Tooltip("The item's data.")]
-        [SerializeField] protected ItemSO _itemData = null;
+        protected ItemSO _itemData = null;
 
         /// <summary>
         /// Whether or not the item is currently being held.
@@ -22,6 +21,20 @@ namespace TimeStranded.Inventory
         /// Whether or not the item can be picked up.
         /// </summary>
         [System.NonSerialized] public bool CanBePickedUp = true;
+
+        /// <summary>
+        /// The function called that will return this item to its pool.
+        /// </summary>
+        public System.Action<Item> Return = null;
+
+        /// <summary>
+        /// Sets the item's data.
+        /// </summary>
+        /// <param name="data">The item's data.</param>
+        public virtual void SetData(ItemSO data)
+        {
+            _itemData = data;
+        }
 
         /// <summary>
         /// Uses the item on the given character.
@@ -46,5 +59,10 @@ namespace TimeStranded.Inventory
         {
             IsBeingHeld = false;
         }
+
+        /// <summary>
+        /// Returns this item to the pool.
+        /// </summary>
+        public void ReturnToPool() => Return?.Invoke(this);
     }
 }
