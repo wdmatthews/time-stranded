@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEditor;
 
-namespace Toolkits.EventSystem.Editor
+namespace Toolkits.Events.Editor
 {
     /// <summary>
     /// A custom inspector to allow for testing events in the inspector.

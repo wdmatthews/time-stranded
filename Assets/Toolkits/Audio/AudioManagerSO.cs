@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.Audio;
-using Toolkits.EventSystem;
+using Toolkits.Events;
 
 namespace Toolkits.Audio
 {

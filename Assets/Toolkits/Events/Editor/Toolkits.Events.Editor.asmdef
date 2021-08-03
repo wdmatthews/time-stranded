@@ -1,6 +1,6 @@
 {
-    "name": "Toolkits.EventSystem.Editor",
-    "rootNamespace": "Toolkits.EventSystem.Editor",
+    "name": "Toolkits.Events.Editor",
+    "rootNamespace": "Toolkits.Events.Editor",
     "references": [
         "GUID:4b57311933ff242de8ad24577af179ea"
     ],

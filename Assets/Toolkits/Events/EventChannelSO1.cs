@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Toolkits.EventSystem
+namespace Toolkits.Events
 {
     /// <summary>
     /// A <see cref="ScriptableObject"/> that multiple objects can reference to raise or listen to events.

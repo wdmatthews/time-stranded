@@ -1,5 +1,5 @@
 using UnityEngine;
-using Toolkits.EventSystem;
+using Toolkits.Events;
 
 namespace TimeStranded.Locations
 {

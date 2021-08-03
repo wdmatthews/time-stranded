@@ -1,6 +1,6 @@
 {
-    "name": "Toolkits.EventSystem",
-    "rootNamespace": "Toolkits.EventSystem",
+    "name": "Toolkits.Events",
+    "rootNamespace": "Toolkits.Events",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Toolkits.EventSystem
+namespace Toolkits.Events
 {
     /// <summary>
     /// A component that allows for events to be assigned in the inspector.

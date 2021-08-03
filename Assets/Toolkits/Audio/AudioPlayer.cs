@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using DG.Tweening;
-using Toolkits.EventSystem;
+using Toolkits.Events;
 
 namespace Toolkits.Audio
 {

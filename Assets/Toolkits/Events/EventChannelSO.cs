@@ -1,11 +1,11 @@
 using UnityEngine;
 
-namespace Toolkits.EventSystem
+namespace Toolkits.Events
 {
     /// <summary>
     /// A <see cref="ScriptableObject"/> that multiple objects can reference to raise or listen to events.
     /// </summary>
-    [CreateAssetMenu(fileName = "NewEventChannel", menuName = "Toolkits/Event System/Event Channel")]
+    [CreateAssetMenu(fileName = "NewEventChannel", menuName = "Toolkits/Events/Event Channel")]
     public class EventChannelSO : ScriptableObject
     {
         /// <summary>

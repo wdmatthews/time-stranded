@@ -1,13 +1,13 @@
 using UnityEngine;
 
-namespace Toolkits.EventSystem
+namespace Toolkits.Events.Test
 {
     /// <summary>
     /// Used to test object pooling.
     /// </summary>
-    [AddComponentMenu("Toolkits/Event System/Test/Test")]
+    [AddComponentMenu("Toolkits/Events/Test/Test")]
     [DisallowMultipleComponent]
-    public class EventSystemTest : MonoBehaviour
+    public class EventsTest : MonoBehaviour
     {
         /// <summary>
         /// The event channel to raise a test event in.

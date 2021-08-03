@@ -1,6 +1,6 @@
 {
-    "name": "Toolkits.EventSystem.Test",
-    "rootNamespace": "Toolkits.EventSystem.Test",
+    "name": "Toolkits.Events.Test",
+    "rootNamespace": "Toolkits.Events.Test",
     "references": [
         "GUID:4b57311933ff242de8ad24577af179ea"
     ],
