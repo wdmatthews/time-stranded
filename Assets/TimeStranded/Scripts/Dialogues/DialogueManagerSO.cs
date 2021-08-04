@@ -65,7 +65,7 @@ namespace TimeStranded.Dialogues
             _currentGuid = _currentDialogue.StartMessageNodeGuid;
             // Raise the start event with the first message.
             _currentMessage = _currentDialogue.GetMessageNode(_currentGuid);
-            _onDialogueStartedChannel.Raise(_currentMessage);
+            _onDialogueStartedChannel?.Raise(_currentMessage);
         }
 
         /// <summary>
@@ -87,15 +87,15 @@ namespace TimeStranded.Dialogues
                     _currentMessage = _currentDialogue.GetMessageNode(_currentGuid);
 
                     // Finish if this message is the last one.
-                    if (_currentMessage.NextId.Length == 0) _onDialogueFinishedChannel.Raise(_currentMessage);
-                    else _onDialogueNextMessageChannel.Raise(_currentMessage);
+                    if (_currentMessage.NextId.Length == 0) _onDialogueFinishedChannel?.Raise(_currentMessage);
+                    else _onDialogueNextMessageChannel?.Raise(_currentMessage);
                 }
                 // Get the next choice.
                 else
                 {
                     _currentMessage = null;
                     _currentChoice = _currentDialogue.GetChoiceNode(_currentGuid);
-                    _onDialogueNextChoiceChannel.Raise(_currentChoice);
+                    _onDialogueNextChoiceChannel?.Raise(_currentChoice);
                 }
             }
             // Move on from the current choice.
@@ -107,8 +107,8 @@ namespace TimeStranded.Dialogues
                 _currentMessage = _currentDialogue.GetMessageNode(_currentGuid);
 
                 // Finish if this message is the last one.
-                if (_currentMessage.NextId.Length == 0) _onDialogueFinishedChannel.Raise(_currentMessage);
-                else _onDialogueNextMessageChannel.Raise(_currentMessage);
+                if (_currentMessage.NextId.Length == 0) _onDialogueFinishedChannel?.Raise(_currentMessage);
+                else _onDialogueNextMessageChannel?.Raise(_currentMessage);
             }
         }
     }

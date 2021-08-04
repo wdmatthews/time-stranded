@@ -4,6 +4,9 @@ using TimeStranded.Inventory;
 
 namespace TimeStranded.Games
 {
+    /// <summary>
+    /// A base class for ability instances.
+    /// </summary>
     public abstract class Ability : Item
     {
         /// <summary>

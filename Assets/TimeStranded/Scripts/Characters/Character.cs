@@ -124,6 +124,12 @@ namespace TimeStranded.Characters
         /// </summary>
         [System.NonSerialized] public ItemStack SelectedAbility = null;
 
+        /// <summary>
+        /// The team that the player is on.
+        /// Only used during a match.
+        /// </summary>
+        [System.NonSerialized] public string Team = "";
+
         private void Awake()
         {
             if (Data) Initialize(Data);
@@ -288,19 +294,11 @@ namespace TimeStranded.Characters
         /// <summary>
         /// Selects an ability if able to.
         /// </summary>
-        /// <param name="abilityDirection">A vector representing which ability to select. Start from (0, 1) and move clockwise 90 degrees to get indexes 0-3.</param>
-        public void SelectAbility(Vector2 abilityDirection)
+        /// <param name="abilityIndex">The ability's index.</param>
+        public void SelectAbility(int abilityIndex)
         {
             // Stop if not able to select an ability.
             if (_activeItem && !_activeItem.ItemData.CanBeSelected) return;
-
-            int abilityIndex = -1;
-            // Get the ability index based on the vector.
-            if (Mathf.Approximately(abilityDirection.y, 1)) abilityIndex = 0;
-            else if (Mathf.Approximately(abilityDirection.x, 1)) abilityIndex = 1;
-            else if (Mathf.Approximately(abilityDirection.y, -1)) abilityIndex = 2;
-            else if (Mathf.Approximately(abilityDirection.x, -1)) abilityIndex = 3;
-            if (abilityIndex < 0 || abilityIndex >= _abilities.Count) return;
 
             // Select the ability.
             ItemStack abilityStack = _abilities[abilityIndex];

@@ -52,9 +52,9 @@ namespace TimeStranded.Locations
             if (!_subscribedToEvents)
             {
                 _subscribedToEvents = true;
-                _sceneLoadManager.OnLoadStartChannel.OnRaised += OnLoadStart;
-                _sceneLoadManager.OnLoadTickChannel.OnRaised += OnLoadTick;
-                _sceneLoadManager.OnLoadFinishChannel.OnRaised += OnLoadFinish;
+                if (_sceneLoadManager.OnLoadStartChannel) _sceneLoadManager.OnLoadStartChannel.OnRaised += OnLoadStart;
+                if (_sceneLoadManager.OnLoadTickChannel) _sceneLoadManager.OnLoadTickChannel.OnRaised += OnLoadTick;
+                if (_sceneLoadManager.OnLoadFinishChannel) _sceneLoadManager.OnLoadFinishChannel.OnRaised += OnLoadFinish;
             }
 
             if (CurrentLocation) _sceneLoadManager.UnloadScenes(new string[] { CurrentLocation.ScenePath });
@@ -71,7 +71,7 @@ namespace TimeStranded.Locations
         {
             SceneLoadTask sceneTask = (SceneLoadTask)task;
             if (sceneTask.Unload) return;
-            OnLocationSceneLoadStartChannel.Raise(CurrentLocation, progress);
+            OnLocationSceneLoadStartChannel?.Raise(CurrentLocation, progress);
         }
 
         /// <summary>
@@ -83,7 +83,7 @@ namespace TimeStranded.Locations
         {
             SceneLoadTask sceneTask = (SceneLoadTask)task;
             if (sceneTask.Unload) return;
-            OnLocationSceneLoadTickChannel.Raise(CurrentLocation, progress);
+            OnLocationSceneLoadTickChannel?.Raise(CurrentLocation, progress);
         }
 
         /// <summary>
@@ -95,7 +95,7 @@ namespace TimeStranded.Locations
         {
             SceneLoadTask sceneTask = (SceneLoadTask)task;
             if (sceneTask.Unload) return;
-            OnLocationSceneLoadFinishChannel.Raise(CurrentLocation, progress);
+            OnLocationSceneLoadFinishChannel?.Raise(CurrentLocation, progress);
         }
     }
 }

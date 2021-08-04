@@ -26,7 +26,7 @@ namespace TimeStranded.Characters
         /// <param name="character">The character to add.</param>
         public override void Add(Character character)
         {
-            _onCharacterAdded.Raise(character);
+            _onCharacterAdded?.Raise(character);
             base.Add(character);
         }
 
@@ -36,7 +36,7 @@ namespace TimeStranded.Characters
         /// <param name="character">The character to remove.</param>
         public override void Remove(Character character)
         {
-            _onCharacterRemoved.Raise(character);
+            _onCharacterRemoved?.Raise(character);
             base.Remove(character);
         }
 
@@ -46,7 +46,7 @@ namespace TimeStranded.Characters
         /// <param name="index">The character's index.</param>
         public override void RemoveAt(int index)
         {
-            _onCharacterRemoved.Raise(_list[index]);
+            _onCharacterRemoved?.Raise(_list[index]);
             base.RemoveAt(index);
         }
     }

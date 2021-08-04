@@ -39,6 +39,12 @@ namespace TimeStranded
         public virtual void Add(T item) => _list.Add(item);
 
         /// <summary>
+        /// Adds items from a collection.
+        /// </summary>
+        /// <param name="collection">The collection of items to add.</param>
+        public void AddRange(IEnumerable<T> collection) => _list.AddRange(collection);
+
+        /// <summary>
         /// Removes an item from the list.
         /// Override to add event raising.
         /// </summary>
