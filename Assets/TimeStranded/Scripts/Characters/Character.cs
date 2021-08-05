@@ -159,6 +159,18 @@ namespace TimeStranded.Characters
         /// </summary>
         public System.Action<Character> Respawn = null;
 
+        /// <summary>
+        /// The character's score.
+        /// Only used during a match.
+        /// </summary>
+        [System.NonSerialized] public int Score = 0;
+
+        /// <summary>
+        /// The item that killed the character, if any.
+        /// Only used during a match.
+        /// </summary>
+        [System.NonSerialized] public Item DeathItem = null;
+
         private void Awake()
         {
             if (Data) Initialize(Data);
@@ -375,7 +387,9 @@ namespace TimeStranded.Characters
         /// Damages the character.
         /// </summary>
         /// <param name="amount">How much damage to take.</param>
-        public void TakeDamage(float amount)
+        /// <param name="item">The item dealing the damage, if any.</param>
+        /// <returns>Whether or not the character died.</returns>
+        public bool TakeDamage(float amount, Item item = null)
         {
             _healthAttribute.ChangeValue(-amount);
 
@@ -389,10 +403,13 @@ namespace TimeStranded.Characters
 
                 // Mark the character as dead.
                 _isDead = true;
+                DeathItem = item;
                 _onCharacterDeath.Raise(this);
                 gameObject.SetActive(false);
+                return true;
             }
             else _onCharacterDamage.Raise(this);
+            return false;
         }
 
         /// <summary>
@@ -404,6 +421,7 @@ namespace TimeStranded.Characters
             Respawn(this);
             gameObject.SetActive(true);
             _healthAttribute.Value = _healthAttribute.MaxValue;
+            DeathItem = null;
         }
     }
 }

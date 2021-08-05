@@ -134,7 +134,12 @@ namespace TimeStranded.Games
             if (!Mathf.Approximately(_ballData.DamageOnHit, 0))
             {
                 Character characterScript = (Character)character;
-                characterScript.TakeDamage(_ballData.DamageOnHit);
+                // Do not damage the same team as the ball carrier.
+                if (characterScript.Team.Length == 0 || Character
+                    && characterScript.Team != ((Character)Character).Team)
+                {
+                    characterScript.TakeDamage(_ballData.DamageOnHit, this);
+                }
             }
 
             // Reverse the ball's movement with some random rotation.

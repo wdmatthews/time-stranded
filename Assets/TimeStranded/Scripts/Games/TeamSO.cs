@@ -15,5 +15,11 @@ namespace TimeStranded.Games
         /// Only used during a match.
         /// </summary>
         [System.NonSerialized] public List<Character> Characters = new List<Character>();
+
+        /// <summary>
+        /// The teams's score.
+        /// Only used during a match.
+        /// </summary>
+        [System.NonSerialized] public int Score = 0;
     }
 }

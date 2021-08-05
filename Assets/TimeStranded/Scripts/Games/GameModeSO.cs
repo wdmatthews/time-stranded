@@ -42,6 +42,12 @@ namespace TimeStranded.Games
         [SerializeField] protected CharacterListReferenceSO _aliveCharacters = null;
 
         /// <summary>
+        /// The list of all respawning characters involved in a match.
+        /// </summary>
+        [Tooltip("The list of all respawning characters involved in a match.")]
+        [SerializeField] protected CharacterListReferenceSO _respawningCharacters = null;
+
+        /// <summary>
         /// The list of player characters involved in a match.
         /// </summary>
         [Tooltip("The list of player characters involved in a match.")]
@@ -102,6 +108,7 @@ namespace TimeStranded.Games
             ActiveTeamsByName.Clear();
             _activeCharacters.Clear();
             _aliveCharacters.Clear();
+            _respawningCharacters.Clear();
             _activePlayers.Clear();
             _activeAI.Clear();
         }
@@ -121,9 +128,9 @@ namespace TimeStranded.Games
             for (int i = characters.Count - 1; i >= 0; i--)
             {
                 // Assign a team to the character, then go to the next team.
-                characters[i].Team = teams[teamIndex].name;
-                teamIndex++;
-                if (teamIndex >= teamCount) teamIndex = 0;
+                characters[i].Team = teams[index].name;
+                index++;
+                if (index >= teamCount) index = 0;
             }
 
             return index;
@@ -225,6 +232,7 @@ namespace TimeStranded.Games
                 TeamSO team = teams[i];
                 ActiveTeamsByName.Add(team.name, team);
                 team.Characters.Clear();
+                team.Score = 0;
             }
 
             // Reset character data as needed.
@@ -235,6 +243,7 @@ namespace TimeStranded.Games
                 character.TimeUntilRespawn = _respawnTime;
                 character.IsRespawning = false;
                 character.Respawn = RespawnCharacter;
+                character.Score = 0;
             }
 
             // Choose teams and start the match.
@@ -308,6 +317,8 @@ namespace TimeStranded.Games
                 character.RespawnsLeft--;
                 character.TimeUntilRespawn = _respawnTime;
                 character.IsRespawning = true;
+                _respawningCharacters.Add(character);
+                Debug.Log(_respawningCharacters.Count);
             }
         }
 
@@ -320,6 +331,7 @@ namespace TimeStranded.Games
             // Add the character to the alive list.
             _aliveCharacters.Add(character);
             character.IsRespawning = false;
+            _respawningCharacters.Remove(character);
         }
     }
 }

@@ -28,6 +28,11 @@ namespace TimeStranded.Inventory
         public System.Action<Item> Return = null;
 
         /// <summary>
+        /// The character currently or last holding the item.
+        /// </summary>
+        [System.NonSerialized] public MonoBehaviour Character = null;
+
+        /// <summary>
         /// Sets the item's data.
         /// </summary>
         /// <param name="data">The item's data.</param>
@@ -50,6 +55,7 @@ namespace TimeStranded.Inventory
         public virtual void OnPickup(MonoBehaviour character)
         {
             IsBeingHeld = true;
+            Character = character;
         }
 
         /// <summary>
