@@ -3,6 +3,7 @@
     "rootNamespace": "TimeStranded.Games",
     "references": [
         "GUID:4b57311933ff242de8ad24577af179ea",
+        "GUID:a9136d13df3284f6db50f5a3312e16f4",
         "GUID:eb3cd54e3acdb4430b8442d365cc7838",
         "GUID:35ff0408a42824a038439fa9b2d91546",
         "GUID:a7a1ce88826974e4dba02e2e6518450f",

@@ -10,6 +10,27 @@ namespace TimeStranded.Games
     public class DodgeballGameModeSO : GameModeSO
     {
         /// <summary>
+        /// The ball to use.
+        /// </summary>
+        [Tooltip("The ball to use.")]
+        [SerializeField] protected BallSO _ballData = null;
+
+        /// <summary>
+        /// Spawn the balls.
+        /// </summary>
+        public override void OnStart()
+        {
+            base.OnStart();
+
+            for (int i = _map.BallSpawns.Count - 1; i >= 0; i--)
+            {
+                Ball ball = (Ball)_ballData.Pool.Request();
+                ball.SetData(_ballData);
+                ball.transform.position = _map.BallSpawns[i].transform.position;
+            }
+        }
+
+        /// <summary>
         /// Increases the score when characters die.
         /// </summary>
         /// <param name="character">The character that died.</param>
