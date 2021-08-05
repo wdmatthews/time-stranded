@@ -101,6 +101,7 @@ namespace TimeStranded.Games
             _activeTeams.Clear();
             ActiveTeamsByName.Clear();
             _activeCharacters.Clear();
+            _aliveCharacters.Clear();
             _activePlayers.Clear();
             _activeAI.Clear();
         }
@@ -213,6 +214,8 @@ namespace TimeStranded.Games
             if (teams != null) _activeTeams.AddRange(teams);
             _activeCharacters.AddRange(players);
             _activeCharacters.AddRange(ai);
+            _aliveCharacters.AddRange(players);
+            _aliveCharacters.AddRange(ai);
             _activePlayers.AddRange(players);
             _activeAI.AddRange(ai);
 
