@@ -24,6 +24,12 @@ namespace TimeStranded.Games
         [SerializeField] protected float _respawnTime = 1;
 
         /// <summary>
+        /// How many seconds a match can take before it ends. 0 for unlimited time.
+        /// </summary>
+        [Tooltip("How many seconds a match can take before it ends. 0 for unlimited time.")]
+        [SerializeField] protected float _matchDuration = 60;
+
+        /// <summary>
         /// The list of all teams involved in a match.
         /// </summary>
         [Tooltip("The list of all teams involved in a match.")]
@@ -72,6 +78,12 @@ namespace TimeStranded.Games
         [SerializeField] protected EventChannelSO _onMatchEnd = null;
 
         /// <summary>
+        /// The event channel raised when a match timer ticks.
+        /// </summary>
+        [Tooltip("The event channel raised when a match timer ticks.")]
+        [SerializeField] protected IntEventChannelSO _onMatchTimerTick = null;
+
+        /// <summary>
         /// The event channel to raise when a character is healed.
         /// </summary>
         [Tooltip("The event channel to raise when a character is healed.")]
@@ -98,6 +110,11 @@ namespace TimeStranded.Games
         /// Whether or not this game mode was started.
         /// </summary>
         [System.NonSerialized] public bool WasStarted = false;
+
+        /// <summary>
+        /// How much time is left in the match.
+        /// </summary>
+        [System.NonSerialized] protected float _matchTimer = 0;
 
         /// <summary>
         /// Clears all match data.
@@ -248,6 +265,7 @@ namespace TimeStranded.Games
 
             // Choose teams and start the match.
             ChooseTeams(players, ai, teams, randomlyChooseTeams);
+            _matchTimer = _matchDuration;
             OnStart();
             WasStarted = true;
             _onMatchStart?.Raise();
@@ -263,9 +281,23 @@ namespace TimeStranded.Games
         /// </summary>
         public virtual void OnUpdate()
         {
+            // Update all characters.
             for (int i = _activeCharacters.Count - 1; i >= 0; i--)
             {
                 _activeCharacters[i].OnUpdateInMatch();
+            }
+
+            // Decrease the time left.
+            if (!Mathf.Approximately(_matchDuration, 0))
+            {
+                if (Mathf.Approximately(_matchTimer, 0)) EndMatch();
+                else
+                {
+                    int previousSeconds = Mathf.CeilToInt(_matchTimer);
+                    _matchTimer = Mathf.Clamp(_matchTimer - Time.deltaTime, 0, _matchDuration);
+                    int seconds = Mathf.CeilToInt(_matchTimer);
+                    if (previousSeconds != seconds) _onMatchTimerTick?.Raise(seconds);
+                }
             }
         }
 
@@ -286,7 +318,6 @@ namespace TimeStranded.Games
             if (_onCharacterHeal) _onCharacterHeal.OnRaised -= OnCharacterHeal;
             if (_onCharacterDamage) _onCharacterDamage.OnRaised -= OnCharacterDamage;
             if (_onCharacterDeath) _onCharacterDeath.OnRaised -= OnCharacterDeath;
-
             _onMatchEnd?.Raise();
         }
 
@@ -318,7 +349,6 @@ namespace TimeStranded.Games
                 character.TimeUntilRespawn = _respawnTime;
                 character.IsRespawning = true;
                 _respawningCharacters.Add(character);
-                Debug.Log(_respawningCharacters.Count);
             }
         }
 

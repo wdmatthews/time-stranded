@@ -1,7 +1,9 @@
 {
     "name": "TimeStranded",
     "rootNamespace": "TimeStranded",
-    "references": [],
+    "references": [
+        "GUID:4b57311933ff242de8ad24577af179ea"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
