@@ -21,12 +21,6 @@ namespace TimeStranded.Inventory
         public Sprite Sprite = null;
 
         /// <summary>
-        /// The damage taken when this item collides with a character.
-        /// </summary>
-        [Tooltip("The damage taken when this item collides with a character.")]
-        public float DamageOnHit = 0;
-
-        /// <summary>
         /// Whether or not the item can be selected.
         /// For example, a ball cannot be selected,
         /// but it can replace whatever ability the character selected.

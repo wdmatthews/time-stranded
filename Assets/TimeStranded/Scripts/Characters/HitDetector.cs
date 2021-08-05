@@ -54,11 +54,9 @@ namespace TimeStranded.Characters
             {
                 if (collider.gameObject.layer == _layers[i])
                 {
-                    // Get the item from the collider and apply its damage to the character.
+                    // Get the item from the collider and apply its OnHit method to the character.
                     Item item = collider.gameObject.GetComponent<Item>();
-                    if (!item.CanDealDamage || Mathf.Approximately(item.ItemData.DamageOnHit, 0)) return;
                     item.OnHit(_character);
-                    _character.TakeDamage(item.ItemData.DamageOnHit);
                     break;
                 }
             }

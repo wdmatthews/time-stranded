@@ -38,5 +38,11 @@ namespace TimeStranded.Games
         /// </summary>
         [Tooltip("The maximum bounce angle offset when hitting a character.")]
         public float BounceAngle = 15;
+
+        /// <summary>
+        /// The damage taken when this ball collides with a character.
+        /// </summary>
+        [Tooltip("The damage taken when this ball collides with a character.")]
+        public float DamageOnHit = 0;
     }
 }

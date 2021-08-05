@@ -109,7 +109,6 @@ namespace TimeStranded.Games
             _rigidbody.velocity = new Vector2();
             _rigidbody.simulated = false;
             _isMoving = false;
-            CanDealDamage = true;
         }
 
         /// <summary>
@@ -120,19 +119,28 @@ namespace TimeStranded.Games
         {
             base.OnRelease(character);
             _rigidbody.simulated = true;
-            CanDealDamage = false;
         }
 
         /// <summary>
-        /// Reverses the ball's movement on hit.
+        /// Damages the character and reverses the ball's movement on hit.
         /// </summary>
         /// <param name="character">The character that the ball hit.</param>
         public override void OnHit(MonoBehaviour character)
         {
+            // Damage the character if necessary.
+            if (_isMoving && !Mathf.Approximately(_ballData.DamageOnHit, 0))
+            {
+                Character characterScript = (Character)character;
+                characterScript.TakeDamage(_ballData.DamageOnHit);
+            }
+
+            // Reverse the ball's movement with some random rotation.
             Vector2 vectorToCharacter = transform.position - character.transform.position;
+
             float newAngle = Mathf.Rad2Deg * Mathf.Atan2(vectorToCharacter.y, vectorToCharacter.x)
                 + Random.Range(-_ballData.BounceAngle, _ballData.BounceAngle);
             float newAngleInRadians = Mathf.Deg2Rad * newAngle;
+
             float speed = _rigidbody.velocity.magnitude;
             _rigidbody.velocity = new Vector2(speed * Mathf.Cos(newAngleInRadians),
                 speed * Mathf.Sin(newAngleInRadians));

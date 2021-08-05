@@ -15,11 +15,6 @@ namespace TimeStranded.Games.Editor
         /// </summary>
         private Vector2 _direction = new Vector2();
 
-        /// <summary>
-        /// Used to toggle if the ball can do damage.
-        /// </summary>
-        private bool _canDealDamage = false;
-
         public override void OnInspectorGUI()
         {
             int targetCount = targets.Length;
@@ -40,17 +35,6 @@ namespace TimeStranded.Games.Editor
                 for (int i = 0; i < targetCount; i++)
                 {
                     balls[i].SetVelocity(_direction);
-                }
-            }
-
-            EditorGUI.BeginChangeCheck();
-            _canDealDamage = EditorGUILayout.Toggle("Can Deal Damage", _canDealDamage);
-
-            if (EditorGUI.EndChangeCheck())
-            {
-                for (int i = 0; i < targetCount; i++)
-                {
-                    balls[i].CanDealDamage = _canDealDamage;
                 }
             }
         }

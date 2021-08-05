@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Pool: {fileID: 0}
   Sprite: {fileID: 21300000, guid: 66c3f429a7ecd48ceb40621376e01529, type: 3}
-  DamageOnHit: 0
   MoveSpeed: 30
   Friction: 0.95
   EffectivelyZeroSpeed: 0.25
   PhysicsMaterial: {fileID: 6200000, guid: 04bf00c303c464467a3e9f8d850df8a9, type: 2}
+  BounceAngle: 15
+  DamageOnHit: 1
