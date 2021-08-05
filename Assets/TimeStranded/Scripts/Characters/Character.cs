@@ -219,6 +219,8 @@ namespace TimeStranded.Characters
         /// <param name="direction">The direction to move in.</param>
         public void Move(Vector2 direction)
         {
+            // If dead, disabled controls.
+            if (_isDead) return;
             Rigidbody.velocity = _speedAttribute.Value * direction;
         }
 
@@ -228,6 +230,8 @@ namespace TimeStranded.Characters
         /// <param name="direction">The direction to aim in.</param>
         public void Aim(Vector2 direction)
         {
+            // If dead, disabled controls.
+            if (_isDead) return;
             _aimDirection = direction;
             float angle = Mathf.Rad2Deg * Mathf.Atan2(_aimDirection.y, _aimDirection.x);
             transform.eulerAngles = new Vector3(0, 0, angle);
@@ -275,6 +279,8 @@ namespace TimeStranded.Characters
         /// </summary>
         public void UseItem()
         {
+            // If dead, disabled controls.
+            if (_isDead) return;
             if (!_activeItem) return;
             _activeItem.Use(this);
             // Detect if the item was a one time use, and remove one of its uses.
@@ -338,6 +344,8 @@ namespace TimeStranded.Characters
         /// <param name="abilityIndex">The ability's index.</param>
         public void SelectAbility(int abilityIndex)
         {
+            // If dead, disabled controls.
+            if (_isDead) return;
             // Stop if not able to select an ability.
             if (_activeItem && !_activeItem.ItemData.CanBeSelected) return;
 

@@ -22,6 +22,8 @@ namespace TimeStranded.Characters
         /// <param name="context">The input context.</param>
         public void OnMove(InputAction.CallbackContext context)
         {
+            // If dead, disabled controls.
+            if (_isDead) return;
             Move(context.ReadValue<Vector2>());
         }
 
@@ -31,6 +33,8 @@ namespace TimeStranded.Characters
         /// <param name="context">The input context.</param>
         public void OnAim(InputAction.CallbackContext context)
         {
+            // If dead, disabled controls.
+            if (_isDead) return;
             Vector2 direction = context.ReadValue<Vector2>();
             // Don't aim if not receiving aim input.
             if (Mathf.Approximately(direction.x, 0) && Mathf.Approximately(direction.y, 0)) return;
@@ -52,6 +56,8 @@ namespace TimeStranded.Characters
         /// <param name="context">The input context.</param>
         public void OnUse(InputAction.CallbackContext context)
         {
+            // If dead, disabled controls.
+            if (_isDead) return;
             if (context.performed) UseItem();
         }
 
@@ -61,6 +67,8 @@ namespace TimeStranded.Characters
         /// <param name="context">The input context.</param>
         public void OnSelect(InputAction.CallbackContext context)
         {
+            // If dead, disabled controls.
+            if (_isDead) return;
             Vector2 abilityDirection = context.ReadValue<Vector2>();
             int abilityIndex = -1;
             // Get the ability index based on the vector.
