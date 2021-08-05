@@ -127,8 +127,11 @@ namespace TimeStranded.Games
         /// <param name="character">The character that the ball hit.</param>
         public override void OnHit(MonoBehaviour character)
         {
+            // The ball should not damage or bounce if not moving.
+            if (!_isMoving) return;
+
             // Damage the character if necessary.
-            if (_isMoving && !Mathf.Approximately(_ballData.DamageOnHit, 0))
+            if (!Mathf.Approximately(_ballData.DamageOnHit, 0))
             {
                 Character characterScript = (Character)character;
                 characterScript.TakeDamage(_ballData.DamageOnHit);

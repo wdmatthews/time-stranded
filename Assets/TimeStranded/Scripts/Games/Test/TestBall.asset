@@ -19,4 +19,4 @@ MonoBehaviour:
   EffectivelyZeroSpeed: 0.25
   PhysicsMaterial: {fileID: 6200000, guid: 04bf00c303c464467a3e9f8d850df8a9, type: 2}
   BounceAngle: 15
-  DamageOnHit: 1
+  DamageOnHit: 0
