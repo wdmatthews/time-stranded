@@ -17,9 +17,9 @@ namespace TimeStranded.Games
         public List<Transform> Spawns = new List<Transform>();
 
         /// <summary>
-        /// The spawns used for balls spawning in, if a ball is used.
+        /// The spawns used for items spawning in, if needed.
         /// </summary>
-        [Tooltip("The spawns used for balls spawning in, if a ball is used.")]
-        public List<Transform> BallSpawns = new List<Transform>();
+        [Tooltip("The spawns used for items spawning in, if needed.")]
+        public List<Transform> ItemSpawns = new List<Transform>();
     }
 }

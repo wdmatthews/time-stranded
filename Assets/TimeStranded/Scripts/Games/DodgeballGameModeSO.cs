@@ -22,11 +22,11 @@ namespace TimeStranded.Games
         {
             base.OnStart();
 
-            for (int i = _map.BallSpawns.Count - 1; i >= 0; i--)
+            for (int i = _map.ItemSpawns.Count - 1; i >= 0; i--)
             {
                 Ball ball = (Ball)_ballData.Pool.Request();
                 ball.SetData(_ballData);
-                ball.transform.position = _map.BallSpawns[i].transform.position;
+                ball.transform.position = _map.ItemSpawns[i].transform.position;
             }
         }
 
