@@ -29,6 +29,12 @@ namespace TimeStranded.Attributes
         public float MinValue = 0;
 
         /// <summary>
+        /// The attribute's suggested start value.
+        /// </summary>
+        [Tooltip("The attribute's suggested start value.")]
+        public float SuggestedStartValue = 1;
+
+        /// <summary>
         /// The attribute's current value.
         /// </summary>
         [System.NonSerialized] public float Value = 0;
@@ -48,6 +54,7 @@ namespace TimeStranded.Attributes
             copiedAttribute.Name = Name;
             copiedAttribute.MaxValue = MaxValue;
             copiedAttribute.MinValue = MinValue;
+            copiedAttribute.SuggestedStartValue = SuggestedStartValue;
             return copiedAttribute;
         }
 

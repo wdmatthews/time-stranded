@@ -208,9 +208,9 @@ namespace TimeStranded.Characters
             }
 
             _speedAttribute = AttributesByName[_speedAttributeName];
-            _speedAttribute.Value = _speedAttribute.MinValue;
+            _speedAttribute.Value = _speedAttribute.SuggestedStartValue;
             _healthAttribute = AttributesByName[_healthAttributeName];
-            _healthAttribute.Value = _healthAttribute.MaxValue;
+            _healthAttribute.Value = _healthAttribute.SuggestedStartValue;
         }
 
         /// <summary>
@@ -282,11 +282,11 @@ namespace TimeStranded.Characters
             // If dead, disabled controls.
             if (_isDead) return;
             if (!_activeItem) return;
-            _activeItem.Use(this);
             // Detect if the item was a one time use, and remove one of its uses.
             if (_activeItem.ItemData.IsOneTimeUse) Data.Inventory.RemoveItem(_activeItem.ItemData, 1);
             // Detect if the item was an ability, and remove it if necessary.
             if (SelectedAbility != null && SelectedAbility.Amount == 0) RemoveAbility(SelectedAbility);
+            _activeItem.Use(this);
         }
 
         /// <summary>

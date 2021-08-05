@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TestBall
   m_EditorClassIdentifier: 
   Pool: {fileID: 0}
-  Sprite: {fileID: 21300000, guid: 66c3f429a7ecd48ceb40621376e01529, type: 3}
+  Sprite: {fileID: 21300000, guid: 7e64f66e8b64545f1b5c19bfd1438189, type: 3}
   MoveSpeed: 30
   Friction: 0.95
   EffectivelyZeroSpeed: 0.25

@@ -15,3 +15,4 @@ MonoBehaviour:
   Name: Health
   MaxValue: 2
   MinValue: 0
+  SuggestedStartValue: 2

@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: TestPlayerSpeed
   m_EditorClassIdentifier: 
   Name: Speed
-  MaxValue: 3.5
-  MinValue: 1.5
+  MaxValue: 4
+  MinValue: 2
+  SuggestedStartValue: 3
