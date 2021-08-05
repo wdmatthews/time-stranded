@@ -75,6 +75,19 @@ namespace TimeStranded.Attributes
         }
 
         /// <summary>
+        /// Removes all modifiers.
+        /// </summary>
+        public void RemoveAllModifiers()
+        {
+            for (int i = _modifiers.Count - 1; i >= 0; i--)
+            {
+                ChangeValue(-_modifiers[i].Value);
+            }
+
+            _modifiers.Clear();
+        }
+
+        /// <summary>
         /// Updates the modifiers' timers.
         /// </summary>
         public void OnUpdate()

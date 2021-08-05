@@ -115,6 +115,11 @@ namespace TimeStranded.Characters
         protected AttributeSO _healthAttribute = null;
 
         /// <summary>
+        /// Whether or not the character is dead.
+        /// </summary>
+        protected bool _isDead = false;
+
+        /// <summary>
         /// Stores all of the abilities for the character to use.
         /// </summary>
         protected List<ItemStack> _abilities = new List<ItemStack>();
@@ -130,6 +135,30 @@ namespace TimeStranded.Characters
         /// </summary>
         [System.NonSerialized] public string Team = "";
 
+        /// <summary>
+        /// The number of respawns left.
+        /// Only used during a match.
+        /// </summary>
+        [System.NonSerialized] public int RespawnsLeft = 0;
+
+        /// <summary>
+        /// The time until respawn.
+        /// Only used during a match.
+        /// </summary>
+        [System.NonSerialized] public float TimeUntilRespawn = 0;
+
+        /// <summary>
+        /// Whether or not the character is respawning.
+        /// Only used during a match.
+        /// </summary>
+        [System.NonSerialized] public bool IsRespawning = false;
+
+        /// <summary>
+        /// The method to respawn the character.
+        /// Only used during a match.
+        /// </summary>
+        public System.Action<Character> Respawn = null;
+
         private void Awake()
         {
             if (Data) Initialize(Data);
@@ -141,6 +170,18 @@ namespace TimeStranded.Characters
             for (int i = _attributes.Length - 1; i >= 0; i--)
             {
                 _attributes[i].OnUpdate();
+            }
+        }
+
+        /// <summary>
+        /// Updates characters during a match.
+        /// </summary>
+        public void OnUpdateInMatch()
+        {
+            if (_isDead && IsRespawning)
+            {
+                if (Mathf.Approximately(TimeUntilRespawn, 0)) OnRespawn();
+                else TimeUntilRespawn = Mathf.Clamp(TimeUntilRespawn - Time.deltaTime, 0, TimeUntilRespawn);
             }
         }
 
@@ -329,8 +370,32 @@ namespace TimeStranded.Characters
         public void TakeDamage(float amount)
         {
             _healthAttribute.ChangeValue(-amount);
-            if (Mathf.Approximately(_healthAttribute.Value, 0)) _onCharacterDeath.Raise(this);
+
+            if (Mathf.Approximately(_healthAttribute.Value, 0))
+            {
+                // Remove any attribute modifiers.
+                for (int i = _attributes.Length - 1; i >= 0; i--)
+                {
+                    _attributes[i].RemoveAllModifiers();
+                }
+
+                // Mark the character as dead.
+                _isDead = true;
+                _onCharacterDeath.Raise(this);
+                gameObject.SetActive(false);
+            }
             else _onCharacterDamage.Raise(this);
+        }
+
+        /// <summary>
+        /// Called when respawning.
+        /// </summary>
+        protected void OnRespawn()
+        {
+            _isDead = false;
+            Respawn(this);
+            gameObject.SetActive(true);
+            _healthAttribute.Value = _healthAttribute.MaxValue;
         }
     }
 }

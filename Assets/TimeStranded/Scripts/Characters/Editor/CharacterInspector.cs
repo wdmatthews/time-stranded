@@ -20,6 +20,11 @@ namespace TimeStranded.Characters.Editor
         /// </summary>
         private string _colorName = "";
 
+        /// <summary>
+        /// The amount of health to heal or damage to take.
+        /// </summary>
+        private float _amount = 1;
+
         public override void OnInspectorGUI()
         {
             int targetCount = targets.Length;
@@ -34,7 +39,6 @@ namespace TimeStranded.Characters.Editor
 
             GUILayout.Label("Play Mode Testing");
             _faceName = EditorGUILayout.TextField("Face Name", _faceName);
-            _colorName = EditorGUILayout.TextField("Color Name", _colorName);
 
             if (GUILayout.Button("Set Face"))
             {
@@ -44,6 +48,8 @@ namespace TimeStranded.Characters.Editor
                 }
             }
 
+            _colorName = EditorGUILayout.TextField("Color Name", _colorName);
+
             if (GUILayout.Button("Set Color"))
             {
                 for (int i = 0; i < targetCount; i++)
@@ -51,6 +57,26 @@ namespace TimeStranded.Characters.Editor
                     characters[i].SetColor(_colorName);
                 }
             }
+
+            _amount = EditorGUILayout.FloatField("Health or Damage Amount", _amount);
+            GUILayout.BeginHorizontal();
+
+            if (GUILayout.Button("Heal"))
+            {
+                for (int i = 0; i < targetCount; i++)
+                {
+                    characters[i].Heal(_amount);
+                }
+            }
+            else if (GUILayout.Button("Take Damage"))
+            {
+                for (int i = 0; i < targetCount; i++)
+                {
+                    characters[i].TakeDamage(_amount);
+                }
+            }
+
+            GUILayout.EndHorizontal();
         }
     }
 }

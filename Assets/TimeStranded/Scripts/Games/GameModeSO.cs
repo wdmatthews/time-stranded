@@ -12,6 +12,18 @@ namespace TimeStranded.Games
     public class GameModeSO : ScriptableObject
     {
         /// <summary>
+        /// The maximum number of respawns per character.
+        /// </summary>
+        [Tooltip("The maximum number of respawns per character.")]
+        [SerializeField] protected int _maxRespawns = 1;
+
+        /// <summary>
+        /// The number of seconds it takes to respawn.
+        /// </summary>
+        [Tooltip("The number of seconds it takes to respawn.")]
+        [SerializeField] protected float _respawnTime = 1;
+
+        /// <summary>
         /// The list of all teams involved in a match.
         /// </summary>
         [Tooltip("The list of all teams involved in a match.")]
@@ -22,6 +34,12 @@ namespace TimeStranded.Games
         /// </summary>
         [Tooltip("The list of all characters involved in a match.")]
         [SerializeField] protected CharacterListReferenceSO _activeCharacters = null;
+
+        /// <summary>
+        /// The list of all alive characters involved in a match.
+        /// </summary>
+        [Tooltip("The list of all alive characters involved in a match.")]
+        [SerializeField] protected CharacterListReferenceSO _aliveCharacters = null;
 
         /// <summary>
         /// The list of player characters involved in a match.
@@ -36,21 +54,39 @@ namespace TimeStranded.Games
         [SerializeField] protected CharacterListReferenceSO _activeAI = null;
 
         /// <summary>
-        /// A dictionary of all teams in a match organized by name.
-        /// </summary>
-        [System.NonSerialized] public Dictionary<string, TeamSO> ActiveTeamsByName = new Dictionary<string, TeamSO>();
-
-        /// <summary>
         /// The event channel raised when a match is started.
         /// </summary>
         [Tooltip("The event channel raised when a match is started.")]
-        protected EventChannelSO _onMatchStart = null;
+        [SerializeField] protected EventChannelSO _onMatchStart = null;
 
         /// <summary>
         /// The event channel raised when a match is ended.
         /// </summary>
         [Tooltip("The event channel raised when a match is ended.")]
-        protected EventChannelSO _onMatchEnd = null;
+        [SerializeField] protected EventChannelSO _onMatchEnd = null;
+
+        /// <summary>
+        /// The event channel to raise when a character is healed.
+        /// </summary>
+        [Tooltip("The event channel to raise when a character is healed.")]
+        [SerializeField] protected CharacterEventChannelSO _onCharacterHeal = null;
+
+        /// <summary>
+        /// The event channel to raise when a character is damaged.
+        /// </summary>
+        [Tooltip("The event channel to raise when a character is damaged.")]
+        [SerializeField] protected CharacterEventChannelSO _onCharacterDamage = null;
+
+        /// <summary>
+        /// The event channel to raise when a character dies.
+        /// </summary>
+        [Tooltip("The event channel to raise when a character dies.")]
+        [SerializeField] protected CharacterEventChannelSO _onCharacterDeath = null;
+
+        /// <summary>
+        /// A dictionary of all teams in a match organized by name.
+        /// </summary>
+        [System.NonSerialized] public Dictionary<string, TeamSO> ActiveTeamsByName = new Dictionary<string, TeamSO>();
 
         /// <summary>
         /// Whether or not this game mode was started.
@@ -166,6 +202,11 @@ namespace TimeStranded.Games
         public void StartMatch(List<Character> players, List<Character> ai,
             List<TeamSO> teams = null, bool randomlyChooseTeams = true)
         {
+            // Subscribe to character events.
+            if (_onCharacterHeal) _onCharacterHeal.OnRaised += OnCharacterHeal;
+            if (_onCharacterDamage) _onCharacterDamage.OnRaised += OnCharacterDamage;
+            if (_onCharacterDeath) _onCharacterDeath.OnRaised += OnCharacterDeath;
+
             // Clear data.
             ClearMatch();
             // Update lists.
@@ -183,6 +224,16 @@ namespace TimeStranded.Games
                 team.Characters.Clear();
             }
 
+            // Reset character data as needed.
+            for (int i = _activeCharacters.Count - 1; i >= 0; i--)
+            {
+                Character character = _activeCharacters[i];
+                character.RespawnsLeft = _maxRespawns;
+                character.TimeUntilRespawn = _respawnTime;
+                character.IsRespawning = false;
+                character.Respawn = RespawnCharacter;
+            }
+
             // Choose teams and start the match.
             ChooseTeams(players, ai, teams, randomlyChooseTeams);
             OnStart();
@@ -198,7 +249,13 @@ namespace TimeStranded.Games
         /// <summary>
         /// Called every update tick.
         /// </summary>
-        public virtual void OnUpdate() { }
+        public virtual void OnUpdate()
+        {
+            for (int i = _activeCharacters.Count - 1; i >= 0; i--)
+            {
+                _activeCharacters[i].OnUpdateInMatch();
+            }
+        }
 
         /// <summary>
         /// Called when the match is ended.
@@ -212,7 +269,54 @@ namespace TimeStranded.Games
         {
             OnEnd();
             WasStarted = false;
+
+            // Unsubscribe from character events, as they are not needed after a match ends.
+            if (_onCharacterHeal) _onCharacterHeal.OnRaised -= OnCharacterHeal;
+            if (_onCharacterDamage) _onCharacterDamage.OnRaised -= OnCharacterDamage;
+            if (_onCharacterDeath) _onCharacterDeath.OnRaised -= OnCharacterDeath;
+
             _onMatchEnd?.Raise();
+        }
+
+        /// <summary>
+        /// Called when a character is healed.
+        /// </summary>
+        /// <param name="character">The character that was healed.</param>
+        protected virtual void OnCharacterHeal(Character character) { }
+
+        /// <summary>
+        /// Called when a character is damaged.
+        /// </summary>
+        /// <param name="character">The character that was damaged.</param>
+        protected virtual void OnCharacterDamage(Character character) { }
+
+        /// <summary>
+        /// Called when a character dies.
+        /// </summary>
+        /// <param name="character">The character that died.</param>
+        protected virtual void OnCharacterDeath(Character character)
+        {
+            // Remove the character from the alive list.
+            _aliveCharacters.Remove(character);
+
+            // Attempt to start respawning the character.
+            if (character.RespawnsLeft > 0)
+            {
+                character.RespawnsLeft--;
+                character.TimeUntilRespawn = _respawnTime;
+                character.IsRespawning = true;
+            }
+        }
+
+        /// <summary>
+        /// Respawns the given character.
+        /// </summary>
+        /// <param name="character"></param>
+        protected virtual void RespawnCharacter(Character character)
+        {
+            // Add the character to the alive list.
+            _aliveCharacters.Add(character);
+            character.IsRespawning = false;
         }
     }
 }

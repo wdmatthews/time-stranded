@@ -40,30 +40,30 @@ namespace TimeStranded.Games.Test
             // Start and end match with randomly picked teams.
             _gameMode.StartMatch(_players, _ai, _teams);
             Debug.Log("Random teams match started.");
-            _gameMode.EndMatch();
-            Debug.Log("Random teams match ended.");
+            //_gameMode.EndMatch();
+            //Debug.Log("Random teams match ended.");
 
             // Start and end match with pre-chosen teams.
-            for (int i = _players.Count - 1; i >= 0; i--)
-            {
-                _players[i].Team = _teams[i].name;
-            }
+            //for (int i = _players.Count - 1; i >= 0; i--)
+            //{
+            //    _players[i].Team = _teams[i].name;
+            //}
 
-            for (int i = _ai.Count - 1; i >= 0; i--)
-            {
-                _ai[i].Team = _teams[i].name;
-            }
+            //for (int i = _ai.Count - 1; i >= 0; i--)
+            //{
+            //    _ai[i].Team = _teams[i].name;
+            //}
 
-            _gameMode.StartMatch(_players, _ai, _teams, false);
-            Debug.Log("Selected teams match started.");
-            _gameMode.EndMatch();
-            Debug.Log("Selected teams match ended.");
+            //_gameMode.StartMatch(_players, _ai, _teams, false);
+            //Debug.Log("Selected teams match started.");
+            //_gameMode.EndMatch();
+            //Debug.Log("Selected teams match ended.");
 
             // Start and end match with no teams.
-            _gameMode.StartMatch(_players, _ai);
-            Debug.Log("Solo match started.");
-            _gameMode.EndMatch();
-            Debug.Log("Solo match ended.");
+            //_gameMode.StartMatch(_players, _ai);
+            //Debug.Log("Solo match started.");
+            //_gameMode.EndMatch();
+            //Debug.Log("Solo match ended.");
         }
     }
 }
