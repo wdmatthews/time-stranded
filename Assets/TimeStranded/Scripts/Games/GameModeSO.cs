@@ -12,12 +12,6 @@ namespace TimeStranded.Games
     public class GameModeSO : ScriptableObject
     {
         /// <summary>
-        /// A collection of teams.
-        /// </summary>
-        [Tooltip("A collection of teams.")]
-        [SerializeField] protected TeamSO[] _teams = { };
-
-        /// <summary>
         /// The list of all teams involved in a match.
         /// </summary>
         [Tooltip("The list of all teams involved in a match.")]
@@ -57,6 +51,11 @@ namespace TimeStranded.Games
         /// </summary>
         [Tooltip("The event channel raised when a match is ended.")]
         protected EventChannelSO _onMatchEnd = null;
+
+        /// <summary>
+        /// Whether or not this game mode was started.
+        /// </summary>
+        [System.NonSerialized] public bool WasStarted = false;
 
         /// <summary>
         /// Clears all match data.
@@ -170,14 +169,14 @@ namespace TimeStranded.Games
             // Clear data.
             ClearMatch();
             // Update lists.
-            if (teams != null) _activeTeams.AddRange(_teams);
+            if (teams != null) _activeTeams.AddRange(teams);
             _activeCharacters.AddRange(players);
             _activeCharacters.AddRange(ai);
             _activePlayers.AddRange(players);
             _activeAI.AddRange(ai);
 
             // Get teams by name.
-            for (int i = teams.Count - 1; i >= 0; i--)
+            for (int i = teams != null ? teams.Count - 1 : -1; i >= 0; i--)
             {
                 TeamSO team = teams[i];
                 ActiveTeamsByName.Add(team.name, team);
@@ -186,6 +185,8 @@ namespace TimeStranded.Games
 
             // Choose teams and start the match.
             ChooseTeams(players, ai, teams, randomlyChooseTeams);
+            OnStart();
+            WasStarted = true;
             _onMatchStart?.Raise();
         }
 
@@ -200,8 +201,18 @@ namespace TimeStranded.Games
         public virtual void OnUpdate() { }
 
         /// <summary>
+        /// Called when the match is ended.
+        /// </summary>
+        public virtual void OnEnd() { }
+
+        /// <summary>
         /// Ends the match.
         /// </summary>
-        public virtual void EndMatch() => _onMatchEnd?.Raise();
+        public void EndMatch()
+        {
+            OnEnd();
+            WasStarted = false;
+            _onMatchEnd?.Raise();
+        }
     }
 }

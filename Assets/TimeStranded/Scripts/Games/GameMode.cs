@@ -15,6 +15,9 @@ namespace TimeStranded.Games
         [Tooltip("The game mode data.")]
         [SerializeField] private GameModeSO _gameMode = null;
 
-        private void Update() => _gameMode.OnUpdate();
+        private void Update()
+        {
+            if (_gameMode.WasStarted) _gameMode.OnUpdate();
+        }
     }
 }
