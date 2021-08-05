@@ -117,6 +117,16 @@ namespace TimeStranded.Games
         [System.NonSerialized] protected float _matchTimer = 0;
 
         /// <summary>
+        /// The map used for the match.
+        /// </summary>
+        [System.NonSerialized] protected ArenaMap _map = null;
+
+        /// <summary>
+        /// The initial spawns used for a solo match.
+        /// </summary>
+        [System.NonSerialized] protected List<Transform> _initialSpawns = new List<Transform>();
+
+        /// <summary>
         /// Clears all match data.
         /// </summary>
         protected virtual void ClearMatch()
@@ -222,11 +232,15 @@ namespace TimeStranded.Games
         /// </summary>
         /// <param name="players">The list of players joining the match.</param>
         /// <param name="ai">The list of AI joining the match.</param>
+        /// <param name="ai">The map used for the match.</param>
         /// <param name="teams">The list of teams in the match. Null on solo game modes.</param>
         /// <param name="randomlyChooseTeams">Whether or not to randomly pick teams.</param>
-        public void StartMatch(List<Character> players, List<Character> ai,
+        public void StartMatch(List<Character> players, List<Character> ai, ArenaMap map,
             List<TeamSO> teams = null, bool randomlyChooseTeams = true)
         {
+            _map = map;
+            if (teams == null) _initialSpawns = new List<Transform>(_map.Spawns);
+
             // Subscribe to character events.
             if (_onCharacterHeal) _onCharacterHeal.OnRaised += OnCharacterHeal;
             if (_onCharacterDamage) _onCharacterDamage.OnRaised += OnCharacterDamage;
@@ -242,18 +256,21 @@ namespace TimeStranded.Games
             _aliveCharacters.AddRange(ai);
             _activePlayers.AddRange(players);
             _activeAI.AddRange(ai);
+            int characterCount = _activeCharacters.Count;
 
             // Get teams by name.
-            for (int i = teams != null ? teams.Count - 1 : -1; i >= 0; i--)
+            int teamCount = teams != null ? teams.Count : 0;
+            for (int i = 0; i < teamCount; i++)
             {
                 TeamSO team = teams[i];
                 ActiveTeamsByName.Add(team.name, team);
                 team.Characters.Clear();
                 team.Score = 0;
+                team.Spawns.Clear();
             }
 
             // Reset character data as needed.
-            for (int i = _activeCharacters.Count - 1; i >= 0; i--)
+            for (int i = 0; i < characterCount; i++)
             {
                 Character character = _activeCharacters[i];
                 character.RespawnsLeft = _maxRespawns;
@@ -265,6 +282,26 @@ namespace TimeStranded.Games
 
             // Choose teams and start the match.
             ChooseTeams(players, ai, teams, randomlyChooseTeams);
+
+            // Select team spawns.
+            int spawnIndex = 0;
+
+            for (int i = 0; i < teamCount; i++)
+            {
+                if (!_map) break;
+                TeamSO team = teams[i];
+                int teamSize = team.Characters.Count;
+                team.Spawns.AddRange(_map.Spawns.GetRange(spawnIndex, teamSize));
+                team.InitialSpawns = new List<Transform>(team.Spawns);
+                spawnIndex += teamSize;
+            }
+
+            // Spawn characters.
+            for (int i = 0; i < characterCount; i++)
+            {
+                SpawnCharacter(_activeCharacters[i]);
+            }
+
             _matchTimer = _matchDuration;
             OnStart();
             WasStarted = true;
@@ -355,13 +392,37 @@ namespace TimeStranded.Games
         /// <summary>
         /// Respawns the given character.
         /// </summary>
-        /// <param name="character"></param>
+        /// <param name="character">The character to respawn.</param>
         protected virtual void RespawnCharacter(Character character)
         {
             // Add the character to the alive list.
             _aliveCharacters.Add(character);
-            character.IsRespawning = false;
             _respawningCharacters.Remove(character);
+            character.IsRespawning = false;
+            SpawnCharacter(character);
+        }
+
+        /// <summary>
+        /// Spawns the given character.
+        /// </summary>
+        /// <param name="character">The character to spawn.</param>
+        protected virtual void SpawnCharacter(Character character)
+        {
+            // Set the character's position to random spawn point.
+            List<Transform> spawns = null;
+
+            if (character.Team.Length > 0)
+            {
+                TeamSO team = ActiveTeamsByName[character.Team];
+                spawns = WasStarted ? team.Spawns : team.InitialSpawns;
+            }
+            else spawns = WasStarted ? _map.Spawns : _initialSpawns;
+
+            int spawnIndex = Random.Range(0, spawns.Count);
+            Transform spawn = spawns[spawnIndex];
+            character.transform.position = spawn.transform.position;
+            character.Aim(spawn.right);
+            if (!WasStarted) spawns.RemoveAt(spawnIndex);
         }
     }
 }

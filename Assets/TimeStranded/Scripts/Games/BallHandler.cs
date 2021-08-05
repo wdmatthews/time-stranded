@@ -37,7 +37,19 @@ namespace TimeStranded.Games
         /// Tries to automatically pick up a ball when colliding with it.
         /// </summary>
         /// <param name="collider"></param>
-        private void OnTriggerEnter2D(Collider2D collider)
+        private void OnTriggerEnter2D(Collider2D collider) => TryPickingUpBall(collider);
+
+        /// <summary>
+        /// Tries to automatically pick up a ball when colliding with it.
+        /// </summary>
+        /// <param name="collider"></param>
+        private void OnTriggerStay2D(Collider2D collider) => TryPickingUpBall(collider);
+
+        /// <summary>
+        /// Tries to automatically pick up a ball when colliding with it.
+        /// </summary>
+        /// <param name="collider"></param>
+        private void TryPickingUpBall(Collider2D collider)
         {
             // If the object is a ball, try to pick it up.
             if (collider.gameObject.layer == _ballLayer)

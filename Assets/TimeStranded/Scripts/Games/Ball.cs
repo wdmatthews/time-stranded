@@ -135,8 +135,8 @@ namespace TimeStranded.Games
             {
                 Character characterScript = (Character)character;
                 // Do not damage the same team as the ball carrier.
-                if (characterScript.Team.Length == 0 || Character
-                    && characterScript.Team != ((Character)Character).Team)
+                if (characterScript.Team.Length == 0 && Character != character
+                    || Character && characterScript.Team != ((Character)Character).Team)
                 {
                     characterScript.TakeDamage(_ballData.DamageOnHit, this);
                 }

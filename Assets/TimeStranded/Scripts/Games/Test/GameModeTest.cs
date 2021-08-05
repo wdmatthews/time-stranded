@@ -38,7 +38,7 @@ namespace TimeStranded.Games.Test
         private void Start()
         {
             // Start and end match with randomly picked teams.
-            _gameMode.StartMatch(_players, _ai, _teams);
+            _gameMode.StartMatch(_players, _ai, null, _teams);
             Debug.Log("Random teams match started.");
             //_gameMode.EndMatch();
             //Debug.Log("Random teams match ended.");
@@ -54,13 +54,13 @@ namespace TimeStranded.Games.Test
             //    _ai[i].Team = _teams[i].name;
             //}
 
-            //_gameMode.StartMatch(_players, _ai, _teams, false);
+            //_gameMode.StartMatch(_players, _ai, null, _teams, false);
             //Debug.Log("Selected teams match started.");
             //_gameMode.EndMatch();
             //Debug.Log("Selected teams match ended.");
 
             // Start and end match with no teams.
-            //_gameMode.StartMatch(_players, _ai);
+            //_gameMode.StartMatch(_players, _ai, null);
             //Debug.Log("Solo match started.");
             //_gameMode.EndMatch();
             //Debug.Log("Solo match ended.");

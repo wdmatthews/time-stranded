@@ -21,5 +21,17 @@ namespace TimeStranded.Games
         /// Only used during a match.
         /// </summary>
         [System.NonSerialized] public int Score = 0;
+
+        /// <summary>
+        /// The list of spawns used for the team.
+        /// Only used during a match.
+        /// </summary>
+        [System.NonSerialized] public List<Transform> Spawns = new List<Transform>();
+
+        /// <summary>
+        /// The initial list of spawns used for the team.
+        /// Only used during a match.
+        /// </summary>
+        [System.NonSerialized] public List<Transform> InitialSpawns = new List<Transform>();
     }
 }

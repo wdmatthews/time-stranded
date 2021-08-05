@@ -18,6 +18,12 @@ namespace TimeStranded.Games.Test
         [SerializeField] private GameModeSO _gameMode = null;
 
         /// <summary>
+        /// The map to test.
+        /// </summary>
+        [Tooltip("The map to test.")]
+        [SerializeField] private ArenaMap _map = null;
+
+        /// <summary>
         /// The list of player characters.
         /// </summary>
         [Tooltip("The list of player characters.")]
@@ -38,7 +44,7 @@ namespace TimeStranded.Games.Test
         private void Start()
         {
             // Start and end match with randomly picked teams.
-            _gameMode.StartMatch(_players, _ai, _teams);
+            _gameMode.StartMatch(_players, _ai, _map, _teams);
         }
     }
 }

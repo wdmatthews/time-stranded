@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxRespawns: 1
   _respawnTime: 1
-  _matchDuration: 5
+  _matchDuration: 180
   _activeTeams: {fileID: 11400000, guid: 196bae845a29b461590d9b7d010e0049, type: 2}
   _activeCharacters: {fileID: 11400000, guid: cefe3b194d68f42ca96390486c4f7c9b, type: 2}
   _aliveCharacters: {fileID: 11400000, guid: f8b41cc49459e40bc816c43dcc31430f, type: 2}

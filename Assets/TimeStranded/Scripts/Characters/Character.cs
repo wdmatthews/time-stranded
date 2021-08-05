@@ -34,7 +34,7 @@ namespace TimeStranded.Characters
         /// The character's rigibody.
         /// </summary>
         [Tooltip("The character's rigibody.")]
-        public Rigidbody2D Rigidbody = null;
+        [SerializeField] protected Rigidbody2D _rigidbody = null;
 
         /// <summary>
         /// The character's face.
@@ -233,7 +233,7 @@ namespace TimeStranded.Characters
         {
             // If dead, disabled controls.
             if (_isDead) return;
-            Rigidbody.velocity = _speedAttribute.Value * direction;
+            _rigidbody.velocity = _speedAttribute.Value * direction;
         }
 
         /// <summary>
@@ -404,6 +404,7 @@ namespace TimeStranded.Characters
                 // Mark the character as dead.
                 _isDead = true;
                 DeathItem = item;
+                _rigidbody.velocity = new Vector2();
                 _onCharacterDeath.Raise(this);
                 gameObject.SetActive(false);
                 return true;

@@ -304,7 +304,7 @@ MonoBehaviour:
   Data: {fileID: 0}
   _faces: {fileID: 11400000, guid: 7d70f01c826b84ec2a79cd69c4b22839, type: 2}
   _colors: {fileID: 11400000, guid: 8f6e7528fe8c04c799ac433e146c490c, type: 2}
-  Rigidbody: {fileID: 7105794850188820071}
+  _rigidbody: {fileID: 7105794850188820071}
   _face: {fileID: 110283059352819415}
   _fill: {fileID: 110283059768837364}
   _itemHolder: {fileID: 6440654543015682073}
