@@ -472,7 +472,7 @@ GameObject:
   - component: {fileID: 6043734798282466895}
   - component: {fileID: 7196657350573132305}
   m_Layer: 0
-  m_Name: DamageDetector
+  m_Name: HitDetector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

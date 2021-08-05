@@ -56,7 +56,8 @@ namespace TimeStranded.Characters
                 {
                     // Get the item from the collider and apply its damage to the character.
                     Item item = collider.gameObject.GetComponent<Item>();
-                    if (!item.CanDealDamage || Mathf.Approximately(item.ItemData.DamageOnHit, 0))
+                    if (!item.CanDealDamage || Mathf.Approximately(item.ItemData.DamageOnHit, 0)) return;
+                    item.OnHit(_character);
                     _character.TakeDamage(item.ItemData.DamageOnHit);
                     break;
                 }

@@ -32,5 +32,11 @@ namespace TimeStranded.Games
         /// </summary>
         [Tooltip("The physics material to use for the ball.")]
         public PhysicsMaterial2D PhysicsMaterial = null;
+
+        /// <summary>
+        /// The maximum bounce angle offset when hitting a character.
+        /// </summary>
+        [Tooltip("The maximum bounce angle offset when hitting a character.")]
+        public float BounceAngle = 15;
     }
 }

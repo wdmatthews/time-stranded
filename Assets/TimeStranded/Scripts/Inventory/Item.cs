@@ -67,6 +67,12 @@ namespace TimeStranded.Inventory
         }
 
         /// <summary>
+        /// Called when the item hits a character.
+        /// </summary>
+        /// <param name="character">The character that was hit.</param>
+        public virtual void OnHit(MonoBehaviour character) { }
+
+        /// <summary>
         /// Returns this item to the pool.
         /// </summary>
         public void ReturnToPool() => Return?.Invoke(this);
