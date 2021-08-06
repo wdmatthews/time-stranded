@@ -136,6 +136,7 @@ namespace TimeStranded.Games
             }
 
             OnArenaLoadChannel.Raise();
+            _gameMode.StartMatch(_players, _ai, _map, _teams, _randomlyChooseTeams);
         }
 
         /// <summary>
@@ -153,10 +154,5 @@ namespace TimeStranded.Games
             _teams = null;
             _locationManager.OnLocationSceneLoadFinishChannel.OnRaised -= OnLoadFinish;
         }
-
-        /// <summary>
-        /// Starts the match.
-        /// </summary>
-        public void StartMatch() => _gameMode.StartMatch(_players, _ai, _map, _teams, _randomlyChooseTeams);
     }
 }
