@@ -5,11 +5,16 @@ GridBackground {
     --spacing: 10;
 }
 
+ToolbarButton {
+    border-width: 0;
+    -unity-text-align: middle-center;
+}
+
 #node-border {
     background-color: #212121;
 }
 
 .field-group {
     flex-direction: row;
-    padding: 0px;
+    padding: 0;
 }
