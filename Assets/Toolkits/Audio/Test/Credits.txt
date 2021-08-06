@@ -1,9 +1,0 @@
-Test music provided by Vasco Grossmann’s “Fantasy Music Lite”
-https://assetstore.unity.com/packages/audio/music/orchestral/fantasy-music-lite-72931
-desert_solo_loop.wav
-grassland_short_loop.wav
-
-Test sound effects provided by Little Robot Sound Factory’s “Fantasy Sfx”
-https://assetstore.unity.com/packages/audio/sound-fx/fantasy-sfx-32833
-Spell_01.wav
-Spell_02.wav
