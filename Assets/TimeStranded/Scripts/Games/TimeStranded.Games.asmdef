@@ -2,6 +2,7 @@
     "name": "TimeStranded.Games",
     "rootNamespace": "TimeStranded.Games",
     "references": [
+        "GUID:2cefc2cd207f04169b79cb1c6e7e06d0",
         "GUID:4b57311933ff242de8ad24577af179ea",
         "GUID:a9136d13df3284f6db50f5a3312e16f4",
         "GUID:eb3cd54e3acdb4430b8442d365cc7838",
