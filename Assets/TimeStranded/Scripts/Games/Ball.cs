@@ -45,6 +45,11 @@ namespace TimeStranded.Games
             if (_ballData) SetData(_ballData);
         }
 
+        private void Update()
+        {
+            if (Character && IsBeingHeld) _ballData.OnUpdate((Character)Character);
+        }
+
         private void LateUpdate()
         {
             // If the ball is moving, apply friction.
@@ -121,6 +126,7 @@ namespace TimeStranded.Games
             _rigidbody.velocity = new Vector2();
             _rigidbody.simulated = false;
             _isMoving = false;
+            if (character) _ballData.OnPickup((Character)character);
         }
 
         /// <summary>
@@ -131,6 +137,7 @@ namespace TimeStranded.Games
         {
             base.OnRelease(character);
             _rigidbody.simulated = true;
+            if (character) _ballData.OnRelease((Character)character);
         }
 
         /// <summary>

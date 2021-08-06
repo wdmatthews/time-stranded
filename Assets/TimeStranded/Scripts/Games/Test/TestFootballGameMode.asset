@@ -28,6 +28,6 @@ MonoBehaviour:
   _onCharacterDamage: {fileID: 11400000, guid: b90fd0285ae1e40ffbf89b314a72fda6, type: 2}
   _onCharacterDeath: {fileID: 11400000, guid: 75fe8119afae64da2925452547da9e01, type: 2}
   _goalsToWin: 2
-  _footballData: {fileID: 11400000, guid: dc21f5775bf9744499d4fcad3e300270, type: 2}
-  _dodgeballData: {fileID: 11400000, guid: 7b1dc3e640d984fdb98caeb9673ade7a, type: 2}
+  _footballData: {fileID: 11400000, guid: 98307f5ca91dc4cc9b64d8940d493f84, type: 2}
+  _dodgeballData: {fileID: 11400000, guid: 43e3dc264f60e4728adedec8650c7c7c, type: 2}
   _onFootballScoreChannel: {fileID: 0}

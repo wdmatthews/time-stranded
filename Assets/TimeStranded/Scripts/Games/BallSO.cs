@@ -1,4 +1,5 @@
 using UnityEngine;
+using TimeStranded.Characters;
 using TimeStranded.Inventory;
 
 namespace TimeStranded.Games
@@ -49,5 +50,23 @@ namespace TimeStranded.Games
         /// Release the ball when the character holding it dies.
         /// </summary>
         public override bool ReleaseOnCharacterDeath => true;
+
+        /// <summary>
+        /// Called when the ball is picked up.
+        /// </summary>
+        /// <param name="character">The character that picked the ball up.</param>
+        public virtual void OnPickup(Character character) { }
+
+        /// <summary>
+        /// Called when the ball is released.
+        /// </summary>
+        /// <param name="character">The character that released the ball.</param>
+        public virtual void OnRelease(Character character) { }
+
+        /// <summary>
+        /// Called on Update.
+        /// </summary>
+        /// <param name="character">The character holding the ball.</param>
+        public virtual void OnUpdate(Character character) { }
     }
 }
