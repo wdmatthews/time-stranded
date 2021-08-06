@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c9b039e6b721466d80c4000d202ff31, type: 3}
-  m_Name: TestDodgeballGameMode
+  m_Script: {fileID: 11500000, guid: be61fbd159f784be38edd5450b8b1024, type: 3}
+  m_Name: TestFootballGameMode
   m_EditorClassIdentifier: 
-  _maxRespawns: 1
+  _maxRespawns: 100
   _respawnTime: 1
   _matchDuration: 180
   _activeTeams: {fileID: 11400000, guid: 196bae845a29b461590d9b7d010e0049, type: 2}
@@ -27,4 +27,7 @@ MonoBehaviour:
   _onCharacterHeal: {fileID: 11400000, guid: c895fdf4f6b6d4f5b8c1ec4a0f894c9c, type: 2}
   _onCharacterDamage: {fileID: 11400000, guid: b90fd0285ae1e40ffbf89b314a72fda6, type: 2}
   _onCharacterDeath: {fileID: 11400000, guid: 75fe8119afae64da2925452547da9e01, type: 2}
+  _goalsToWin: 2
+  _footballData: {fileID: 11400000, guid: dc21f5775bf9744499d4fcad3e300270, type: 2}
   _dodgeballData: {fileID: 11400000, guid: 7b1dc3e640d984fdb98caeb9673ade7a, type: 2}
+  _onFootballScoreChannel: {fileID: 0}

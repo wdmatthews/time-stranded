@@ -414,6 +414,17 @@ namespace TimeStranded.Characters
         }
 
         /// <summary>
+        /// Spawns the character at the given point.
+        /// </summary>
+        /// <param name="spawnPoint">The character's spawn point.</param>
+        public void Spawn(Transform spawnPoint)
+        {
+            transform.position = spawnPoint.transform.position;
+            Aim(spawnPoint.right);
+            _rigidbody.velocity = new Vector2();
+        }
+
+        /// <summary>
         /// Called when respawning.
         /// </summary>
         protected void OnRespawn()

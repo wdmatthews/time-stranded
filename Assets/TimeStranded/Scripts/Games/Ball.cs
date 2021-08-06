@@ -76,6 +76,18 @@ namespace TimeStranded.Games
         }
 
         /// <summary>
+        /// Places the ball at the given position.
+        /// </summary>
+        /// <param name="position">The ball's new position.</param>
+        public void Place(Vector3 position)
+        {
+            // Stop the ball's movement.
+            SetVelocity(new Vector2());
+            // Move the ball.
+            transform.position = position;
+        }
+
+        /// <summary>
         /// Sets the ball's velocity in the given direction.
         /// </summary>
         /// <param name="direction">The direction for the ball to move in.</param>
@@ -143,9 +155,16 @@ namespace TimeStranded.Games
             }
 
             // Reverse the ball's movement with some random rotation.
-            Vector2 vectorToCharacter = transform.position - character.transform.position;
+            Bounce();
+        }
 
-            float newAngle = Mathf.Rad2Deg * Mathf.Atan2(vectorToCharacter.y, vectorToCharacter.x)
+        /// <summary>
+        /// Bounces the ball away from its current velocity.
+        /// </summary>
+        public void Bounce()
+        {
+            Vector2 velocity = _rigidbody.velocity;
+            float newAngle = Mathf.Rad2Deg * Mathf.Atan2(-velocity.y, -velocity.x)
                 + Random.Range(-_ballData.BounceAngle, _ballData.BounceAngle);
             float newAngleInRadians = Mathf.Deg2Rad * newAngle;
 

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using TimeStranded.Characters;
 
@@ -10,24 +11,44 @@ namespace TimeStranded.Games
     public class DodgeballGameModeSO : GameModeSO
     {
         /// <summary>
-        /// The ball to use.
+        /// The dodgeball to use.
         /// </summary>
-        [Tooltip("The ball to use.")]
-        [SerializeField] protected BallSO _ballData = null;
+        [Tooltip("The dodgeball to use.")]
+        [SerializeField] protected BallSO _dodgeballData = null;
+
+        /// <summary>
+        /// The dodgeballs.
+        /// </summary>
+        [System.NonSerialized] protected List<Ball> _dodgeballs = new List<Ball>();
 
         /// <summary>
         /// Spawn the balls.
         /// </summary>
         public override void OnStart()
         {
-            base.OnStart();
-
+            // Spawn the balls.
             for (int i = _map.ItemSpawns.Count - 1; i >= 0; i--)
             {
-                Ball ball = (Ball)_ballData.Pool.Request();
-                ball.SetData(_ballData);
-                ball.transform.position = _map.ItemSpawns[i].transform.position;
+                Ball dodgeball = (Ball)_dodgeballData.Pool.Request();
+                dodgeball.SetData(_dodgeballData);
+                dodgeball.Place(_map.ItemSpawns[i].transform.position);
+                _dodgeballs.Add(dodgeball);
             }
+        }
+
+        /// <summary>
+        /// Recycle the balls.
+        /// </summary>
+        public override void OnEnd()
+        {
+            for (int i = _dodgeballs.Count - 1; i >= 0; i--)
+            {
+                Ball dodgeball = _dodgeballs[i];
+                dodgeball.ReturnToPool();
+                dodgeball.gameObject.SetActive(false);
+            }
+
+            _dodgeballs.Clear();
         }
 
         /// <summary>

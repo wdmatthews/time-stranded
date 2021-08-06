@@ -267,6 +267,7 @@ namespace TimeStranded.Games
                 team.Characters.Clear();
                 team.Score = 0;
                 team.Spawns.Clear();
+                team.SpecialSpawns.Clear();
             }
 
             // Reset character data as needed.
@@ -406,7 +407,8 @@ namespace TimeStranded.Games
         /// Spawns the given character.
         /// </summary>
         /// <param name="character">The character to spawn.</param>
-        protected virtual void SpawnCharacter(Character character)
+        /// <param name="useInitialSpawns">Whether or not to use initial spawns after starting.</param>
+        protected virtual void SpawnCharacter(Character character, bool useInitialSpawns = false)
         {
             // Set the character's position to random spawn point.
             List<Transform> spawns = null;
@@ -414,15 +416,13 @@ namespace TimeStranded.Games
             if (character.Team.Length > 0)
             {
                 TeamSO team = ActiveTeamsByName[character.Team];
-                spawns = WasStarted ? team.Spawns : team.InitialSpawns;
+                spawns = !useInitialSpawns && WasStarted ? team.Spawns : team.InitialSpawns;
             }
-            else spawns = WasStarted ? _map.Spawns : _initialSpawns;
+            else spawns = !useInitialSpawns && WasStarted ? _map.Spawns : _initialSpawns;
 
             int spawnIndex = Random.Range(0, spawns.Count);
-            Transform spawn = spawns[spawnIndex];
-            character.transform.position = spawn.transform.position;
-            character.Aim(spawn.right);
-            if (!WasStarted) spawns.RemoveAt(spawnIndex);
+            character.Spawn(spawns[spawnIndex]);
+            if (!WasStarted || useInitialSpawns) spawns.RemoveAt(spawnIndex);
         }
     }
 }

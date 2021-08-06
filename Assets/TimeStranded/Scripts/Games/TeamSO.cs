@@ -33,5 +33,11 @@ namespace TimeStranded.Games
         /// Only used during a match.
         /// </summary>
         [System.NonSerialized] public List<Transform> InitialSpawns = new List<Transform>();
+
+        /// <summary>
+        /// The list of special spawns used for the team.
+        /// Only used during a match.
+        /// </summary>
+        [System.NonSerialized] public List<Transform> SpecialSpawns = new List<Transform>();
     }
 }

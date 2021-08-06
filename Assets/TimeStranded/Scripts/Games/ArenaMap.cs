@@ -21,5 +21,17 @@ namespace TimeStranded.Games
         /// </summary>
         [Tooltip("The spawns used for items spawning in, if needed.")]
         public List<Transform> ItemSpawns = new List<Transform>();
+
+        /// <summary>
+        /// The spawns used for special objects spawning in, if needed.
+        /// </summary>
+        [Tooltip("The spawns used for special objects spawning in, if needed.")]
+        public List<Transform> SpecialSpawns = new List<Transform>();
+
+        /// <summary>
+        /// The triggers used, if needed.
+        /// </summary>
+        [Tooltip("The triggers used, if needed.")]
+        public List<Trigger> Triggers = new List<Trigger>();
     }
 }
