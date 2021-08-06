@@ -429,6 +429,7 @@ namespace TimeStranded.Characters
             _isDead = true;
             DeathItem = item;
             _rigidbody.velocity = new Vector2();
+            _moveDirection = new Vector2();
             if (_activeItem && _activeItem.ItemData.ReleaseOnCharacterDeath) ReleaseItem();
             gameObject.SetActive(false);
         }
