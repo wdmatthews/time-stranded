@@ -85,6 +85,11 @@ namespace TimeStranded.Characters
         [SerializeField] protected CharacterEventChannelSO _onCharacterDeath = null;
 
         /// <summary>
+        /// The current move direction.
+        /// </summary>
+        protected Vector2 _moveDirection = new Vector2();
+
+        /// <summary>
         /// The current aim direction.
         /// </summary>
         protected Vector2 _aimDirection = new Vector2();
@@ -185,6 +190,11 @@ namespace TimeStranded.Characters
             }
         }
 
+        private void LateUpdate()
+        {
+            _rigidbody.velocity = _speedAttribute.Value * _moveDirection;
+        }
+
         /// <summary>
         /// Updates characters during a match.
         /// </summary>
@@ -233,7 +243,7 @@ namespace TimeStranded.Characters
         {
             // If dead, disabled controls.
             if (_isDead) return;
-            _rigidbody.velocity = _speedAttribute.Value * direction;
+            _moveDirection = direction;
         }
 
         /// <summary>
