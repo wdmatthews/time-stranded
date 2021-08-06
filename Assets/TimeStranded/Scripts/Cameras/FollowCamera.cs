@@ -63,37 +63,49 @@ namespace TimeStranded.Cameras
             for (int i = 0; i < targetCount; i++)
             {
                 Vector3 targetPosition = _targets[i].position;
-                // Calculate the min and max positions for zooming.
-                if (targetPosition.x < min.x) min.x = targetPosition.x;
-                if (targetPosition.x > max.x) max.x = targetPosition.x;
-                if (targetPosition.y < min.y) min.y = targetPosition.y;
-                if (targetPosition.y > max.y) max.y = targetPosition.y;
-
                 // Calculate the center position of the camera.
                 center += (Vector2)targetPosition;
+
+                // Calculate the min and max positions for zooming,
+                // but only if there are multiple targets.
+                if (targetCount > 1)
+                {
+                    if (targetPosition.x < min.x) min.x = targetPosition.x;
+                    if (targetPosition.x > max.x) max.x = targetPosition.x;
+                    if (targetPosition.y < min.y) min.y = targetPosition.y;
+                    if (targetPosition.y > max.y) max.y = targetPosition.y;
+                }
             }
 
             // Used for positioning and sizing the camera.
             center /= targetCount;
             Vector3 position = transform.position;
-            float aspectRatio = _camera.aspect;
-            float zoom = _camera.orthographicSize;
-            float neededWidth = max.x - min.x + 2 * _followPadding;
-            float neededHeight = max.y - min.y + 2 * _followPadding;
-            float suggestedWidth = Mathf.Clamp(neededWidth, _minZoom * aspectRatio, _maxZoom * aspectRatio);
-            float suggestedHeight = Mathf.Clamp(neededHeight, _minZoom, _maxZoom);
-
             transform.position = Vector3.Lerp(position, new Vector3(center.x, center.y, position.z), _followDamping);
+            float zoom = _camera.orthographicSize;
 
+            // If there is only one target, use the minimum zoom.
+            if (targetCount == 1)
+            {
+                _camera.orthographicSize = zoom + (_minZoom - zoom) * _zoomDamping;
+            }
             // Pick the width or height and use aspect ratio to calculate the other,
             // using the same formula as Vector3.Lerp for consistency.
-            if (suggestedWidth > suggestedHeight * aspectRatio)
-            {
-                _camera.orthographicSize = zoom + (suggestedWidth / aspectRatio - zoom) * _zoomDamping;
-            }
             else
             {
-                _camera.orthographicSize = zoom + (suggestedHeight - zoom) * _zoomDamping;
+                float aspectRatio = _camera.aspect;
+                float neededWidth = max.x - min.x + 2 * _followPadding;
+                float neededHeight = max.y - min.y + 2 * _followPadding;
+                float suggestedWidth = Mathf.Clamp(neededWidth, _minZoom * aspectRatio, _maxZoom * aspectRatio);
+                float suggestedHeight = Mathf.Clamp(neededHeight, _minZoom, _maxZoom);
+
+                if (suggestedWidth > suggestedHeight * aspectRatio)
+                {
+                    _camera.orthographicSize = zoom + (suggestedWidth / aspectRatio - zoom) * _zoomDamping;
+                }
+                else
+                {
+                    _camera.orthographicSize = zoom + (suggestedHeight - zoom) * _zoomDamping;
+                }
             }
         }
     }

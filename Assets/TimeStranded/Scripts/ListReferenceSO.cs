@@ -13,7 +13,7 @@ namespace TimeStranded
         /// <summary>
         /// The list being referenced.
         /// </summary>
-        protected List<T> _list = new List<T>();
+        [System.NonSerialized] protected List<T> _list = new List<T>();
 
         /// <summary>
         /// How many items are in the list.

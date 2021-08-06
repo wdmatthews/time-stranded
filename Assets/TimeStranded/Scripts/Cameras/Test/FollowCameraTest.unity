@@ -470,8 +470,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cameraTargets:
   - {fileID: 926156434}
-  - {fileID: 968531194}
-  - {fileID: 1639679447}
   _cameraTargetsReference: {fileID: 11400000, guid: 4d6c04753ddbd42a6a9940a603e48c41, type: 2}
 --- !u!1 &1639679446
 GameObject:
