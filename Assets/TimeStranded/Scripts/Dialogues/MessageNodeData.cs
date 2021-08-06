@@ -1,3 +1,4 @@
+using UnityEngine;
 using Toolkits.NodeEditor;
 using TimeStranded.Characters;
 
@@ -17,7 +18,12 @@ namespace TimeStranded.Dialogues
         /// <summary>
         /// The content of the message.
         /// </summary>
-        public string Content = "";
+        [TextArea] public string Content = "";
+
+        /// <summary>
+        /// The content after being formatted.
+        /// </summary>
+        [System.NonSerialized] public string FormattedContent = "";
 
         /// <summary>
         /// Whether or not this message node is the starting message.

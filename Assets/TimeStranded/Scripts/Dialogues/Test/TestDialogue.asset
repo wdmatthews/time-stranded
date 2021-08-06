@@ -34,11 +34,18 @@ MonoBehaviour:
     InputPortIndex: 0
     OutputNodeGuid: 1c1aee2d-8b0f-428e-ad59-54ea8a66e19a
     OutputPortIndex: 1
+  Variables:
+  - {fileID: 11400000, guid: b5bb548c989134a349a143c11ffeb446, type: 2}
   MessageNodes:
   - Guid: 402da553-8d86-4a2f-a3f3-b8175e7f0dc2
     Position: {x: 92, y: 167}
     Speaker: {fileID: 11400000, guid: 0967037ed869a42b9958d6ef344d7cea, type: 2}
-    Content: I am the player. What should I say?
+    Content: 'I am the player.
+
+      My name is {{PlayerName}}.
+
+      What should
+      I say?'
     IsStartMessage: 1
     NextId: 1c1aee2d-8b0f-428e-ad59-54ea8a66e19a
     NextIsMessage: 0

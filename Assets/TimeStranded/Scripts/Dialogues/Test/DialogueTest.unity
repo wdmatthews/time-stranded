@@ -168,6 +168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _dialogueManager: {fileID: 11400000, guid: 81ab56ccadd1b4631ae67361372132ab, type: 2}
   _dialogue: {fileID: 11400000, guid: 59b8b51567fed432eb73655e97b7e60b, type: 2}
+  _playerNameVariable: {fileID: 11400000, guid: b5bb548c989134a349a143c11ffeb446, type: 2}
   _onDialogueStartedChannel: {fileID: 11400000, guid: 07842ab2b48e94133999e27a330eb5e6, type: 2}
   _onDialogueNextMessageChannel: {fileID: 11400000, guid: 897ecebbf9ace4fb9af843a6624b6972, type: 2}
   _onDialogueNextChoiceChannel: {fileID: 11400000, guid: cf4de5708fe5e4aabaae4f780fcd8419, type: 2}

@@ -395,22 +395,32 @@ namespace TimeStranded.Characters
 
             if (Mathf.Approximately(_healthAttribute.Value, 0))
             {
-                // Remove any attribute modifiers.
-                for (int i = _attributes.Length - 1; i >= 0; i--)
-                {
-                    _attributes[i].RemoveAllModifiers();
-                }
-
-                // Mark the character as dead.
-                _isDead = true;
-                DeathItem = item;
-                _rigidbody.velocity = new Vector2();
+                OnDeath();
                 _onCharacterDeath.Raise(this);
-                gameObject.SetActive(false);
                 return true;
             }
             else _onCharacterDamage.Raise(this);
             return false;
+        }
+
+        /// <summary>
+        /// Called when the character dies.
+        /// </summary>
+        /// <param name="item">The item that killed the character, if any.</param>
+        protected void OnDeath(Item item = null)
+        {
+            // Remove any attribute modifiers.
+            for (int i = _attributes.Length - 1; i >= 0; i--)
+            {
+                _attributes[i].RemoveAllModifiers();
+            }
+
+            // Mark the character as dead and release its item if needed.
+            _isDead = true;
+            DeathItem = item;
+            _rigidbody.velocity = new Vector2();
+            if (_activeItem && _activeItem.ItemData.ReleaseOnCharacterDeath) ReleaseItem();
+            gameObject.SetActive(false);
         }
 
         /// <summary>

@@ -33,6 +33,11 @@ namespace TimeStranded.Inventory
         public virtual bool IsOneTimeUse => false;
 
         /// <summary>
+        /// Whether or not the item will be released when the character holding it dies.
+        /// </summary>
+        public virtual bool ReleaseOnCharacterDeath => false;
+
+        /// <summary>
         /// Requests an item of this type from the pool.
         /// </summary>
         /// <returns>An instance of the item.</returns>

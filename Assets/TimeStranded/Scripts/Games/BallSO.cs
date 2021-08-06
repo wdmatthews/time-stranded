@@ -44,5 +44,10 @@ namespace TimeStranded.Games
         /// </summary>
         [Tooltip("The damage taken when this ball collides with a character.")]
         public float DamageOnHit = 0;
+
+        /// <summary>
+        /// Release the ball when the character holding it dies.
+        /// </summary>
+        public override bool ReleaseOnCharacterDeath => true;
     }
 }

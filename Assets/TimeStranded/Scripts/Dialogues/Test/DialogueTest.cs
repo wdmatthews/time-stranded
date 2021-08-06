@@ -1,4 +1,5 @@
 using UnityEngine;
+using Toolkits.Variables;
 
 namespace TimeStranded.Dialogues.Test
 {
@@ -20,6 +21,12 @@ namespace TimeStranded.Dialogues.Test
         /// </summary>
         [Tooltip("The dialogue to test.")]
         [SerializeField] private DialogueSO _dialogue = null;
+
+        /// <summary>
+        /// The variable storing the player name.
+        /// </summary>
+        [Tooltip("The variable storing the player name.")]
+        [SerializeField] private StringVariableSO _playerNameVariable = null;
 
         /// <summary>
         /// The event channel to raise when a dialogue is started.
@@ -47,6 +54,9 @@ namespace TimeStranded.Dialogues.Test
 
         private void Start()
         {
+            // Set the player name.
+            _playerNameVariable.Value = "Bob";
+
             // Subscribe to the dialogue events.
             _onDialogueStartedChannel.OnRaised += OnStarted;
             _onDialogueNextMessageChannel.OnRaised += OnNextMessage;
@@ -69,7 +79,7 @@ namespace TimeStranded.Dialogues.Test
         /// <param name="message">The first message.</param>
         private void OnStarted(MessageNodeData message)
         {
-            Debug.Log($"Started dialogue with message: {message.Content}");
+            Debug.Log($"Started dialogue with message: {message.FormattedContent}");
         }
 
         /// <summary>
@@ -93,7 +103,7 @@ namespace TimeStranded.Dialogues.Test
             for (int i = 0; i < choiceCount; i++)
             {
                 // The content of each choice is found in the node that comes after it.
-                Debug.Log($"Choice {i + 1}: {_dialogue.GetMessageNode(choice.Choices[i]).Content}");
+                Debug.Log($"Choice {i + 1}: {_dialogue.GetMessageNode(choice.Choices[i]).FormattedContent}");
             }
         }
 
@@ -103,7 +113,7 @@ namespace TimeStranded.Dialogues.Test
         /// <param name="message">The last message.</param>
         private void OnFinished(MessageNodeData message)
         {
-            Debug.Log($"Finished dialogue with message: {message.Content}");
+            Debug.Log($"Finished dialogue with message: {message.FormattedContent}");
         }
     }
 }
