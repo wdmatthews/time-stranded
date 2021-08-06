@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Toolkits.Loading;
 
 namespace TimeStranded.Locations
@@ -95,6 +96,7 @@ namespace TimeStranded.Locations
         {
             SceneLoadTask sceneTask = (SceneLoadTask)task;
             if (sceneTask.Unload) return;
+            SceneManager.SetActiveScene(SceneManager.GetSceneByPath(CurrentLocation.ScenePath));
             OnLocationSceneLoadFinishChannel?.Raise(CurrentLocation, progress);
         }
     }

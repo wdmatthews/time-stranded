@@ -313,7 +313,7 @@ MonoBehaviour:
   _onCharacterHeal: {fileID: 11400000, guid: c895fdf4f6b6d4f5b8c1ec4a0f894c9c, type: 2}
   _onCharacterDamage: {fileID: 11400000, guid: b90fd0285ae1e40ffbf89b314a72fda6, type: 2}
   _onCharacterDeath: {fileID: 11400000, guid: 75fe8119afae64da2925452547da9e01, type: 2}
-  _cameraReference: {fileID: 0}
+  _cameraReference: {fileID: 11400000, guid: 82351ac9956b4421fa205f80d5f2143d, type: 2}
 --- !u!114 &3553136117995643388
 MonoBehaviour:
   m_ObjectHideFlags: 0

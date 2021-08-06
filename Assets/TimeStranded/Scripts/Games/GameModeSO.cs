@@ -232,7 +232,7 @@ namespace TimeStranded.Games
         /// </summary>
         /// <param name="players">The list of players joining the match.</param>
         /// <param name="ai">The list of AI joining the match.</param>
-        /// <param name="ai">The map used for the match.</param>
+        /// <param name="map">The map used for the match.</param>
         /// <param name="teams">The list of teams in the match. Null on solo game modes.</param>
         /// <param name="randomlyChooseTeams">Whether or not to randomly pick teams.</param>
         public void StartMatch(List<Character> players, List<Character> ai, ArenaMap map,

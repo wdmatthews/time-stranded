@@ -33,5 +33,17 @@ namespace TimeStranded.Characters
         /// </summary>
         [Tooltip("The character's inventory.")]
         public InventorySO Inventory = null;
+
+        /// <summary>
+        /// The character's prefab.
+        /// </summary>
+        [Tooltip("The character's prefab.")]
+        public Character Prefab = null;
+
+        /// <summary>
+        /// The character's prefab for arena use.
+        /// </summary>
+        [Tooltip("The character's prefab for arena use.")]
+        public Character ArenaPrefab = null;
     }
 }
