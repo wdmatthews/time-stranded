@@ -1,11 +1,11 @@
 using UnityEngine;
 
-namespace TimeStranded
+namespace TimeStranded.Cameras
 {
     /// <summary>
     /// Used to set the <see cref="Camera"/> of a <see cref="CameraReferenceSO"/>.
     /// </summary>
-    [AddComponentMenu("Time Stranded/Camera Reference")]
+    [AddComponentMenu("Time Stranded/Cameras/Camera Reference")]
     [DisallowMultipleComponent]
     [RequireComponent(typeof(Camera))]
     public class CameraReference : MonoBehaviour

@@ -1,11 +1,11 @@
 using UnityEngine;
 
-namespace TimeStranded
+namespace TimeStranded.Cameras
 {
     /// <summary>
     /// Stores a reference to a camera that will be set at runtime.
     /// </summary>
-    [CreateAssetMenu(fileName = "NewCameraReference", menuName = "Time Stranded/Camera Reference")]
+    [CreateAssetMenu(fileName = "NewCameraReference", menuName = "Time Stranded/Cameras/Camera Reference")]
     public class CameraReferenceSO : ScriptableObject
     {
         /// <summary>
