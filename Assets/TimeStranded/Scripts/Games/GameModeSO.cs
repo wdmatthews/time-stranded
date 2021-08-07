@@ -30,6 +30,12 @@ namespace TimeStranded.Games
         [SerializeField] protected float _matchDuration = 60;
 
         /// <summary>
+        /// The maps this game mode supports.
+        /// </summary>
+        [Tooltip("The maps this game mode supports.")]
+        [SerializeField] protected ArenaMap[] _maps = { };
+
+        /// <summary>
         /// The list of all teams involved in a match.
         /// </summary>
         [Tooltip("The list of all teams involved in a match.")]
