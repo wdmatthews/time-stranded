@@ -1,6 +1,6 @@
 using UnityEngine;
-using Toolkits.Loading;
 using TimeStranded.Locations;
+using TimeStranded.UI;
 
 namespace TimeStranded.Management
 {
@@ -17,6 +17,12 @@ namespace TimeStranded.Management
         [SerializeField] private LocationManagerSO _locationManager = null;
 
         /// <summary>
+        /// The theme manager.
+        /// </summary>
+        [Tooltip("The theme manager.")]
+        [SerializeField] private ThemeManagerSO _themeManager = null;
+
+        /// <summary>
         /// The main menu location.
         /// </summary>
         [Tooltip("The main menu location.")]
@@ -27,7 +33,7 @@ namespace TimeStranded.Management
         /// </summary>
         public void OnAwake()
         {
-
+            
         }
 
         /// <summary>
@@ -36,6 +42,8 @@ namespace TimeStranded.Management
         public void OnStart()
         {
             _locationManager.LoadLocation(_mainMenu);
+            // TODO Load theme name from save file.
+            _themeManager.ApplyTheme("Future");
         }
     }
 }

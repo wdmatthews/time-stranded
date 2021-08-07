@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: GameManager
   m_EditorClassIdentifier: 
   _locationManager: {fileID: 11400000, guid: 10749bf7748304842a29b8551bc3817b, type: 2}
+  _themeManager: {fileID: 11400000, guid: 3000672619c5e4874a0623af10241edf, type: 2}
   _mainMenu: {fileID: 11400000, guid: aed765aeafb514700872f5f31dba0e32, type: 2}

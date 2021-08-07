@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f58ba782cff8d4a8fa0e20db5813a79b, type: 3}
+  m_Name: ThemeManager
+  m_EditorClassIdentifier: 
+  _themes:
+  - {fileID: 11400000, guid: 69b9fa3ee87b54f7fafbc09e7b92d60f, type: 2}
+  - {fileID: 11400000, guid: 16217f55bf1604b6b97f865cb647c08b, type: 2}
+  _onThemeApplyChannel: {fileID: 11400000, guid: 25b972c0524694c2e99778da75b141c7, type: 2}
+  _onLocationSceneLoadFinishChannel: {fileID: 11400000, guid: 4f8712c706b0549119beb9e3215a9656, type: 2}

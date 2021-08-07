@@ -1,12 +1,12 @@
 {
-    "name": "TimeStranded.Management",
-    "rootNamespace": "TimeStranded.Management",
+    "name": "TimeStranded.UI.Editor",
+    "rootNamespace": "TimeStranded.UI.Editor",
     "references": [
-        "GUID:e2d75a4a4f3fb4591bdd709e74edca3d",
-        "GUID:ce53db49fdf604a21813b2be4731c844",
         "GUID:a10180ddcf8fa4635a01b38383ee0597"
     ],
-    "includePlatforms": [],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,

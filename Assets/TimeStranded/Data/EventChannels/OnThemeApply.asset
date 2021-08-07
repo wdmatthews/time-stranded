@@ -9,6 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbe3966b30474424187a53a1afcf2fa1, type: 3}
-  m_Name: OnSceneLoadFinish
+  m_Script: {fileID: 11500000, guid: dff07608cfe6442799fd928391343ed2, type: 3}
+  m_Name: OnThemeApply
   m_EditorClassIdentifier: 
