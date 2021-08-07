@@ -23,6 +23,12 @@ namespace TimeStranded.Management
         [SerializeField] private ThemeManagerSO _themeManager = null;
 
         /// <summary>
+        /// The event channel to raise when showing the screen transition.
+        /// </summary>
+        [Tooltip("The event channel to raise when showing the screen transition.")]
+        [SerializeField] private IntEventChannelSO _onScreenTransitionChannel = null;
+
+        /// <summary>
         /// The main menu location.
         /// </summary>
         [Tooltip("The main menu location.")]
@@ -42,6 +48,7 @@ namespace TimeStranded.Management
         public void OnStart()
         {
             _locationManager.LoadLocation(_mainMenu);
+            _onScreenTransitionChannel.Raise(1);
             // TODO Load theme name from save file.
             _themeManager.ApplyTheme("Future");
         }
