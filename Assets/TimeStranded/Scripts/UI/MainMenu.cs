@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Toolkits.Events;
 
 namespace TimeStranded.UI
@@ -13,8 +15,14 @@ namespace TimeStranded.UI
         /// <summary>
         /// The title screen.
         /// </summary>
-        [Tooltip("title")]
+        [Tooltip("The title screen.")]
         [SerializeField] private Transform _titleScreen = null;
+
+        /// <summary>
+        /// The other screens.
+        /// </summary>
+        [Tooltip("The other screens.")]
+        [SerializeField] private Transform[] _otherScreens = null;
 
         /// <summary>
         /// The event channel to raise when showing the screen transition.
@@ -27,6 +35,12 @@ namespace TimeStranded.UI
         /// </summary>
         [Tooltip("The event channel to raise when the screen transition finishes.")]
         [SerializeField] private EventChannelSO _onScreenTransitionFinishChannel = null;
+
+        /// <summary>
+        /// The radio button group for storyline options.
+        /// </summary>
+        [Tooltip("The radio button group for storyline options.")]
+        [SerializeField] private RadioButtonGroup _newGameStorylineOptionGroup = null;
 
         /// <summary>
         /// The main menu's current screen.
@@ -43,9 +57,25 @@ namespace TimeStranded.UI
         /// </summary>
         private int _transitionStage = 0;
 
+        /// <summary>
+        /// The name of the selected new game storyline.
+        /// </summary>
+        public string NewGameStorylineName { get; set; } = "Future";
+
         private void Awake()
         {
             _currentScreen = _titleScreen;
+            _titleScreen.gameObject.SetActive(true);
+
+            for (int i = _otherScreens.Length - 1; i >= 0; i--)
+            {
+                _otherScreens[i].gameObject.SetActive(false);
+            }
+        }
+
+        private void Start()
+        {
+            _newGameStorylineOptionGroup.Initialize(new List<string> { "Future", "Past" });
         }
 
         /// <summary>
