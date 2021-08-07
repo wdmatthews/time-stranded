@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RegularFont: {fileID: 11400000, guid: ab0f7695764634d288ccd14e8229fbe5, type: 2}
   BoldFont: {fileID: 11400000, guid: 2310357afe8bf44de94fc5f73fc0dddf, type: 2}
-  ButtonSprite: {fileID: 21300000, guid: c6ced84126ad7451c9acd947665f417e, type: 3}
+  ButtonSprite: {fileID: 21300000, guid: efd993991e7b14e78b0e5f8eef0d8b41, type: 3}
+  ButtonSpritePressed: {fileID: 21300000, guid: c6ced84126ad7451c9acd947665f417e, type: 3}
+  ButtonSpriteDisabled: {fileID: 21300000, guid: 74ccfa1d99a924f8db73b5285e54649c, type: 3}
   ButtonColor: {r: 0.95686275, g: 0.2627451, b: 0.21176471, a: 1}
   ButtonTextColor: {r: 1, g: 1, b: 1, a: 1}

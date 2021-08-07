@@ -28,6 +28,18 @@ namespace TimeStranded.UI
         public Sprite ButtonSprite = null;
 
         /// <summary>
+        /// The button sprite when pressed.
+        /// </summary>
+        [Tooltip("The button sprite when pressed.")]
+        public Sprite ButtonSpritePressed = null;
+
+        /// <summary>
+        /// The button sprite when disabled.
+        /// </summary>
+        [Tooltip("The button sprite when disabled.")]
+        public Sprite ButtonSpriteDisabled = null;
+
+        /// <summary>
         /// The button color.
         /// </summary>
         [Tooltip("The button color.")]

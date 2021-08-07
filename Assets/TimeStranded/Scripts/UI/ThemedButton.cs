@@ -12,6 +12,12 @@ namespace TimeStranded.UI
     public class ThemedButton : MonoBehaviour
     {
         /// <summary>
+        /// The button.
+        /// </summary>
+        [Tooltip("The button.")]
+        [SerializeField] private Button _button = null;
+
+        /// <summary>
         /// The button's image.
         /// </summary>
         [Tooltip("The button's image.")]
@@ -47,8 +53,16 @@ namespace TimeStranded.UI
         {
             _image.sprite = theme.ButtonSprite;
             _image.color = theme.ButtonColor;
+
             _label.color = theme.ButtonTextColor;
             _label.font = theme.BoldFont;
+
+            SpriteState buttonSpriteState = _button.spriteState;
+            buttonSpriteState.highlightedSprite = theme.ButtonSpritePressed;
+            buttonSpriteState.pressedSprite = theme.ButtonSpritePressed;
+            buttonSpriteState.selectedSprite = theme.ButtonSpritePressed;
+            buttonSpriteState.disabledSprite = theme.ButtonSpriteDisabled;
+            _button.spriteState = buttonSpriteState;
         }
     }
 }
