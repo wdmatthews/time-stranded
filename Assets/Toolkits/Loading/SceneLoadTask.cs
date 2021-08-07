@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -16,7 +17,7 @@ namespace Toolkits.Loading
         /// <summary>
         /// The list of scene names to load or unload.
         /// </summary>
-        private string[] _sceneNames = { };
+        private List<string> _sceneNames = null;
 
         /// <summary>
         /// Whether or not the scenes need to be unloaded.
@@ -44,11 +45,11 @@ namespace Toolkits.Loading
         /// </summary>
         /// <param name="sceneNames">The names of the scenes to load or unload.</param>
         /// <param name="unload">Whether or not the scenes need to be unloaded.</param>
-        public SceneLoadTask(string[] sceneNames, bool unload)
+        public SceneLoadTask(List<string> sceneNames, bool unload)
         {
             _sceneNames = sceneNames;
             Unload = unload;
-            _sceneCount = _sceneNames.Length;
+            _sceneCount = _sceneNames.Count;
         }
 
         /// <summary>

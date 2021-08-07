@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Toolkits.Loading;
@@ -45,11 +46,17 @@ namespace TimeStranded.Locations
         [System.NonSerialized] private bool _subscribedToEvents = false;
 
         /// <summary>
+        /// Stores a list of scene names to reduce garbage collection.
+        /// </summary>
+        [System.NonSerialized] private List<string> _sceneNames = new List<string>();
+
+        /// <summary>
         /// Loads a new location.
         /// </summary>
         /// <param name="location">The location to load.</param>
         public void LoadLocation(LocationSO location)
         {
+            // Subscribe to events if needed.
             if (!_subscribedToEvents)
             {
                 _subscribedToEvents = true;
@@ -58,9 +65,34 @@ namespace TimeStranded.Locations
                 if (_sceneLoadManager.OnLoadFinishChannel) _sceneLoadManager.OnLoadFinishChannel.OnRaised += OnLoadFinish;
             }
 
-            if (CurrentLocation) _sceneLoadManager.UnloadScenes(new string[] { CurrentLocation.ScenePath });
+            // Determine the scenes to unload.
+            if (CurrentLocation)
+            {
+                _sceneNames.Clear();
+
+                if (CurrentLocation.ScenePath.Length > 0) _sceneNames.Add(CurrentLocation.ScenePath);
+                if (CurrentLocation.UIScenePath.Length > 0
+                    && location.UIScenePath != CurrentLocation.UIScenePath)
+                {
+                    _sceneNames.Add(CurrentLocation.UIScenePath);
+                }
+
+                _sceneLoadManager.UnloadScenes(_sceneNames);
+            }
+
+            // Determine the scenes to load.
+            LocationSO previousLocation = CurrentLocation;
             CurrentLocation = location;
-            _sceneLoadManager.LoadScenes(new string[] { CurrentLocation.ScenePath });
+            _sceneNames.Clear();
+
+            if (CurrentLocation.ScenePath.Length > 0) _sceneNames.Add(CurrentLocation.ScenePath);
+            if (CurrentLocation.UIScenePath.Length > 0
+                && (!previousLocation || previousLocation.UIScenePath != CurrentLocation.UIScenePath))
+            {
+                _sceneNames.Add(CurrentLocation.UIScenePath);
+            }
+
+            _sceneLoadManager.LoadScenes(_sceneNames);
         }
 
         /// <summary>
@@ -96,7 +128,16 @@ namespace TimeStranded.Locations
         {
             SceneLoadTask sceneTask = (SceneLoadTask)task;
             if (sceneTask.Unload) return;
-            SceneManager.SetActiveScene(SceneManager.GetSceneByPath(CurrentLocation.ScenePath));
+
+            if (CurrentLocation.ScenePath.Length > 0)
+            {
+                SceneManager.SetActiveScene(SceneManager.GetSceneByPath(CurrentLocation.ScenePath));
+            }
+            else if (CurrentLocation.UIScenePath.Length > 0)
+            {
+                SceneManager.SetActiveScene(SceneManager.GetSceneByPath(CurrentLocation.UIScenePath));
+            }
+
             OnLocationSceneLoadFinishChannel?.Raise(CurrentLocation, progress);
         }
     }

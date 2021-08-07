@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: REVO HQ
   m_EditorClassIdentifier: 
   ScenePath: Assets/TimeStranded/Scenes/REVO HQ.unity
+  UIScenePath: Assets/TimeStranded/Scenes/WorldHUD.unity

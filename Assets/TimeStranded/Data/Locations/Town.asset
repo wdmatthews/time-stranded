@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Town
   m_EditorClassIdentifier: 
   ScenePath: Assets/TimeStranded/Scenes/Town.unity
+  UIScenePath: Assets/TimeStranded/Scenes/WorldHUD.unity

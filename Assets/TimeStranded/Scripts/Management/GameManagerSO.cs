@@ -11,16 +11,16 @@ namespace TimeStranded.Management
     public class GameManagerSO : ScriptableObject
     {
         /// <summary>
-        /// The scene manager.
-        /// </summary>
-        [Tooltip("The scene manager.")]
-        [SerializeField] private SceneLoadManagerSO _sceneManager = null;
-
-        /// <summary>
         /// The location manager.
         /// </summary>
         [Tooltip("The location manager.")]
         [SerializeField] private LocationManagerSO _locationManager = null;
+
+        /// <summary>
+        /// The main menu location.
+        /// </summary>
+        [Tooltip("The main menu location.")]
+        [SerializeField] private LocationSO _mainMenu = null;
 
         /// <summary>
         /// Called on Awake.
@@ -35,8 +35,7 @@ namespace TimeStranded.Management
         /// </summary>
         public void OnStart()
         {
-            // TODO Implement saving and loading instead of this temporary solution.
-            _sceneManager.LoadScenes(new string[] { "MainMenu" });
+            _locationManager.LoadLocation(_mainMenu);
         }
     }
 }

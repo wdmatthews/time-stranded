@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Arena
   m_EditorClassIdentifier: 
   ScenePath: Assets/TimeStranded/Scenes/Arena.unity
+  UIScenePath: Assets/TimeStranded/Scenes/ArenaHUD.unity

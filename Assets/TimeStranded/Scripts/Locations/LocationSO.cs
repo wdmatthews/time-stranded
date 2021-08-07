@@ -13,5 +13,11 @@ namespace TimeStranded.Locations
         /// </summary>
         [Tooltip("The path to the scene for the location.")]
         public string ScenePath = "";
+
+        /// <summary>
+        /// The path to the UI scene for the location.
+        /// </summary>
+        [Tooltip("The path to the UI scene for the location.")]
+        public string UIScenePath = "";
     }
 }

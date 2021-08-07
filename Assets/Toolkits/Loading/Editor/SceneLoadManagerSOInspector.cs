@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
@@ -27,7 +28,7 @@ namespace Toolkits.Loading.Editor
             GUILayout.Label("Play Mode Testing");
             _scene1 = EditorGUILayout.TextField("Scene 1", _scene1);
             _scene2 = EditorGUILayout.TextField("Scene 2", _scene2);
-            string[] sceneNames = new string[] { _scene1, _scene2 };
+            List<string> sceneNames = new List<string> { _scene1, _scene2 };
             GUILayout.BeginHorizontal();
 
             if (GUILayout.Button("Load"))

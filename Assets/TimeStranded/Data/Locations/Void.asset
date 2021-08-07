@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Void
   m_EditorClassIdentifier: 
   ScenePath: Assets/TimeStranded/Scenes/Void.unity
+  UIScenePath: Assets/TimeStranded/Scenes/WorldHUD.unity

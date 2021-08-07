@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Toolkits.Loading
@@ -12,12 +13,12 @@ namespace Toolkits.Loading
         /// Loads the given scenes.
         /// </summary>
         /// <param name="sceneNames">The names of the scenes to load.</param>
-        public void LoadScenes(string[] sceneNames) => Load(new SceneLoadTask(sceneNames, false));
+        public void LoadScenes(List<string> sceneNames) => Load(new SceneLoadTask(sceneNames, false));
 
         /// <summary>
         /// Unloads the given scenes.
         /// </summary>
         /// <param name="sceneNames">The names of the scenes to unload.</param>
-        public void UnloadScenes(string[] sceneNames) => Load(new SceneLoadTask(sceneNames, true));
+        public void UnloadScenes(List<string> sceneNames) => Load(new SceneLoadTask(sceneNames, true));
     }
 }
