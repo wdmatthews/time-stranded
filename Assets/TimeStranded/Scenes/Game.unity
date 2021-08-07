@@ -631,7 +631,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _background: {fileID: 502732384}
   _transitionDuration: 0.25
-  _onScreenTransitionChannel: {fileID: 11400000, guid: bbe3bdba473ae424e8468174762775f0, type: 2}
+  _onScreenTransitionShowChannel: {fileID: 11400000, guid: bbe3bdba473ae424e8468174762775f0, type: 2}
+  _onScreenTransitionHideChannel: {fileID: 11400000, guid: ebc7cca8786a841e1839b0ef17afc4c1, type: 2}
+  _onScreenTransitionFinishChannel: {fileID: 11400000, guid: 0c167d3db2a1a432ca4a49c5b64cc49b, type: 2}
 --- !u!1 &1562668485
 GameObject:
   m_ObjectHideFlags: 0

@@ -27,6 +27,6 @@ EditorBuildSettings:
     path: Assets/TimeStranded/Scenes/Void.unity
     guid: 874895ba58b0142eead2a7200a76fbf9
   - enabled: 1
-    path: Assets/TimeStranded/Scenes/REVO HQ.unity
+    path: Assets/TimeStranded/Scenes/REVOHQ.unity
     guid: 167a97614543840ffa892f0aa9bff02d
   m_configObjects: {}
