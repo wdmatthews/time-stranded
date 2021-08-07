@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd43b75e55dc44e65a5aba7007536b76, type: 3}
+  m_Name: NPC
+  m_EditorClassIdentifier: 
+  Face: {fileID: 11400000, guid: 3d4d0a1e878cd4268bb3217539cd651a, type: 2}
+  Color: {fileID: 11400000, guid: ea67ea88ffc22445fb5c9c00cb7349fa, type: 2}
+  Attributes:
+  - {fileID: 11400000, guid: 70a2e4eb0278f4bf3a8ac09c65a3698f, type: 2}
+  - {fileID: 11400000, guid: fdb1e6f5dccb642a88220b68f23a9287, type: 2}
+  Inventory: {fileID: 0}
+  Prefab: {fileID: 7766638504734428689, guid: 727f44f9a75024b34b496b2304b752ae, type: 3}
+  ArenaPrefab: {fileID: 2110976357242841976, guid: 067ffd9ecd72f4cf48bb6159e252b276, type: 3}
