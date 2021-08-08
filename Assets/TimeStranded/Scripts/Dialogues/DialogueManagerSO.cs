@@ -65,6 +65,7 @@ namespace TimeStranded.Dialogues
             _currentGuid = _currentDialogue.StartMessageNodeGuid;
             // Raise the start event with the first message.
             _currentMessage = _currentDialogue.GetMessageNode(_currentGuid);
+            _currentMessage.Event?.Invoke();
             _onDialogueStartedChannel?.Raise(_currentMessage);
         }
 
@@ -82,14 +83,7 @@ namespace TimeStranded.Dialogues
                 _currentGuid = _currentMessage.NextId;
 
                 // Get the next message.
-                if (_currentMessage.NextIsMessage)
-                {
-                    _currentMessage = _currentDialogue.GetMessageNode(_currentGuid);
-
-                    // Finish if this message is the last one.
-                    if (_currentMessage.NextId.Length == 0) _onDialogueFinishedChannel?.Raise(_currentMessage);
-                    else _onDialogueNextMessageChannel?.Raise(_currentMessage);
-                }
+                if (_currentMessage.NextIsMessage) GetCurrentMessage();
                 // Get the next choice.
                 else
                 {
@@ -104,12 +98,23 @@ namespace TimeStranded.Dialogues
                 // Get the next message.
                 _currentGuid = _currentChoice.Choices[choiceIndex];
                 _currentChoice = null;
-                _currentMessage = _currentDialogue.GetMessageNode(_currentGuid);
-
-                // Finish if this message is the last one.
-                if (_currentMessage.NextId.Length == 0) _onDialogueFinishedChannel?.Raise(_currentMessage);
-                else _onDialogueNextMessageChannel?.Raise(_currentMessage);
+                GetCurrentMessage();
             }
+        }
+
+        /// <summary>
+        /// Gets the current message.
+        /// </summary>
+        private void GetCurrentMessage()
+        {
+            // Get the message.
+            _currentMessage = _currentDialogue.GetMessageNode(_currentGuid);
+            // Trigger its event if it has one.
+            _currentMessage.Event?.Invoke();
+
+            // Finish if this message is the last one.
+            if (_currentMessage.NextId.Length == 0) _onDialogueFinishedChannel?.Raise(_currentMessage);
+            else _onDialogueNextMessageChannel?.Raise(_currentMessage);
         }
     }
 }

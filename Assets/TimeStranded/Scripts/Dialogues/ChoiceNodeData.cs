@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 using Toolkits.NodeEditor;
 
 namespace TimeStranded.Dialogues
@@ -12,6 +13,7 @@ namespace TimeStranded.Dialogues
         /// <summary>
         /// The list of message ids to pick from.
         /// </summary>
+        [Tooltip("The list of message ids to pick from.")]
         public List<string> Choices = new List<string>();
 
         /// <summary>
