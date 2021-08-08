@@ -20,6 +20,7 @@ namespace TimeStranded.Management
         {
             // TODO Pass in a TransformReferenceSO to spawn in the player at instead.
             _player.transform.position = _townCenter.Transform.position;
+            _player.Aim(_townCenter.Transform.eulerAngles);
         }
     }
 }

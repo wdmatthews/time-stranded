@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _character: {fileID: 6793004486096856972}
+  _ballLayerName: Ball
 --- !u!1001 &6900170269374305070
 PrefabInstance:
   m_ObjectHideFlags: 0
