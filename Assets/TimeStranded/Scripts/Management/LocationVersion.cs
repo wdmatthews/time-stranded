@@ -28,8 +28,9 @@ namespace TimeStranded.Management
         private void Awake()
         {
             // Spawn the player.
-            _player = Instantiate(_playerData.Prefab);
+            _player = Instantiate(_playerData.Prefab, transform);
             _player.Initialize(_playerData);
+            _player.transform.parent = null;
             _cameraFollowTargets.Add(_player.transform);
         }
     }

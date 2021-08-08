@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7159667191676904146}
   - component: {fileID: 7159667191676904147}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 7159667192032400004}
   - component: {fileID: 7159667192032400005}
   - component: {fileID: 7159667192032400003}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: StaticCharacter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,7 +156,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7159667192713198656}
   - component: {fileID: 7159667192713198657}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Outline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -239,7 +239,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7159667193169293567}
   - component: {fileID: 7159667193169293552}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Face
   m_TagString: Untagged
   m_Icon: {fileID: 0}

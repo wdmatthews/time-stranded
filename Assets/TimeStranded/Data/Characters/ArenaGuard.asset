@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd43b75e55dc44e65a5aba7007536b76, type: 3}
+  m_Name: ArenaGuard
+  m_EditorClassIdentifier: 
+  Face: {fileID: 11400000, guid: 3d4d0a1e878cd4268bb3217539cd651a, type: 2}
+  Color: {fileID: 11400000, guid: a82d4b0d0a76f4ee09f0205db875582b, type: 2}
+  FaceName: {fileID: 0}
+  ColorName: {fileID: 0}
+  Attributes: []
+  Inventory: {fileID: 0}
+  Prefab: {fileID: 0}
+  ArenaPrefab: {fileID: 0}
+  StaticPrefab: {fileID: 5454321583291705703, guid: d1d320ea4806f43ff862af8a2e8c7add, type: 3}

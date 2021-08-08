@@ -314,6 +314,7 @@ MonoBehaviour:
   _onCharacterDamage: {fileID: 11400000, guid: b90fd0285ae1e40ffbf89b314a72fda6, type: 2}
   _onCharacterDeath: {fileID: 11400000, guid: 75fe8119afae64da2925452547da9e01, type: 2}
   _cameraReference: {fileID: 11400000, guid: 82351ac9956b4421fa205f80d5f2143d, type: 2}
+  _onInteractableInRangeChannel: {fileID: 11400000, guid: 60148504b937e410ab13675c78e9a4ea, type: 2}
 --- !u!114 &3553136117995643388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -404,7 +405,19 @@ MonoBehaviour:
     m_ActionId: 3cb9b888-bd6d-4eaf-8666-fbc4b26529d0
     m_ActionName: Gameplay/Select[/Keyboard/1,/Keyboard/3,/Keyboard/4,/Keyboard/2]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 110283060480865442}
+        m_TargetAssemblyTypeName: TimeStranded.Characters.Player, TimeStranded.Characters
+        m_MethodName: OnInteract
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 993f9f86-7de9-40eb-975c-2d18ca011739
     m_ActionName: Gameplay/Interact[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0

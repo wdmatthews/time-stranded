@@ -72,9 +72,54 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 9123963188312424328}
+  - {fileID: 8204894761888156580}
   m_Father: {fileID: 7719317588908738443}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7548842883129654251
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8204894761888156580}
+  - component: {fileID: 1198323057162260291}
+  m_Layer: 0
+  m_Name: ArenaGuard
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8204894761888156580
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7548842883129654251}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.5, y: 8.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 531606468753881246}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1198323057162260291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7548842883129654251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7612a2b75485d43a4ae2c20659aa7051, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _transformReference: {fileID: 11400000, guid: 54f7fe5c3436a43a6aecadd508d20431, type: 2}
 --- !u!1 &7719317587655451125
 GameObject:
   m_ObjectHideFlags: 0
@@ -3124,6 +3169,8 @@ MonoBehaviour:
   _playerData: {fileID: 11400000, guid: b832d5718ec20486097acb7c29aaeb94, type: 2}
   _cameraFollowTargets: {fileID: 11400000, guid: 1041e5a10da99480bb5b7f428b5e078f, type: 2}
   _townCenter: {fileID: 11400000, guid: 5fd86b2e0129f4137bf4f6890d10c104, type: 2}
+  _arenaGuardSpawn: {fileID: 11400000, guid: 54f7fe5c3436a43a6aecadd508d20431, type: 2}
+  _arenaGuardData: {fileID: 11400000, guid: 5743af7bde9a54c758b82f4a4c673bcb, type: 2}
 --- !u!156049354 &7719317588908738436
 Grid:
   m_ObjectHideFlags: 0

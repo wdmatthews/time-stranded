@@ -58,5 +58,11 @@ namespace TimeStranded.Characters
         /// </summary>
         [Tooltip("The character's prefab for arena use.")]
         public Character ArenaPrefab = null;
+
+        /// <summary>
+        /// The character's static prefab.
+        /// </summary>
+        [Tooltip("The character's static prefab.")]
+        public StaticCharacter StaticPrefab = null;
     }
 }
