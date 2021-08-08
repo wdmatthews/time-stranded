@@ -1873,18 +1873,18 @@ PrefabInstance:
     - target: {fileID: 1258144092066520186, guid: a20623ffac1da49bf8bfa222845cb155, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1727788831}
+      objectReference: {fileID: 11400000, guid: b9b9b0dcf642048d6bc0549a72021202, type: 2}
     - target: {fileID: 1258144092066520186, guid: a20623ffac1da49bf8bfa222845cb155, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1258144092066520186, guid: a20623ffac1da49bf8bfa222845cb155, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
+      value: Raise
       objectReference: {fileID: 0}
     - target: {fileID: 1258144092066520186, guid: a20623ffac1da49bf8bfa222845cb155, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: TimeStranded.UI.MainMenu, TimeStranded.UI
+      value: Toolkits.Events.EventChannelSO, Toolkits.Events
       objectReference: {fileID: 0}
     - target: {fileID: 1258144092066520186, guid: a20623ffac1da49bf8bfa222845cb155, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
@@ -1892,7 +1892,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1258144092066520186, guid: a20623ffac1da49bf8bfa222845cb155, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Transform, UnityEngine
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1258144092066520187, guid: a20623ffac1da49bf8bfa222845cb155, type: 3}
       propertyPath: m_Pivot.x
@@ -2676,11 +2676,8 @@ MonoBehaviour:
   _newGameStartButton: {fileID: 1466269040}
   _characterFaces: {fileID: 11400000, guid: 7d70f01c826b84ec2a79cd69c4b22839, type: 2}
   _characterColors: {fileID: 11400000, guid: 8f6e7528fe8c04c799ac433e146c490c, type: 2}
-  _storyline: {fileID: 11400000, guid: 1ba9f3e80064f4608bedd465c4ba6ba2, type: 2}
   _townName: {fileID: 11400000, guid: b25c16f9d05244702a673ff65d398ada, type: 2}
   _playerName: {fileID: 11400000, guid: 2babe6550364e4effb8450a2203c5bac, type: 2}
-  _playerFace: {fileID: 11400000, guid: 1751b679387534c6c861c1cb8a7558f2, type: 2}
-  _playerColor: {fileID: 11400000, guid: 38f9de736ba514ee09635b6ee900d1b6, type: 2}
 --- !u!1001 &1867234711
 PrefabInstance:
   m_ObjectHideFlags: 0

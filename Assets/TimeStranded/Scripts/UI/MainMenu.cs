@@ -87,11 +87,6 @@ namespace TimeStranded.UI
         [SerializeField] private CharacterColorsSO _characterColors = null;
 
         /// <summary>
-        /// The selected new game's storyline.
-        /// </summary>
-        [SerializeField] private StringVariableSO _storyline = null;
-
-        /// <summary>
         /// The name of the new game's town.
         /// </summary>
         [SerializeField] private StringVariableSO _townName = null;
@@ -100,16 +95,6 @@ namespace TimeStranded.UI
         /// The name of the new game's player.
         /// </summary>
         [SerializeField] private StringVariableSO _playerName = null;
-
-        /// <summary>
-        /// The selected new game's player's face.
-        /// </summary>
-        [SerializeField] private StringVariableSO _playerFace = null;
-
-        /// <summary>
-        /// The selected new game's player's color.
-        /// </summary>
-        [SerializeField] private StringVariableSO _playerColor = null;
 
         /// <summary>
         /// The main menu's current screen.
@@ -205,6 +190,7 @@ namespace TimeStranded.UI
         /// </summary>
         public void NewGameValidateNames()
         {
+            // A StringVariableSO's default value is null.
             string townName = _townName.Value ?? "";
             string playerName = _playerName.Value ?? "";
             _newGameStartButton.interactable = townName.Length > 0 && playerName.Length > 0;

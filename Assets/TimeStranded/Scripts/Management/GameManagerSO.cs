@@ -1,4 +1,5 @@
 using UnityEngine;
+using Toolkits.Events;
 using TimeStranded.Locations;
 using TimeStranded.UI;
 
@@ -35,11 +36,23 @@ namespace TimeStranded.Management
         [SerializeField] private LocationSO _mainMenu = null;
 
         /// <summary>
+        /// The event channel to raise when starting a new game.
+        /// </summary>
+        [Tooltip("The event channel to raise when starting a new game.")]
+        [SerializeField] private EventChannelSO _onNewGameStart = null;
+
+        /// <summary>
+        /// The town location.
+        /// </summary>
+        [Tooltip("The town location.")]
+        [SerializeField] private LocationSO _town = null;
+
+        /// <summary>
         /// Called on Awake.
         /// </summary>
         public void OnAwake()
         {
-            
+            _onNewGameStart.OnRaised += OnNewGameStart;
         }
 
         /// <summary>
@@ -49,8 +62,16 @@ namespace TimeStranded.Management
         {
             _locationManager.LoadLocation(_mainMenu);
             _onScreenTransitionShowChannel.Raise(1);
-            // TODO Load theme name from save file.
+            // TODO Load theme name from save file if there is one.
             _themeManager.ApplyTheme("Future");
+        }
+
+        /// <summary>
+        /// Starts a new game.
+        /// </summary>
+        private void OnNewGameStart()
+        {
+            _locationManager.LoadLocation(_town);
         }
     }
 }

@@ -51,7 +51,7 @@ namespace TimeStranded.UI
         /// <param name="theme">The theme to apply.</param>
         public void ApplyTheme(ThemeSO theme)
         {
-            _image.sprite = _button.interactable ? theme.ButtonSprite : theme.ButtonSpriteDisabled;
+            _image.sprite = theme.ButtonSprite;
             _image.color = theme.ButtonColor;
 
             _label.font = theme.BoldFont;
