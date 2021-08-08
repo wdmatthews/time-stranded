@@ -1,4 +1,5 @@
 using UnityEngine;
+using Toolkits.Variables;
 using TimeStranded.Attributes;
 using TimeStranded.Inventory;
 
@@ -21,6 +22,18 @@ namespace TimeStranded.Characters
         /// </summary>
         [Tooltip("The character's default color.")]
         public CharacterColorSO Color = null;
+
+        /// <summary>
+        /// The name of the character's default face.
+        /// </summary>
+        [Tooltip("The name of the character's default face.")]
+        public StringVariableSO FaceName = null;
+
+        /// <summary>
+        /// The name of the character's default color.
+        /// </summary>
+        [Tooltip("The name of the character's default color.")]
+        public StringVariableSO ColorName = null;
 
         /// <summary>
         /// A collection of the character's attributes.

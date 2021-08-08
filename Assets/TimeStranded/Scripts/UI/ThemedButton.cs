@@ -54,7 +54,6 @@ namespace TimeStranded.UI
             _image.sprite = _button.interactable ? theme.ButtonSprite : theme.ButtonSpriteDisabled;
             _image.color = theme.ButtonColor;
 
-            _label.color = theme.ButtonTextColor;
             _label.font = theme.BoldFont;
 
             SpriteState buttonSpriteState = _button.spriteState;

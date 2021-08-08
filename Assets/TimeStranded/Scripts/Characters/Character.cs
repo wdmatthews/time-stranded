@@ -215,8 +215,10 @@ namespace TimeStranded.Characters
         {
             Data = data;
             // Initialize the character's face and color.
-            SetFace(Data.Face);
-            SetColor(Data.Color);
+            if (Data.Face) SetFace(Data.Face);
+            else if (Data.FaceName) SetFace(Data.FaceName.Value);
+            if (Data.Color) SetColor(Data.Color);
+            else if (Data.ColorName) SetColor(Data.ColorName.Value);
             // Initialize the character's attributes.
             int attributeCount = Data.Attributes.Length;
             _attributes = new AttributeSO[attributeCount];

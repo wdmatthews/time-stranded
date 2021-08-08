@@ -44,11 +44,5 @@ namespace TimeStranded.UI
         /// </summary>
         [Tooltip("The button color.")]
         public Color ButtonColor = new Color(1, 1, 1);
-
-        /// <summary>
-        /// The button text color.
-        /// </summary>
-        [Tooltip("The button text color.")]
-        public Color ButtonTextColor = new Color(1, 1, 1);
     }
 }

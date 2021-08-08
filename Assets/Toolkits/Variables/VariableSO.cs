@@ -11,6 +11,6 @@ namespace Toolkits.Variables
         /// <summary>
 		/// The variable's value.
 		/// </summary>
-        [System.NonSerialized] public T Value = default;
+        public T Value { get; set; } = default;
     }
 }

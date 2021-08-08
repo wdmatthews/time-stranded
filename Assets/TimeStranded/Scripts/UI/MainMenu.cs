@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Toolkits.Events;
+using Toolkits.Variables;
+using TimeStranded.Characters;
 
 namespace TimeStranded.UI
 {
@@ -43,6 +45,73 @@ namespace TimeStranded.UI
         [SerializeField] private RadioButtonGroup _newGameStorylineOptionGroup = null;
 
         /// <summary>
+        /// The radio button group for player face options.
+        /// </summary>
+        [Tooltip("The radio button group for player face options.")]
+        [SerializeField] private RadioButtonGroup _newGamePlayerFaceOptionGroup = null;
+
+        /// <summary>
+        /// The radio button group for player color options.
+        /// </summary>
+        [Tooltip("The radio button group for player color options.")]
+        [SerializeField] private RadioButtonGroup _newGamePlayerColorOptionGroup = null;
+
+        /// <summary>
+        /// The player new game fill image.
+        /// </summary>
+        [Tooltip("The player new game fill image.")]
+        [SerializeField] private Image _newGamePlayerFillImage = null;
+
+        /// <summary>
+        /// The player new game face image.
+        /// </summary>
+        [Tooltip("The player new game face image.")]
+        [SerializeField] private Image _newGamePlayerFaceImage = null;
+
+        /// <summary>
+        /// The button that starts a new game.
+        /// </summary>
+        [Tooltip("The button that starts a new game.")]
+        [SerializeField] private Button _newGameStartButton = null;
+
+        /// <summary>
+        /// A list of character faces.
+        /// </summary>
+        [Tooltip("A list of character faces.")]
+        [SerializeField] private CharacterFacesSO _characterFaces = null;
+
+        /// <summary>
+        /// A list of character colors.
+        /// </summary>
+        [Tooltip("A list of character colors.")]
+        [SerializeField] private CharacterColorsSO _characterColors = null;
+
+        /// <summary>
+        /// The selected new game's storyline.
+        /// </summary>
+        [SerializeField] private StringVariableSO _storyline = null;
+
+        /// <summary>
+        /// The name of the new game's town.
+        /// </summary>
+        [SerializeField] private StringVariableSO _townName = null;
+
+        /// <summary>
+        /// The name of the new game's player.
+        /// </summary>
+        [SerializeField] private StringVariableSO _playerName = null;
+
+        /// <summary>
+        /// The selected new game's player's face.
+        /// </summary>
+        [SerializeField] private StringVariableSO _playerFace = null;
+
+        /// <summary>
+        /// The selected new game's player's color.
+        /// </summary>
+        [SerializeField] private StringVariableSO _playerColor = null;
+
+        /// <summary>
         /// The main menu's current screen.
         /// </summary>
         private Transform _currentScreen = null;
@@ -56,11 +125,6 @@ namespace TimeStranded.UI
         /// The current transition stage.
         /// </summary>
         private int _transitionStage = 0;
-
-        /// <summary>
-        /// The name of the selected new game storyline.
-        /// </summary>
-        public string NewGameStorylineName { get; set; } = "Future";
 
         private void Awake()
         {
@@ -76,6 +140,30 @@ namespace TimeStranded.UI
         private void Start()
         {
             _newGameStorylineOptionGroup.Initialize(new List<string> { "Future", "Past" });
+            List<string> faceNames = new List<string>();
+            List<Sprite> faceSprites = new List<Sprite>();
+            int faceCount = _characterFaces.Collection.Length;
+
+            for (int i = 0; i < faceCount; i++)
+            {
+                CharacterFaceSO face = _characterFaces.Collection[i];
+                faceNames.Add(face.name);
+                faceSprites.Add(face.Sprite);
+            }
+
+            _newGamePlayerFaceOptionGroup.Initialize(faceNames, faceSprites);
+            List<string> colorNames = new List<string>();
+            List<Color> colors = new List<Color>();
+            int colorCount = _characterColors.Collection.Length;
+
+            for (int i = 0; i < colorCount; i++)
+            {
+                CharacterColorSO color = _characterColors.Collection[i];
+                colorNames.Add(color.name);
+                colors.Add(color.Color);
+            }
+
+            _newGamePlayerColorOptionGroup.Initialize(colorNames, null, colors);
         }
 
         /// <summary>
@@ -110,6 +198,34 @@ namespace TimeStranded.UI
                 _onScreenTransitionFinishChannel.OnRaised += OnTransitionFinish;
                 _onScreenTransitionShowChannel.Raise(1);
             }
+        }
+
+        /// <summary>
+        /// Validates the player and town name for a new game.
+        /// </summary>
+        public void NewGameValidateNames()
+        {
+            string townName = _townName.Value ?? "";
+            string playerName = _playerName.Value ?? "";
+            _newGameStartButton.interactable = townName.Length > 0 && playerName.Length > 0;
+        }
+
+        /// <summary>
+        /// Sets the face of the new game player.
+        /// </summary>
+        /// <param name="name">The face's name.</param>
+        public void NewGameSetFace(string name)
+        {
+            _newGamePlayerFaceImage.sprite = _characterFaces[name].Sprite;
+        }
+
+        /// <summary>
+        /// Sets the color of the new game player.
+        /// </summary>
+        /// <param name="name">The color's name.</param>
+        public void NewGameSetColor(string name)
+        {
+            _newGamePlayerFillImage.color = _characterColors[name].Color;
         }
     }
 }

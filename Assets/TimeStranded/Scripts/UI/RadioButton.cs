@@ -68,14 +68,18 @@ namespace TimeStranded.UI
         /// <param name="stringValue">The button's value.</param>
         /// <param name="startSelected">Whether or not this is the first radio button in the group.</param>
         /// <param name="icon">The button's icon, if any.</param>
-        public void Initialize(RadioButtonGroup group, string stringValue, bool startSelected, Sprite icon = null)
+        /// <param name="color">The button's icon color, if any.</param>
+        public void Initialize(RadioButtonGroup group, string stringValue, bool startSelected,
+            Color color, Sprite icon = null)
         {
             _group = group;
             _value = stringValue;
             _toggle.group = _group.ToggleGroup;
             _toggle.isOn = startSelected;
+            _toggle.interactable = !startSelected;
             if (_label) _label.text = _value;
-            if (_image) _image.sprite = icon;
+            if (_image) _image.color = color;
+            if (_image && icon) _image.sprite = icon;
         }
 
         /// <summary>
@@ -95,6 +99,7 @@ namespace TimeStranded.UI
         public void OnValueChanged(bool isSelected)
         {
             if (isSelected) _group.Value = _value;
+            _toggle.interactable = !isSelected;
         }
     }
 }

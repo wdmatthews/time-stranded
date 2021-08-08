@@ -53,7 +53,8 @@ namespace TimeStranded.UI
         /// </summary>
         /// <param name="values">The group's values.</param>
         /// <param name="icons">The icons for each button if needed.</param>
-        public void Initialize(List<string> values, List<Sprite> icons = null)
+        /// <param name="colors">The colors for each button if needed.</param>
+        public void Initialize(List<string> values, List<Sprite> icons = null, List<Color> colors = null)
         {
             int valueCount = values.Count;
             _value = values[0];
@@ -61,7 +62,7 @@ namespace TimeStranded.UI
             for (int i = 0; i < valueCount; i++)
             {
                 RadioButton button = Instantiate(_buttonPrefab, transform);
-                button.Initialize(this, values[i], i == 0, icons?[i]);
+                button.Initialize(this, values[i], i == 0, colors != null ? colors[i] : new Color(1, 1, 1), icons?[i]);
             }
         }
     }
