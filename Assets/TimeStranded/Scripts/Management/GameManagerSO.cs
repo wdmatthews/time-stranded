@@ -36,6 +36,12 @@ namespace TimeStranded.Management
         [SerializeField] private EventChannelSO _onNewGameStart = null;
 
         /// <summary>
+        /// The camera follow targets.
+        /// </summary>
+        [Tooltip("The camera follow targets.")]
+        [SerializeField] private TransformListReferenceSO _cameraFollowTargets = null;
+
+        /// <summary>
         /// The town location.
         /// </summary>
         [Tooltip("The town location.")]
@@ -47,6 +53,7 @@ namespace TimeStranded.Management
         public void OnAwake()
         {
             _onNewGameStart.OnRaised += OnNewGameStart;
+            _locationManager.OnLocationSceneLoadStartChannel.OnRaised += OnLocationLoadStart;
         }
 
         /// <summary>
@@ -65,6 +72,17 @@ namespace TimeStranded.Management
         private void OnNewGameStart()
         {
             _locationManager.LoadLocation(_town);
+        }
+
+        /// <summary>
+        /// Called when a location is loaded.
+        /// </summary>
+        /// <param name="location">The location that was loaded.</param>
+        /// <param name="progress">The load progress.</param>
+        private void OnLocationLoadStart(LocationSO location, float progress)
+        {
+            // Clear the camera targets.
+            _cameraFollowTargets.Clear();
         }
     }
 }

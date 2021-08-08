@@ -571,6 +571,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 519420032}
+  - component: {fileID: 519420034}
   - component: {fileID: 519420033}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
@@ -693,6 +694,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _camera: {fileID: 519420031}
   _cameraReference: {fileID: 11400000, guid: 82351ac9956b4421fa205f80d5f2143d, type: 2}
+--- !u!114 &519420034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94334d42874a34d64af2a0420a5446d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _camera: {fileID: 519420031}
+  _targets: {fileID: 11400000, guid: 1041e5a10da99480bb5b7f428b5e078f, type: 2}
+  _minZoom: 4
+  _maxZoom: 5
+  _followPadding: 0
+  _followDamping: 1
+  _zoomDamping: 1
 --- !u!1 &546234841
 GameObject:
   m_ObjectHideFlags: 0

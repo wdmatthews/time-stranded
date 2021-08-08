@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd43b75e55dc44e65a5aba7007536b76, type: 3}
   m_Name: Player
   m_EditorClassIdentifier: 
-  Face: {fileID: 11400000, guid: 54adae1c5d1134d748838a9c95ff1f52, type: 2}
-  Color: {fileID: 11400000, guid: 76cb0831cfed2431ebf296218172b6cf, type: 2}
+  Face: {fileID: 0}
+  Color: {fileID: 0}
+  FaceName: {fileID: 11400000, guid: 1751b679387534c6c861c1cb8a7558f2, type: 2}
+  ColorName: {fileID: 11400000, guid: 38f9de736ba514ee09635b6ee900d1b6, type: 2}
   Attributes:
   - {fileID: 11400000, guid: 70a2e4eb0278f4bf3a8ac09c65a3698f, type: 2}
   - {fileID: 11400000, guid: fdb1e6f5dccb642a88220b68f23a9287, type: 2}

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _locationManager: {fileID: 11400000, guid: 10749bf7748304842a29b8551bc3817b, type: 2}
   _themeManager: {fileID: 11400000, guid: 3000672619c5e4874a0623af10241edf, type: 2}
-  _onScreenTransitionShowChannel: {fileID: 11400000, guid: bbe3bdba473ae424e8468174762775f0, type: 2}
   _mainMenu: {fileID: 11400000, guid: aed765aeafb514700872f5f31dba0e32, type: 2}
   _onNewGameStart: {fileID: 11400000, guid: b9b9b0dcf642048d6bc0549a72021202, type: 2}
+  _cameraFollowTargets: {fileID: 11400000, guid: 1041e5a10da99480bb5b7f428b5e078f, type: 2}
   _town: {fileID: 11400000, guid: bfd0686d888ab4a60b99eb463ce70c82, type: 2}
