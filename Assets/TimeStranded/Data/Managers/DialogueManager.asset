@@ -16,3 +16,5 @@ MonoBehaviour:
   _onDialogueNextMessageChannel: {fileID: 11400000, guid: 897ecebbf9ace4fb9af843a6624b6972, type: 2}
   _onDialogueNextChoiceChannel: {fileID: 11400000, guid: cf4de5708fe5e4aabaae4f780fcd8419, type: 2}
   _onDialogueFinishedChannel: {fileID: 11400000, guid: e7c2fe7bc5c0344298428aa41f676543, type: 2}
+  _onDialogueContinueMessage: {fileID: 11400000, guid: 25b9f933e35ec4de1834ea985dfc0100, type: 2}
+  _onDialogueContinueChoice: {fileID: 11400000, guid: e5f75aef505d64d789ecb210038984cd, type: 2}

@@ -315,6 +315,8 @@ MonoBehaviour:
   _onCharacterDeath: {fileID: 11400000, guid: 75fe8119afae64da2925452547da9e01, type: 2}
   _cameraReference: {fileID: 11400000, guid: 82351ac9956b4421fa205f80d5f2143d, type: 2}
   _onInteractableInRangeChannel: {fileID: 11400000, guid: 60148504b937e410ab13675c78e9a4ea, type: 2}
+  _onDialogueContinueMessage: {fileID: 11400000, guid: 25b9f933e35ec4de1834ea985dfc0100, type: 2}
+  _onDialogueContinueChoice: {fileID: 11400000, guid: e5f75aef505d64d789ecb210038984cd, type: 2}
 --- !u!114 &3553136117995643388
 MonoBehaviour:
   m_ObjectHideFlags: 0

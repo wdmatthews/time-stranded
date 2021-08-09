@@ -12,9 +12,97 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf18bbbf981134d62a094d24d955d607, type: 3}
   m_Name: ArenaIntroduction
   m_EditorClassIdentifier: 
-  Nodes: []
-  Connections: []
-  Variables: []
-  MessageNodes: []
-  ChoiceNodes: []
-  StartMessageNodeGuid: 
+  Nodes:
+  - Guid: 01bc27a2-de39-4b85-b7f3-fcf0d84df800
+    Position: {x: 201, y: 167}
+  - Guid: 30ac38d7-6021-4d15-ab4f-4aa73b328ec6
+    Position: {x: 436, y: 167}
+  - Guid: 9d253635-da2e-4663-ae27-8bc9f6573e6b
+    Position: {x: 683, y: 167}
+  - Guid: 0814f6a1-c980-4124-9487-a7c791f012b8
+    Position: {x: 938, y: 167}
+  - Guid: 194d8861-dd56-4cfc-89d1-6c2c2a6569f6
+    Position: {x: 1180, y: 167}
+  - Guid: b8e1536d-cff4-49ac-ba17-80fd65abf573
+    Position: {x: 1180, y: 359}
+  Connections:
+  - InputNodeGuid: 30ac38d7-6021-4d15-ab4f-4aa73b328ec6
+    InputPortIndex: 0
+    OutputNodeGuid: 01bc27a2-de39-4b85-b7f3-fcf0d84df800
+    OutputPortIndex: 0
+  - InputNodeGuid: 9d253635-da2e-4663-ae27-8bc9f6573e6b
+    InputPortIndex: 0
+    OutputNodeGuid: 30ac38d7-6021-4d15-ab4f-4aa73b328ec6
+    OutputPortIndex: 0
+  - InputNodeGuid: 0814f6a1-c980-4124-9487-a7c791f012b8
+    InputPortIndex: 0
+    OutputNodeGuid: 9d253635-da2e-4663-ae27-8bc9f6573e6b
+    OutputPortIndex: 0
+  - InputNodeGuid: b8e1536d-cff4-49ac-ba17-80fd65abf573
+    InputPortIndex: 0
+    OutputNodeGuid: 0814f6a1-c980-4124-9487-a7c791f012b8
+    OutputPortIndex: 1
+  - InputNodeGuid: 194d8861-dd56-4cfc-89d1-6c2c2a6569f6
+    InputPortIndex: 0
+    OutputNodeGuid: 0814f6a1-c980-4124-9487-a7c791f012b8
+    OutputPortIndex: 0
+  Variables:
+  - {fileID: 11400000, guid: 2babe6550364e4effb8450a2203c5bac, type: 2}
+  MessageNodes:
+  - Guid: 01bc27a2-de39-4b85-b7f3-fcf0d84df800
+    Position: {x: 201, y: 167}
+    Speaker: {fileID: 11400000, guid: 5743af7bde9a54c758b82f4a4c673bcb, type: 2}
+    Content: Hello, {{PlayerName}}.
+    IsStartMessage: 1
+    NextId: 30ac38d7-6021-4d15-ab4f-4aa73b328ec6
+    NextIsMessage: 1
+    Event:
+      m_PersistentCalls:
+        m_Calls: []
+  - Guid: 30ac38d7-6021-4d15-ab4f-4aa73b328ec6
+    Position: {x: 436, y: 167}
+    Speaker: {fileID: 11400000, guid: 5743af7bde9a54c758b82f4a4c673bcb, type: 2}
+    Content: I guard the entrance to the arena.
+    IsStartMessage: 0
+    NextId: 9d253635-da2e-4663-ae27-8bc9f6573e6b
+    NextIsMessage: 1
+    Event:
+      m_PersistentCalls:
+        m_Calls: []
+  - Guid: 9d253635-da2e-4663-ae27-8bc9f6573e6b
+    Position: {x: 683, y: 167}
+    Speaker: {fileID: 11400000, guid: 5743af7bde9a54c758b82f4a4c673bcb, type: 2}
+    Content: Would you like to enter?
+    IsStartMessage: 0
+    NextId: 0814f6a1-c980-4124-9487-a7c791f012b8
+    NextIsMessage: 0
+    Event:
+      m_PersistentCalls:
+        m_Calls: []
+  - Guid: 194d8861-dd56-4cfc-89d1-6c2c2a6569f6
+    Position: {x: 1180, y: 167}
+    Speaker: {fileID: 11400000, guid: b832d5718ec20486097acb7c29aaeb94, type: 2}
+    Content: Yes, thank you!
+    IsStartMessage: 0
+    NextId: 
+    NextIsMessage: 1
+    Event:
+      m_PersistentCalls:
+        m_Calls: []
+  - Guid: b8e1536d-cff4-49ac-ba17-80fd65abf573
+    Position: {x: 1180, y: 359}
+    Speaker: {fileID: 11400000, guid: b832d5718ec20486097acb7c29aaeb94, type: 2}
+    Content: No, thanks.
+    IsStartMessage: 0
+    NextId: 
+    NextIsMessage: 1
+    Event:
+      m_PersistentCalls:
+        m_Calls: []
+  ChoiceNodes:
+  - Guid: 0814f6a1-c980-4124-9487-a7c791f012b8
+    Position: {x: 938, y: 167}
+    Choices:
+    - 194d8861-dd56-4cfc-89d1-6c2c2a6569f6
+    - b8e1536d-cff4-49ac-ba17-80fd65abf573
+  StartMessageNodeGuid: 01bc27a2-de39-4b85-b7f3-fcf0d84df800

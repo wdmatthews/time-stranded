@@ -3168,6 +3168,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerData: {fileID: 11400000, guid: b832d5718ec20486097acb7c29aaeb94, type: 2}
   _cameraFollowTargets: {fileID: 11400000, guid: 1041e5a10da99480bb5b7f428b5e078f, type: 2}
+  _onDialogueStartedChannel: {fileID: 11400000, guid: 07842ab2b48e94133999e27a330eb5e6, type: 2}
+  _onDialogueNextMessageChannel: {fileID: 11400000, guid: 897ecebbf9ace4fb9af843a6624b6972, type: 2}
+  _onDialogueNextChoiceChannel: {fileID: 11400000, guid: cf4de5708fe5e4aabaae4f780fcd8419, type: 2}
+  _onDialogueFinishedChannel: {fileID: 11400000, guid: e7c2fe7bc5c0344298428aa41f676543, type: 2}
   _townCenter: {fileID: 11400000, guid: 5fd86b2e0129f4137bf4f6890d10c104, type: 2}
   _arenaGuardSpawn: {fileID: 11400000, guid: 54f7fe5c3436a43a6aecadd508d20431, type: 2}
   _arenaGuardData: {fileID: 11400000, guid: 5743af7bde9a54c758b82f4a4c673bcb, type: 2}

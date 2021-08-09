@@ -1,4 +1,5 @@
 using UnityEngine;
+using Toolkits.Events;
 
 namespace TimeStranded.Dialogues
 {
@@ -33,9 +34,21 @@ namespace TimeStranded.Dialogues
         [SerializeField] private MessageEventChannelSO _onDialogueFinishedChannel = null;
 
         /// <summary>
+        /// The event channel to raise when an dialogue is continued from a message.
+        /// </summary>
+        [Tooltip("The event channel to raise when an dialogue is continued from a message.")]
+        [SerializeField] private EventChannelSO _onDialogueContinueMessage = null;
+
+        /// <summary>
+        /// The event channel to raise when an dialogue is continued from a choice.
+        /// </summary>
+        [Tooltip("The event channel to raise when an dialogue is continued from a choice.")]
+        [SerializeField] private IntEventChannelSO _onDialogueContinueChoice = null;
+
+        /// <summary>
         /// The current dialogue.
         /// </summary>
-        [System.NonSerialized] private DialogueSO _currentDialogue = null;
+        [System.NonSerialized] public DialogueSO CurrentDialogue = null;
 
         /// <summary>
         /// The current message or choice guid.
@@ -53,6 +66,11 @@ namespace TimeStranded.Dialogues
         [System.NonSerialized] private ChoiceNodeData _currentChoice = null;
 
         /// <summary>
+        /// Whether or not the dialogue reached the end.
+        /// </summary>
+        [System.NonSerialized] public bool IsFinished = false;
+
+        /// <summary>
         /// Starts the given dialogue.
         /// </summary>
         /// <param name="dialogue">The dialogue to start.</param>
@@ -60,22 +78,31 @@ namespace TimeStranded.Dialogues
         {
             // Exit if there is no start message.
             if (dialogue.StartMessageNodeGuid.Length == 0) return;
-            _currentDialogue = dialogue;
+            CurrentDialogue = dialogue;
             // Start from the first message.
-            _currentGuid = _currentDialogue.StartMessageNodeGuid;
+            _currentGuid = CurrentDialogue.StartMessageNodeGuid;
             // Raise the start event with the first message.
-            _currentMessage = _currentDialogue.GetMessageNode(_currentGuid);
+            _currentMessage = CurrentDialogue.GetMessageNode(_currentGuid);
             _currentMessage.Event?.Invoke();
             _onDialogueStartedChannel?.Raise(_currentMessage);
+            // Subscribe to the needed events.
+            _onDialogueContinueMessage.OnRaised += ContinueDialogue;
+            _onDialogueContinueChoice.OnRaised += ContinueDialogue;
         }
 
         /// <summary>
         /// Continues the current dialogue.
         /// </summary>
         /// <param name="choiceIndex">The index of the selected choice, or -1 if the current node is a message node.</param>
-        public void ContinueDialogue(int choiceIndex = -1)
+        public void ContinueDialogue(int choiceIndex)
         {
-            if (!_currentDialogue) return;
+            if (!CurrentDialogue) return;
+            // Finish the dialogue if needed.
+            if (IsFinished)
+            {
+                FinishDialogue();
+                return;
+            }
 
             // Move on from the current message to either a message or a choice.
             if (choiceIndex < 0)
@@ -88,13 +115,14 @@ namespace TimeStranded.Dialogues
                 else
                 {
                     _currentMessage = null;
-                    _currentChoice = _currentDialogue.GetChoiceNode(_currentGuid);
+                    _currentChoice = CurrentDialogue.GetChoiceNode(_currentGuid);
                     _onDialogueNextChoiceChannel?.Raise(_currentChoice);
                 }
             }
             // Move on from the current choice.
             else
             {
+                if (choiceIndex >= _currentChoice.Choices.Count) return;
                 // Get the next message.
                 _currentGuid = _currentChoice.Choices[choiceIndex];
                 _currentChoice = null;
@@ -103,18 +131,35 @@ namespace TimeStranded.Dialogues
         }
 
         /// <summary>
+        /// Continues the current dialogue.
+        /// </summary>
+        public void ContinueDialogue() => ContinueDialogue(-1);
+
+        /// <summary>
         /// Gets the current message.
         /// </summary>
         private void GetCurrentMessage()
         {
             // Get the message.
-            _currentMessage = _currentDialogue.GetMessageNode(_currentGuid);
+            _currentMessage = CurrentDialogue.GetMessageNode(_currentGuid);
             // Trigger its event if it has one.
             _currentMessage.Event?.Invoke();
 
             // Finish if this message is the last one.
-            if (_currentMessage.NextId.Length == 0) _onDialogueFinishedChannel?.Raise(_currentMessage);
-            else _onDialogueNextMessageChannel?.Raise(_currentMessage);
+            _onDialogueNextMessageChannel?.Raise(_currentMessage);
+            if (_currentMessage.NextId.Length == 0) IsFinished = true;
+        }
+
+        /// <summary>
+        /// Finishes the dialogue.
+        /// </summary>
+        private void FinishDialogue()
+        {
+            _onDialogueFinishedChannel?.Raise(_currentMessage);
+            CurrentDialogue = null;
+            IsFinished = false;
+            _onDialogueContinueMessage.OnRaised -= ContinueDialogue;
+            _onDialogueContinueChoice.OnRaised -= ContinueDialogue;
         }
     }
 }

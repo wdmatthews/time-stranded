@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Toolkits.Events;
 using TimeStranded.Cameras;
 
 namespace TimeStranded.Characters
@@ -24,9 +25,31 @@ namespace TimeStranded.Characters
         [SerializeField] private InteractableEventChannelSO _onInteractableInRangeChannel = null;
 
         /// <summary>
+        /// The event channel to raise when an dialogue is continued from a message.
+        /// </summary>
+        [Tooltip("The event channel to raise when an dialogue is continued from a message.")]
+        [SerializeField] private EventChannelSO _onDialogueContinueMessage = null;
+
+        /// <summary>
+        /// The event channel to raise when an dialogue is continued from a choice.
+        /// </summary>
+        [Tooltip("The event channel to raise when an dialogue is continued from a choice.")]
+        [SerializeField] private IntEventChannelSO _onDialogueContinueChoice = null;
+
+        /// <summary>
         /// The current interactable.
         /// </summary>
         [System.NonSerialized] private Interactable _interactable = null;
+
+        /// <summary>
+        /// Whether or not the player is in a dialogue.
+        /// </summary>
+        [System.NonSerialized] public bool IsInDialogue = false;
+
+        /// <summary>
+        /// Whether or not the current dialogue node is a message.
+        /// </summary>
+        [System.NonSerialized] public bool CurrentIsMessage = true;
 
         private void Awake()
         {
@@ -53,8 +76,8 @@ namespace TimeStranded.Characters
         /// <param name="context">The input context.</param>
         public void OnMove(InputAction.CallbackContext context)
         {
-            // If dead, disabled controls.
-            if (_isDead) return;
+            // If dead or in a dialogue, disable controls.
+            if (_isDead || IsInDialogue) return;
             Move(context.ReadValue<Vector2>());
         }
 
@@ -64,8 +87,8 @@ namespace TimeStranded.Characters
         /// <param name="context">The input context.</param>
         public void OnAim(InputAction.CallbackContext context)
         {
-            // If dead, disabled controls.
-            if (_isDead) return;
+            // If dead or in a dialogue, disable controls.
+            if (_isDead || IsInDialogue) return;
             Vector2 direction = context.ReadValue<Vector2>();
             // Don't aim if not receiving aim input.
             if (Mathf.Approximately(direction.x, 0) && Mathf.Approximately(direction.y, 0)) return;
@@ -87,8 +110,8 @@ namespace TimeStranded.Characters
         /// <param name="context">The input context.</param>
         public void OnUse(InputAction.CallbackContext context)
         {
-            // If dead, disabled controls.
-            if (_isDead) return;
+            // If dead or in a dialogue, disable controls.
+            if (_isDead || IsInDialogue) return;
             if (context.performed) UseItem();
         }
 
@@ -98,7 +121,7 @@ namespace TimeStranded.Characters
         /// <param name="context">The input context.</param>
         public void OnSelect(InputAction.CallbackContext context)
         {
-            // If dead, disabled controls.
+            // If dead, disable controls.
             if (_isDead) return;
             Vector2 abilityDirection = context.ReadValue<Vector2>();
             int abilityIndex = -1;
@@ -108,8 +131,11 @@ namespace TimeStranded.Characters
             else if (Mathf.Approximately(abilityDirection.x, 1)) abilityIndex = 1;
             else if (Mathf.Approximately(abilityDirection.y, -1)) abilityIndex = 2;
             else if (Mathf.Approximately(abilityDirection.x, -1)) abilityIndex = 3;
-            if (abilityIndex < 0 || abilityIndex >= _abilities.Count) return;
-            SelectAbility(abilityIndex);
+            if (abilityIndex < 0 || !IsInDialogue && abilityIndex >= _abilities.Count) return;
+
+            // If in dialogue try to continue.
+            if (IsInDialogue && !CurrentIsMessage) _onDialogueContinueChoice.Raise(abilityIndex);
+            else if (!IsInDialogue) SelectAbility(abilityIndex);
         }
 
         /// <summary>
@@ -118,8 +144,10 @@ namespace TimeStranded.Characters
         /// <param name="context">The input context.</param>
         public void OnInteract(InputAction.CallbackContext context)
         {
+            // Continue the dialogue.
+            if (context.performed && IsInDialogue && CurrentIsMessage) _onDialogueContinueMessage.Raise();
             // Attempt to interact with the current interactable.
-            if (context.performed && _interactable && _interactable.InteractorInRange)
+            else if (context.performed && !IsInDialogue && _interactable && _interactable.InteractorInRange)
             {
                 _interactable.OnInteract.Invoke();
             }
