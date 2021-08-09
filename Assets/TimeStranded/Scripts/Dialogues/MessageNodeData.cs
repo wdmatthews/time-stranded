@@ -53,6 +53,12 @@ namespace TimeStranded.Dialogues
         public UnityEvent Event = null;
 
         /// <summary>
+        /// An event that is invoked when the dialogue finishes after reaching this message.
+        /// </summary>
+        [Tooltip("An event that is invoked when the dialogue finishes after reaching this message.")]
+        public UnityEvent FinishEvent = null;
+
+        /// <summary>
         /// Creates empty node data.
         /// </summary>
         public MessageNodeData() { }

@@ -10,5 +10,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fa834b2dadfaa447f9a4be13329bd4d3, type: 3}
-  m_Name: OnFinishedPlaying
+  m_Name: OnAudioFinishedPlaying
   m_EditorClassIdentifier: 

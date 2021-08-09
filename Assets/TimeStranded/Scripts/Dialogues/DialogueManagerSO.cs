@@ -155,6 +155,7 @@ namespace TimeStranded.Dialogues
         /// </summary>
         private void FinishDialogue()
         {
+            _currentMessage?.FinishEvent?.Invoke();
             _onDialogueFinishedChannel?.Raise(_currentMessage);
             CurrentDialogue = null;
             IsFinished = false;

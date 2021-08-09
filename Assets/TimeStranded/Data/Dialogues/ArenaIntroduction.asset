@@ -59,6 +59,9 @@ MonoBehaviour:
     Event:
       m_PersistentCalls:
         m_Calls: []
+    FinishEvent:
+      m_PersistentCalls:
+        m_Calls: []
   - Guid: 30ac38d7-6021-4d15-ab4f-4aa73b328ec6
     Position: {x: 436, y: 167}
     Speaker: {fileID: 11400000, guid: 5743af7bde9a54c758b82f4a4c673bcb, type: 2}
@@ -67,6 +70,9 @@ MonoBehaviour:
     NextId: 9d253635-da2e-4663-ae27-8bc9f6573e6b
     NextIsMessage: 1
     Event:
+      m_PersistentCalls:
+        m_Calls: []
+    FinishEvent:
       m_PersistentCalls:
         m_Calls: []
   - Guid: 9d253635-da2e-4663-ae27-8bc9f6573e6b
@@ -79,6 +85,9 @@ MonoBehaviour:
     Event:
       m_PersistentCalls:
         m_Calls: []
+    FinishEvent:
+      m_PersistentCalls:
+        m_Calls: []
   - Guid: 194d8861-dd56-4cfc-89d1-6c2c2a6569f6
     Position: {x: 1180, y: 167}
     Speaker: {fileID: 11400000, guid: b832d5718ec20486097acb7c29aaeb94, type: 2}
@@ -89,6 +98,21 @@ MonoBehaviour:
     Event:
       m_PersistentCalls:
         m_Calls: []
+    FinishEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 11400000, guid: ca503afb200cd4069b97106c4081ce5f, type: 2}
+          m_TargetAssemblyTypeName: Toolkits.Events.EventChannelSO, Toolkits.Events
+          m_MethodName: Raise
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - Guid: b8e1536d-cff4-49ac-ba17-80fd65abf573
     Position: {x: 1180, y: 359}
     Speaker: {fileID: 11400000, guid: b832d5718ec20486097acb7c29aaeb94, type: 2}
@@ -97,6 +121,9 @@ MonoBehaviour:
     NextId: 
     NextIsMessage: 1
     Event:
+      m_PersistentCalls:
+        m_Calls: []
+    FinishEvent:
       m_PersistentCalls:
         m_Calls: []
   ChoiceNodes:

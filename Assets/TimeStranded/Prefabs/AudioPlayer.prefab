@@ -46,8 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _audioSource: {fileID: 71788145086109949}
   _onFinishedPlayingChannel: {fileID: 11400000, guid: ec7d0baeaf6f54a4b8a29fd12c34c14d, type: 2}
-  _onPauseChannel: {fileID: 11400000, guid: 081e02e5891b24713843e4aeeeed6bbc, type: 2}
-  _onResumeChannel: {fileID: 11400000, guid: 040424972cec04248b759638c9ae6170, type: 2}
+  _onPauseChannel: {fileID: 11400000, guid: e02c7f148a9204d76af9876fa21aa655, type: 2}
+  _onResumeChannel: {fileID: 11400000, guid: 67398904740c04597834d58219b3773b, type: 2}
   _fadeOutTime: 0.5
   _fadeInTime: 0.5
 --- !u!82 &71788145086109949
