@@ -39,7 +39,7 @@ namespace TimeStranded.Characters
         [Tooltip("The character's fill.")]
         [SerializeField] protected SpriteRenderer _fill = null;
 
-        private void Awake()
+        protected virtual void Awake()
         {
             if (Data) Initialize(Data);
         }

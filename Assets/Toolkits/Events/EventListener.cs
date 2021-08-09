@@ -24,7 +24,7 @@ namespace Toolkits.Events
         /// <summary>
         /// Start listening to the event channel when the script is enabled.
         /// </summary>
-        private void OnEnable()
+        private void Awake()
         {
             if (_channel) _channel.OnRaised += Raise;
         }
@@ -32,7 +32,7 @@ namespace Toolkits.Events
         /// <summary>
         /// Stop listening to the event channel when the script is disabled.
         /// </summary>
-        private void OnDisable()
+        private void OnDestroy()
         {
             if (_channel) _channel.OnRaised -= Raise;
         }

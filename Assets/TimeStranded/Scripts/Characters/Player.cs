@@ -51,13 +51,15 @@ namespace TimeStranded.Characters
         /// </summary>
         [System.NonSerialized] public bool CurrentIsMessage = true;
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             if (_onInteractableInRangeChannel) _onInteractableInRangeChannel.OnRaised += SetInteractable;
         }
 
-        private void OnDestroy()
+        protected override void OnDestroy()
         {
+            base.OnDestroy();
             if (_onInteractableInRangeChannel) _onInteractableInRangeChannel.OnRaised -= SetInteractable;
         }
 
@@ -76,8 +78,8 @@ namespace TimeStranded.Characters
         /// <param name="context">The input context.</param>
         public void OnMove(InputAction.CallbackContext context)
         {
-            // If dead or in a dialogue, disable controls.
-            if (_isDead || IsInDialogue) return;
+            // If dead, in a dialogue or paused, disable controls.
+            if (_isDead || IsInDialogue || _isPaused) return;
             Move(context.ReadValue<Vector2>());
         }
 
@@ -87,8 +89,8 @@ namespace TimeStranded.Characters
         /// <param name="context">The input context.</param>
         public void OnAim(InputAction.CallbackContext context)
         {
-            // If dead or in a dialogue, disable controls.
-            if (_isDead || IsInDialogue) return;
+            // If dead, in a dialogue, or paused, disable controls.
+            if (_isDead || IsInDialogue || _isPaused) return;
             Vector2 direction = context.ReadValue<Vector2>();
             // Don't aim if not receiving aim input.
             if (Mathf.Approximately(direction.x, 0) && Mathf.Approximately(direction.y, 0)) return;
@@ -110,8 +112,8 @@ namespace TimeStranded.Characters
         /// <param name="context">The input context.</param>
         public void OnUse(InputAction.CallbackContext context)
         {
-            // If dead or in a dialogue, disable controls.
-            if (_isDead || IsInDialogue) return;
+            // If dead, in a dialogue, or paused, disable controls.
+            if (_isDead || IsInDialogue || _isPaused) return;
             if (context.performed) UseItem();
         }
 
@@ -121,8 +123,8 @@ namespace TimeStranded.Characters
         /// <param name="context">The input context.</param>
         public void OnSelect(InputAction.CallbackContext context)
         {
-            // If dead, disable controls.
-            if (_isDead) return;
+            // If dead or paused, disable controls.
+            if (_isDead || _isPaused) return;
             Vector2 abilityDirection = context.ReadValue<Vector2>();
             int abilityIndex = -1;
             // Get the ability index based on the vector.
@@ -144,6 +146,7 @@ namespace TimeStranded.Characters
         /// <param name="context">The input context.</param>
         public void OnInteract(InputAction.CallbackContext context)
         {
+            if (_isPaused) return;
             // Continue the dialogue.
             if (context.performed && IsInDialogue && CurrentIsMessage) _onDialogueContinueMessage.Raise();
             // Attempt to interact with the current interactable.

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Toolkits.Events;
 using TimeStranded.Attributes;
 using TimeStranded.Inventory;
 
@@ -53,6 +54,18 @@ namespace TimeStranded.Characters
         /// </summary>
         [Tooltip("The event channel to raise when a character dies.")]
         [SerializeField] protected CharacterEventChannelSO _onCharacterDeath = null;
+
+        /// <summary>
+        /// The event channel to raise when pausing the game.
+        /// </summary>
+        [Tooltip("The event channel to raise when pausing the game.")]
+        [SerializeField] private EventChannelSO _onPauseChannel = null;
+
+        /// <summary>
+        /// The event channel to raise when resuming the game.
+        /// </summary>
+        [Tooltip("The event channel to raise when resuming the game.")]
+        [SerializeField] private EventChannelSO _onResumeChannel = null;
 
         /// <summary>
         /// The current move direction.
@@ -146,13 +159,28 @@ namespace TimeStranded.Characters
         /// </summary>
         [System.NonSerialized] public Item DeathItem = null;
 
-        private void Awake()
+        /// <summary>
+        /// Whether or not the game is paused.
+        /// </summary>
+        protected bool _isPaused = false;
+
+        protected override void Awake()
         {
-            if (Data) Initialize(Data);
+            base.Awake();
+            if (_onPauseChannel) _onPauseChannel.OnRaised += OnPause;
+            if (_onResumeChannel) _onResumeChannel.OnRaised += OnResume;
         }
 
-        private void Update()
+        protected virtual void OnDestroy()
         {
+            if (_onPauseChannel) _onPauseChannel.OnRaised -= OnPause;
+            if (_onResumeChannel) _onResumeChannel.OnRaised -= OnResume;
+        }
+
+        protected virtual void Update()
+        {
+            if (_isPaused) return;
+
             // Update the attribute's modifier timers.
             for (int i = _attributes.Length - 1; i >= 0; i--)
             {
@@ -160,8 +188,9 @@ namespace TimeStranded.Characters
             }
         }
 
-        private void LateUpdate()
+        protected virtual void LateUpdate()
         {
+            if (_isPaused) return;
             _rigidbody.velocity = _speedAttribute.Value * _moveDirection;
         }
 
@@ -175,6 +204,24 @@ namespace TimeStranded.Characters
                 if (Mathf.Approximately(TimeUntilRespawn, 0)) OnRespawn();
                 else TimeUntilRespawn = Mathf.Clamp(TimeUntilRespawn - Time.deltaTime, 0, TimeUntilRespawn);
             }
+        }
+
+        /// <summary>
+        /// Called when the game is paused.
+        /// </summary>
+        protected virtual void OnPause()
+        {
+            Move(new Vector2());
+            _rigidbody.velocity = new Vector2();
+            _isPaused = true;
+        }
+
+        /// <summary>
+        /// Called when the game is resumed.
+        /// </summary>
+        protected virtual void OnResume()
+        {
+            _isPaused = false;
         }
 
         /// <summary>
@@ -208,8 +255,8 @@ namespace TimeStranded.Characters
         /// <param name="direction">The direction to move in.</param>
         public void Move(Vector2 direction)
         {
-            // If dead, disabled controls.
-            if (_isDead) return;
+            // If dead or paused, disabled controls.
+            if (_isDead || _isPaused) return;
             _moveDirection = direction;
         }
 
@@ -219,8 +266,8 @@ namespace TimeStranded.Characters
         /// <param name="direction">The direction to aim in.</param>
         public void Aim(Vector2 direction)
         {
-            // If dead, disabled controls.
-            if (_isDead) return;
+            // If dead or paused, disabled controls.
+            if (_isDead || _isPaused) return;
             _aimDirection = direction;
             float angle = Mathf.Rad2Deg * Mathf.Atan2(_aimDirection.y, _aimDirection.x);
             transform.eulerAngles = new Vector3(0, 0, angle);
@@ -232,9 +279,8 @@ namespace TimeStranded.Characters
         /// </summary>
         public void UseItem()
         {
-            // If dead, disabled controls.
-            if (_isDead) return;
-            if (!_activeItem) return;
+            // If dead or paused, disabled controls.
+            if (_isDead || _isPaused || !_activeItem) return;
             // Detect if the item was a one time use, and remove one of its uses.
             if (_activeItem.ItemData.IsOneTimeUse) Data.Inventory.RemoveItem(_activeItem.ItemData, 1);
             // Detect if the item was an ability, and remove it if necessary.
@@ -297,8 +343,8 @@ namespace TimeStranded.Characters
         /// <param name="abilityIndex">The ability's index.</param>
         public void SelectAbility(int abilityIndex)
         {
-            // If dead, disabled controls.
-            if (_isDead) return;
+            // If dead or paused, disabled controls.
+            if (_isDead || _isPaused) return;
             // Stop if not able to select an ability.
             if (_activeItem && !_activeItem.ItemData.CanBeSelected) return;
 

@@ -164,15 +164,17 @@ MonoBehaviour:
   Data: {fileID: 0}
   _faces: {fileID: 11400000, guid: 7d70f01c826b84ec2a79cd69c4b22839, type: 2}
   _colors: {fileID: 11400000, guid: 8f6e7528fe8c04c799ac433e146c490c, type: 2}
-  _rigidbody: {fileID: 1717265433002888975}
   _face: {fileID: 7766638505720196196}
   _fill: {fileID: 7766638505100754503}
+  _rigidbody: {fileID: 1717265433002888975}
   _itemHolder: {fileID: 6354443411987588093}
   _speedAttributeName: Speed
   _healthAttributeName: Health
   _onCharacterHeal: {fileID: 11400000, guid: c895fdf4f6b6d4f5b8c1ec4a0f894c9c, type: 2}
   _onCharacterDamage: {fileID: 11400000, guid: b90fd0285ae1e40ffbf89b314a72fda6, type: 2}
   _onCharacterDeath: {fileID: 11400000, guid: 75fe8119afae64da2925452547da9e01, type: 2}
+  _onPauseChannel: {fileID: 11400000, guid: e02c7f148a9204d76af9876fa21aa655, type: 2}
+  _onResumeChannel: {fileID: 11400000, guid: 67398904740c04597834d58219b3773b, type: 2}
 --- !u!210 &7766638504734428695
 SortingGroup:
   m_ObjectHideFlags: 0
