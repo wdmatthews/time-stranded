@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 836752376}
   - component: {fileID: 836752377}
+  - component: {fileID: 836752378}
   m_Layer: 0
   m_Name: ArenaManager
   m_TagString: Untagged
@@ -167,3 +168,43 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _arenaManager: {fileID: 11400000, guid: 88d7028a360f942c5abd64303cdc0b29, type: 2}
+--- !u!114 &836752378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 836752375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89fa836b7adc34e62af7f95d073f5e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _channel: {fileID: 11400000, guid: 0973c90a93b6443c1a321e1fa2703a3d, type: 2}
+  _onRaised:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 88d7028a360f942c5abd64303cdc0b29, type: 2}
+        m_TargetAssemblyTypeName: TimeStranded.Games.ArenaManagerSO, TimeStranded.Games
+        m_MethodName: Unload
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 11400000, guid: 10749bf7748304842a29b8551bc3817b, type: 2}
+        m_TargetAssemblyTypeName: TimeStranded.Locations.LocationManagerSO, TimeStranded.Locations
+        m_MethodName: LoadLocation
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: bfd0686d888ab4a60b99eb463ce70c82, type: 2}
+          m_ObjectArgumentAssemblyTypeName: TimeStranded.Locations.LocationSO, TimeStranded.Locations
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
