@@ -20,6 +20,7 @@ MonoBehaviour:
   Teams:
   - {fileID: 11400000, guid: d1a5a352ffde248bbb3237138e059a4f, type: 2}
   - {fileID: 11400000, guid: 931fd695803254c528c9d06eb337d450, type: 2}
+  _cameraFollowTargets: {fileID: 11400000, guid: 1041e5a10da99480bb5b7f428b5e078f, type: 2}
   _activeTeams: {fileID: 11400000, guid: 8b079d2b2dbe44e9a903f1283571f29e, type: 2}
   _activeCharacters: {fileID: 11400000, guid: aed2883b5e084489993c441a9a006f4e, type: 2}
   _aliveCharacters: {fileID: 11400000, guid: e0a1fc28780174ffc9a53a4befa4261f, type: 2}

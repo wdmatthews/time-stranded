@@ -122,6 +122,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 058ac500089d0423b805f74a8fa2ebff, type: 2}
   - {fileID: 11400000, guid: 058ac500089d0423b805f74a8fa2ebff, type: 2}
   - {fileID: 11400000, guid: 058ac500089d0423b805f74a8fa2ebff, type: 2}
+  - {fileID: 11400000, guid: 058ac500089d0423b805f74a8fa2ebff, type: 2}
+  - {fileID: 11400000, guid: 058ac500089d0423b805f74a8fa2ebff, type: 2}
+  - {fileID: 11400000, guid: 058ac500089d0423b805f74a8fa2ebff, type: 2}
+  - {fileID: 11400000, guid: 058ac500089d0423b805f74a8fa2ebff, type: 2}
   _openCloseAnimationDuration: 0.2
   _onArenaWindowOpenChannel: {fileID: 11400000, guid: ca503afb200cd4069b97106c4081ce5f, type: 2}
   _onPauseChannel: {fileID: 11400000, guid: e02c7f148a9204d76af9876fa21aa655, type: 2}

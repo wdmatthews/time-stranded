@@ -108,7 +108,7 @@ namespace TimeStranded.Games
             character.Score++;
 
             // Raise the OnFootballScore event.
-            _onFootballScoreChannel?.OnRaised(character);
+            _onFootballScoreChannel?.OnRaised?.Invoke(character);
 
             // Reset the field or end the match.
             if (team.Score >= _goalsToWin) EndMatch();

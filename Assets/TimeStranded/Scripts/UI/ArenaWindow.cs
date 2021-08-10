@@ -245,6 +245,7 @@ namespace TimeStranded.UI
         /// </summary>
         public void StartMatch()
         {
+            _onResumeChannel.Raise();
             GameModeSO gameMode = _gameModesByName[_gameModeName.Value];
             ArenaMap map = gameMode.GetMap(_arenaMapName.Value);
             // TODO Generate list of AI characters.

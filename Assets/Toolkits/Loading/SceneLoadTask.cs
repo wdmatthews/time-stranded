@@ -47,7 +47,7 @@ namespace Toolkits.Loading
         /// <param name="unload">Whether or not the scenes need to be unloaded.</param>
         public SceneLoadTask(List<string> sceneNames, bool unload)
         {
-            _sceneNames = sceneNames;
+            _sceneNames = new List<string>(sceneNames);
             Unload = unload;
             _sceneCount = _sceneNames.Count;
         }

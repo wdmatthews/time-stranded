@@ -42,6 +42,12 @@ namespace TimeStranded.Games
         public List<TeamSO> Teams = new List<TeamSO>();
 
         /// <summary>
+        /// The list of camera follow targets.
+        /// </summary>
+        [Tooltip("The list of camera follow targets.")]
+        [SerializeField] protected TransformListReferenceSO _cameraFollowTargets = null;
+
+        /// <summary>
         /// The list of all teams involved in a match.
         /// </summary>
         [Tooltip("The list of all teams involved in a match.")]
@@ -278,6 +284,13 @@ namespace TimeStranded.Games
         {
             _map = map;
             if (teams == null) _initialSpawns = new List<Transform>(_map.Spawns);
+            // Add the players to the camera targets list.
+            _cameraFollowTargets.Clear();
+
+            for (int i = players.Count - 1; i >= 0; i--)
+            {
+                _cameraFollowTargets.Add(players[i].transform);
+            }
 
             // Subscribe to character events.
             if (_onCharacterHeal) _onCharacterHeal.OnRaised += OnCharacterHeal;
