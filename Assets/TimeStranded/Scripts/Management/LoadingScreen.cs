@@ -92,6 +92,11 @@ namespace TimeStranded.Management
         private bool _isLoading = false;
 
         /// <summary>
+        /// Whether or not a location wa loading.
+        /// </summary>
+        private bool _wasLoading = false;
+
+        /// <summary>
         /// The previous load progress.
         /// </summary>
         private float _previousLoadProgress = 0;
@@ -109,7 +114,6 @@ namespace TimeStranded.Management
         private void Awake()
         {
             // Subscribe to events then turn off.
-            _onScreenTransitionFinishChannel.OnRaised += OnTransitionFinish;
             _onLocationSceneLoadStartChannel.OnRaised += ShowLoadingScreen;
             _onLocationSceneLoadTickChannel.OnRaised += UpdateLoadingScreen;
             _onLocationSceneLoadFinishChannel.OnRaised += HideLoadingScreen;
@@ -123,7 +127,8 @@ namespace TimeStranded.Management
             if (!_isTransitioning && !_isLoading && _shouldHide)
             {
                 _shouldHide = false;
-                _onScreenTransitionShowChannel.Raise(0);
+                _onScreenTransitionFinishChannel.OnRaised -= OnTransitionFinish;
+                _onScreenTransitionShowChannel.Raise(1);
                 gameObject.SetActive(false);
             }
         }
@@ -143,7 +148,12 @@ namespace TimeStranded.Management
         private void OnTransitionFinish()
         {
             _isTransitioning = false;
-            if (_isLoading) gameObject.SetActive(true);
+
+            if (_wasLoading)
+            {
+                gameObject.SetActive(true);
+                _wasLoading = false;
+            }
         }
 
         /// <summary>
@@ -160,9 +170,11 @@ namespace TimeStranded.Management
             }
 
             _isLoading = true;
+            _wasLoading = true;
             _previousLoadProgress = 0;
             _isTransitioning = true;
-            _onScreenTransitionShowChannel.Raise(1);
+            _onScreenTransitionFinishChannel.OnRaised += OnTransitionFinish;
+            _onScreenTransitionShowChannel.Raise(0);
             UpdateLoadingScreen(location, 0);
         }
 

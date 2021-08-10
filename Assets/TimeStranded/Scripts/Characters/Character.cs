@@ -382,7 +382,7 @@ namespace TimeStranded.Characters
 
             if (Mathf.Approximately(_healthAttribute.Value, 0))
             {
-                OnDeath();
+                OnDeath(item);
                 _onCharacterDeath.Raise(this);
                 return true;
             }

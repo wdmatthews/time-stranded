@@ -67,12 +67,9 @@ namespace TimeStranded.Games
             int teamCount = _activeTeams.Count;
             int aliveCount = _aliveCharacters.Count;
             int respawningCount = _respawningCharacters.Count;
-
+            
             // Solo win because the only alive character is the winner and none are respawning.
-            if (teamCount == 0 && aliveCount == 1 && respawningCount == 0)
-            {
-                EndMatch();
-            }
+            if (teamCount == 0 && aliveCount == 1 && respawningCount == 0) EndMatch();
             // Team win because the only alive or respawning characters are on the same team.
             else if (teamCount > 0)
             {
