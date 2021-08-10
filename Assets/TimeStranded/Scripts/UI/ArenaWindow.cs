@@ -234,6 +234,7 @@ namespace TimeStranded.UI
                 }
 
                 _mapListGroup.Initialize(_arenaMapNames);
+                _arenaMapName.Value = _arenaMapNames[0];
             }
 
             _previousGameName = gameModeName;

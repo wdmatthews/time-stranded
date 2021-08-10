@@ -16,7 +16,7 @@ MonoBehaviour:
   _respawnTime: 3
   _matchDuration: 180
   Maps:
-  - {fileID: 2145534948333658114, guid: c653ede5b0af94b6c8d2dba6aca508dc, type: 3}
+  - {fileID: 7533756270237942577, guid: 6f33add841d254046a9feee84f728b15, type: 3}
   Teams: []
   _cameraFollowTargets: {fileID: 11400000, guid: 1041e5a10da99480bb5b7f428b5e078f, type: 2}
   _activeTeams: {fileID: 11400000, guid: 8b079d2b2dbe44e9a903f1283571f29e, type: 2}
