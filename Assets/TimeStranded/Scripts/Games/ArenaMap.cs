@@ -6,7 +6,7 @@ namespace TimeStranded.Games
     /// <summary>
     /// Manages an arena map.
     /// </summary>
-    [AddComponentMenu("Time Stranded/Games")]
+    [AddComponentMenu("Time Stranded/Games/Arena Map")]
     [DisallowMultipleComponent]
     public class ArenaMap : MonoBehaviour
     {

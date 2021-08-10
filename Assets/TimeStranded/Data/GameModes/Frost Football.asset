@@ -15,7 +15,11 @@ MonoBehaviour:
   _maxRespawns: 100
   _respawnTime: 3
   _matchDuration: 180
-  _maps: []
+  Maps:
+  - {fileID: 8217988753428744392, guid: ef6686bae9e404404bc68ff7abc99e72, type: 3}
+  Teams:
+  - {fileID: 11400000, guid: 36733e9d688124410b79e9883484aa96, type: 2}
+  - {fileID: 11400000, guid: 72497d3a9d74e44cdb5c4d035cfe62fd, type: 2}
   _activeTeams: {fileID: 11400000, guid: 8b079d2b2dbe44e9a903f1283571f29e, type: 2}
   _activeCharacters: {fileID: 11400000, guid: aed2883b5e084489993c441a9a006f4e, type: 2}
   _aliveCharacters: {fileID: 11400000, guid: e0a1fc28780174ffc9a53a4befa4261f, type: 2}

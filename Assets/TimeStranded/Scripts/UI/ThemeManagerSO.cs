@@ -36,7 +36,7 @@ namespace TimeStranded.UI
         /// <summary>
         /// The theme currently in use.
         /// </summary>
-        [System.NonSerialized] private ThemeSO _theme = null;
+        [System.NonSerialized] public ThemeSO Theme = null;
 
         /// <summary>
         /// Called on Awake.
@@ -59,7 +59,7 @@ namespace TimeStranded.UI
         /// </summary>
         private void ApplyCurrentTheme()
         {
-            _onThemeApplyChannel.Raise(_theme);
+            _onThemeApplyChannel.Raise(Theme);
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace TimeStranded.UI
         /// <param name="themeName">The name of the theme to apply.</param>
         public void ApplyTheme(string themeName)
         {
-            _theme = _themesByName[themeName];
+            Theme = _themesByName[themeName];
             ApplyCurrentTheme();
         }
 

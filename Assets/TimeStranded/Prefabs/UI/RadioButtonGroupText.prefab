@@ -54,6 +54,7 @@ MonoBehaviour:
   _onValueChanged:
     m_PersistentCalls:
       m_Calls: []
+  _themeManager: {fileID: 11400000, guid: 3000672619c5e4874a0623af10241edf, type: 2}
 --- !u!114 &4041781047610522729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,4 +67,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fafe2cfe61f6974895a912c3755e8f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AllowSwitchOff: 1
+  m_AllowSwitchOff: 0

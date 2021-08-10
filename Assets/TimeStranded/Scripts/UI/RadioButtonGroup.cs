@@ -31,6 +31,12 @@ namespace TimeStranded.UI
         [SerializeField] private UnityEvent<string> _onValueChanged = null;
 
         /// <summary>
+        /// The theme manager.
+        /// </summary>
+        [Tooltip("The theme manager.")]
+        [SerializeField] private ThemeManagerSO _themeManager = null;
+
+        /// <summary>
         /// The group's value.
         /// </summary>
         private string _value = "";
@@ -49,6 +55,11 @@ namespace TimeStranded.UI
         }
 
         /// <summary>
+        /// The list of used radio buttons.
+        /// </summary>
+        private List<RadioButton> _radioButtons = new List<RadioButton>();
+
+        /// <summary>
         /// Initializes the radio button group.
         /// </summary>
         /// <param name="values">The group's values.</param>
@@ -56,13 +67,31 @@ namespace TimeStranded.UI
         /// <param name="colors">The colors for each button if needed.</param>
         public void Initialize(List<string> values, List<Sprite> icons = null, List<Color> colors = null)
         {
+            int usedButtonCount = _radioButtons.Count;
             int valueCount = values.Count;
-            _value = values[0];
+            _value = valueCount > 0 ? values[0] : "";
 
+            // Create new buttons if needed, otherwise use old ones.
             for (int i = 0; i < valueCount; i++)
             {
-                RadioButton button = Instantiate(_buttonPrefab, transform);
+                RadioButton button = null;
+
+                if (i < usedButtonCount) button = _radioButtons[i];
+                else
+                {
+                    button = Instantiate(_buttonPrefab, transform);
+                    _radioButtons.Add(button);
+                }
+
                 button.Initialize(this, values[i], i == 0, colors != null ? colors[i] : new Color(1, 1, 1), icons?[i]);
+                if (_themeManager) button.ApplyTheme(_themeManager.Theme);
+                button.gameObject.SetActive(true);
+            }
+
+            // Disable any unused buttons.
+            for (int i = usedButtonCount - 1; i >= valueCount; i--)
+            {
+                _radioButtons[i].gameObject.SetActive(false);
             }
         }
     }

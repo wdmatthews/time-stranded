@@ -33,7 +33,13 @@ namespace TimeStranded.Games
         /// The maps this game mode supports.
         /// </summary>
         [Tooltip("The maps this game mode supports.")]
-        [SerializeField] protected ArenaMap[] _maps = { };
+        public ArenaMap[] Maps = { };
+
+        /// <summary>
+        /// The teams this game mode supports.
+        /// </summary>
+        [Tooltip("The teams this game mode supports.")]
+        public List<TeamSO> Teams = new List<TeamSO>();
 
         /// <summary>
         /// The list of all teams involved in a match.
@@ -131,6 +137,32 @@ namespace TimeStranded.Games
         /// The initial spawns used for a solo match.
         /// </summary>
         [System.NonSerialized] protected List<Transform> _initialSpawns = new List<Transform>();
+
+        /// <summary>
+        /// A dictionary of supported maps organized by name.
+        /// </summary>
+        [System.NonSerialized] protected Dictionary<string, ArenaMap> _mapsByName = null;
+
+        /// <summary>
+        /// Gets a map by its name.
+        /// </summary>
+        /// <param name="name">The map's name.</param>
+        /// <returns>The map.</returns>
+        public ArenaMap GetMap(string name)
+        {
+            if (_mapsByName == null)
+            {
+                _mapsByName = new Dictionary<string, ArenaMap>();
+
+                for (int i = Maps.Length - 1; i >= 0; i--)
+                {
+                    ArenaMap map = Maps[i];
+                    _mapsByName.Add(map.name, map);
+                }
+            }
+
+            return _mapsByName[name];
+        }
 
         /// <summary>
         /// Clears all match data.
